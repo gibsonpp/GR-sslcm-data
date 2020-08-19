@@ -1,0 +1,27 @@
+# Files associated with R sessions/projects
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Saved R objects (e.g., posterior samples)
+*.rds
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# HTML files (generated from R markdown)
+*.html
+
+# Figure files: these are reproducible from source at any time
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# JAGS model files: these are never edited directly
+*.txt
+
+# ignore anything in the scratch folder (personal sandboxes)
+98-scratch/*
