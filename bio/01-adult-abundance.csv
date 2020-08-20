@@ -1,0 +1,137 @@
+population,return_year,weir_present,n_returned,n_harvested,n_removed_at_weir,n_above_weir,abund_cv,n_below_before_ps_mort,weir_efficiency,redds_expanded,redds_counted_above,redds_counted_below,est_method_adult,est_method_jack,notes
+CAT,1986,No,444,0,0,444,0.44,NA,NA,179,92,NA,redd.exp,redd.exp,
+CAT,1987,No,699,0,0,699,0.44,NA,NA,307,210,NA,redd.exp,redd.exp,
+CAT,1988,No,726,0,0,726,0.44,NA,NA,309,212,NA,redd.exp,redd.exp,
+CAT,1989,No,212,0,0,212,0.44,NA,NA,86,49,NA,redd.exp,redd.exp,
+CAT,1990,No,161,0,0,161,0.44,NA,NA,65,40,NA,redd.exp,redd.exp,
+CAT,1991,No,71,0,0,71,0.44,NA,NA,29,20,NA,redd.exp,redd.exp,
+CAT,1992,No,180,0,0,180,0.44,NA,NA,73,49,NA,redd.exp,redd.exp,
+CAT,1993,No,298,0,0,298,0.44,NA,NA,120,84,NA,redd.exp,redd.exp,
+CAT,1994,No,31,0,0,31,0.44,NA,NA,12,15,NA,redd.exp,redd.exp,
+CAT,1995,No,42,0,0,42,0.44,NA,NA,17,20,NA,redd.exp,redd.exp,
+CAT,1996,No,39,0,0,39,0.44,NA,NA,17,16,NA,redd.exp,redd.exp,
+CAT,1997,Yes,82,0,0,80,0.703562364,2,0.025,46,45,1,mr,p.te,weir installed 1997 but only marginally functional in this year
+CAT,1998,Yes,101,0,0,101,0.326282318,0,0.277,34,34,0,mr,p.te,
+CAT,1999,Yes,88,0,0,84,0.412736567,4,0.19,40,38,2,mr,p.te,
+CAT,2000,Yes,62,0,2,46,0.489302649,14,0.476,34,26,8,mr,p.te,
+CAT,2001,Yes,613,0,56,549,0.448523703,8,0.154,133,131,2,mr,p.te,
+CAT,2002,Yes,500,0,40,451,0.071139466,10,0.605,158,156,2,mr,p.te,
+CAT,2003,Yes,593,0,106,481,0.016426246,6,0.947,167,165,2,mr,p.te,
+CAT,2004,Yes,711,0,493,213,0.026098235,5,0.941,96,94,2,mr,p.te,
+CAT,2005,Yes,231,0,77,151,0.018615795,3,0.971,74,72,2,mr,p.te,
+CAT,2006,Yes,354,0,69,278,0.041733835,7,0.834,117,115,2,mr,p.te,
+CAT,2007,Yes,284,0,110,168,0.068675808,6,0.892,59,57,2,mr,p.te,
+CAT,2008,Yes,368,0,148,214,0.040882087,6,0.939,101,99,2,mr,p.te,
+CAT,2009,Yes,763,0,470,282,0.184408774,11,0.888,89,87,2,mr,p.te,
+CAT,2010,Yes,1532,0,533,971,0.014738371,31,0.898,368,357,11,mr,p.rec,
+CAT,2011,Yes,1983,0,258,1725,0.335539477,0,0.09,444,444,0,mr,p.rec,
+CAT,2012,Yes,1078,40,322,711,0.027525156,5,0.921,237,236,1,mr,p.rec,
+CAT,2013,Yes,810,0,297,515,0.017475728,0,0.977,110,110,0,mr,p.rec,
+CAT,2014,Yes,1274,0,174,1046,0.015206476,55,0.928,383,365,18,mr,mr,
+CAT,2015,Yes,774,0,251,506,0.014113495,17,0.987,222,215,7,mr,mr,
+CAT,2016,Yes,543,0,120,409,0.056448219,12,1,146,142,4,mr,p.rec,
+CAT,2017,Yes,241,0,100,138,0.060192927,3,0.883,51,50,1,mr,p.rec,
+CAT,2018,Yes,248,0,107,143,0.03280011,0,0.962,69,69,0,mr,p.rec,
+CAT,2019,Yes,324,0,120,204,0.020211302,0,0.974,82,82,0,mr,p.rec,
+LOS,1986,No,340,0,0,340,0.44,NA,NA,96,61,NA,redd.exp,redd.exp,
+LOS,1987,No,374,0,0,374,0.44,NA,NA,105,75,NA,redd.exp,redd.exp,
+LOS,1988,No,717,0,0,717,0.44,NA,NA,202,182,NA,redd.exp,redd.exp,
+LOS,1989,No,220,0,0,220,0.44,NA,NA,62,53,NA,redd.exp,redd.exp,
+LOS,1990,No,97,0,0,97,0.44,NA,NA,27,27,NA,redd.exp,redd.exp,
+LOS,1991,No,123,0,0,123,0.44,NA,NA,34,28,NA,redd.exp,redd.exp,
+LOS,1992,No,163,0,0,163,0.44,NA,NA,46,37,NA,redd.exp,redd.exp,
+LOS,1993,No,375,0,0,375,0.44,NA,NA,106,102,NA,redd.exp,redd.exp,
+LOS,1994,No,67,0,0,67,0.44,NA,NA,19,16,NA,redd.exp,redd.exp,
+LOS,1995,No,41,0,0,41,0.44,NA,NA,12,11,NA,redd.exp,redd.exp,
+LOS,1996,No,96,0,0,96,0.44,0,NA,27,27,NA,redd.exp,redd.exp,
+LOS,1997,Yes,159,0,9,145,0.27443781,5,0.118,49,47,2,mr,p.rec,
+LOS,1998,Yes,157,0,0,126,0.355197524,32,0.128,35,28,7,mr,p.rec,
+LOS,1999,Yes,84,0,2,64,0.147255157,17,0.159,57,45,12,mr,p.rec,
+LOS,2000,Yes,326,0,33,233,0.271963752,60,0.169,64,53,11,mr,p.rec,
+LOS,2001,Yes,725,52,91,439,0.129002298,143,0.773,131,98,33,mr,all.rec,weir data unreliable
+LOS,2002,Yes,919,0,88,734,0.162764696,98,0.668,209,182,27,mr,all.rec,weir data unreliable
+LOS,2003,Yes,787,0,95,517,0.204341997,173,0.601,168,127,41,mr,all.rec,weir data unreliable
+LOS,2004,Yes,1488,0,573,732,0.32485475,202,0.783,189,144,45,mr,all.rec,weir data unreliable
+LOS,2005,Yes,984,46,326,523,0.115032875,96,0.94,148,125,23,mr,all.rec,weir data unreliable
+LOS,2006,Yes,731,10,151,516,0.278674622,65,0.822,111,96,15,mr,all.rec,weir data unreliable
+LOS,2007,Yes,617,0,242,354,0.067527571,29,1,104,97,7,mr,p.rec,weir data unreliable
+LOS,2008,Yes,2082,55,331,1537,0.318310886,169,0.481,293,264,29,mr,all.rec,weir data unreliable
+LOS,2009,Yes,3654,323,1733,1153,0.300547421,449,0.83,258,195,63,mr,p.rec,
+LOS,2010,Yes,5319,413,427,4727,0.224226575,26,0.033,696,692,4,mr,p.rec,
+LOS,2011,Yes,5926,378,314,5147,0.392553843,242,0.011,693,661,32,mr,p.rec,
+LOS,2012,Yes,1942,77,354,1003,0.014118269,508,0.931,421,280,141,mr,p.rec,
+LOS,2013,Yes,1716,1,595,765,0.508329533,356,0.331,122,88,34,mr,p.rec,
+LOS,2014,Yes,3585,314,893,1876,0.103991578,544,0.454,500,409,91,mr,p.rec,
+LOS,2015,Yes,1932,766,432,618,0.020722085,288,0.925,246,167,79,mr,p.rec,
+LOS,2016,Yes,1761,154,305,1079,0.025006001,225,0.852,221,185,36,mr,p.rec,
+LOS,2017,Yes,880,68,434,359,0.082355373,46,0.633,139,125,14,mr,p.rec,
+LOS,2018,Yes,1172,104,354,666,0.052055276,28,0.842,179,172,7,mr,p.rec,
+LOS,2019,Yes,748,5,300,403,0.028521166,38,0.886,128,119,9,mr,p.rec,
+MIN,1986,No,728,0,300,728,0.44,NA,NA,205,62,NA,redd.exp,redd.exp,
+MIN,1987,No,1009,0,0,1009,0.44,NA,NA,284,115,NA,redd.exp,redd.exp,
+MIN,1988,No,964,0,0,964,0.44,NA,NA,271,104,NA,redd.exp,redd.exp,
+MIN,1989,No,355,0,0,355,0.44,NA,NA,100,38,NA,redd.exp,redd.exp,
+MIN,1990,No,586,0,0,586,0.44,NA,NA,165,67,NA,redd.exp,redd.exp,
+MIN,1991,No,444,0,0,444,0.44,NA,NA,125,50,NA,redd.exp,redd.exp,
+MIN,1992,No,437,0,0,437,0.44,NA,NA,123,112,NA,redd.exp,redd.exp,
+MIN,1993,No,461,0,0,461,0.44,NA,NA,130,110,NA,redd.exp,redd.exp,
+MIN,1994,No,60,0,0,60,0.44,NA,NA,17,32,NA,redd.exp,redd.exp,
+MIN,1995,No,78,0,0,78,0.44,NA,NA,22,20,NA,redd.exp,redd.exp,
+MIN,1996,No,345,0,0,345,0.44,NA,NA,97,104,NA,redd.exp,redd.exp,
+MIN,1997,No,208,0,0,208,0.44,NA,NA,59,58,NA,redd.exp,redd.exp,
+MIN,1998,No,233,0,0,233,0.44,NA,NA,65,65,NA,redd.exp,redd.exp,
+MIN,1999,No,166,0,0,166,0.44,NA,NA,47,46,NA,redd.exp,redd.exp,
+MIN,2000,No,512,0,0,512,0.44,NA,NA,144,139,NA,redd.exp,redd.exp,
+MIN,2001,No,676,0,0,676,0.44,NA,NA,190,179,NA,redd.exp,redd.exp,
+MIN,2002,No,737,0,0,737,0.44,NA,NA,207,193,NA,redd.exp,redd.exp,
+MIN,2003,No,621,0,0,621,0.44,NA,NA,175,153,NA,redd.exp,redd.exp,
+MIN,2004,No,548,0,0,548,0.44,NA,NA,154,151,NA,redd.exp,redd.exp,
+MIN,2005,No,387,0,0,387,0.44,NA,NA,109,102,NA,redd.exp,redd.exp,
+MIN,2006,No,498,0,0,498,0.44,NA,NA,140,114,NA,redd.exp,redd.exp,
+MIN,2007,No,348,0,0,348,0.44,NA,NA,98,101,NA,redd.exp,redd.exp,
+MIN,2008,No,614,0,0,614,0.44,NA,NA,173,157,NA,redd.exp,redd.exp,
+MIN,2009,No,850,0,0,850,0.44,NA,NA,239,183,NA,redd.exp,redd.exp,
+MIN,2010,No,1045,0,0,1045,0.44,NA,NA,294,283,NA,redd.exp,redd.exp,
+MIN,2011,No,936,0,0,936,0.44,NA,NA,263,234,NA,redd.exp,redd.exp,
+MIN,2012,No,710,0,0,710,0.44,NA,NA,200,174,NA,redd.exp,redd.exp,
+MIN,2013,No,510,0,0,510,0.44,NA,NA,143,141,NA,redd.exp,redd.exp,
+MIN,2014,No,1255,0,0,1255,0.44,NA,NA,353,316,NA,redd.exp,redd.exp,
+MIN,2015,No,724,0,0,724,0.44,NA,NA,204,198,NA,redd.exp,redd.exp,
+MIN,2016,No,682,0,0,682,0.44,NA,NA,192,186,NA,redd.exp,redd.exp,
+MIN,2017,No,231,0,0,231,0.44,NA,NA,65,65,NA,redd.exp,redd.exp,
+MIN,2018,No,345,0,0,345,0.44,NA,NA,97,97,NA,redd.exp,redd.exp,
+MIN,2019,No,334,0,0,334,0.44,NA,NA,94,72,NA,redd.exp,redd.exp,
+UGR,1986,No,193,0,0,193,0.44,NA,NA,53,54,NA,redd.exp,redd.exp,
+UGR,1987,No,805,0,0,805,0.44,NA,NA,221,200,NA,redd.exp,redd.exp,
+UGR,1988,No,554,0,0,554,0.44,NA,NA,173,131,NA,redd.exp,redd.exp,
+UGR,1989,No,3,0,0,3,0.44,NA,NA,1,1,NA,redd.exp,redd.exp,
+UGR,1990,No,117,0,0,117,0.44,NA,NA,33,32,NA,redd.exp,redd.exp,
+UGR,1991,No,50,0,0,50,0.44,NA,NA,14,14,NA,redd.exp,redd.exp,
+UGR,1992,No,443,0,0,443,0.44,NA,NA,123,123,NA,redd.exp,redd.exp,
+UGR,1993,No,370,0,0,370,0.44,NA,NA,104,104,NA,redd.exp,redd.exp,
+UGR,1994,No,14,0,0,14,0.44,NA,NA,4,1,NA,redd.exp,redd.exp,
+UGR,1995,No,25,0,0,25,0.44,NA,NA,7,7,NA,redd.exp,redd.exp,
+UGR,1996,No,78,0,0,78,0.44,NA,NA,23,22,NA,redd.exp,redd.exp,
+UGR,1997,Yes,67,0,0,54,0.366666667,13,0.167,30,24,6,redd.exp,p.te,weir located above Vey Meadows (RKM 309)
+UGR,1998,Yes,92,0,4,84,0.239874306,4,0.333,42,40,2,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,1999,Yes,4,0,0,4,0.353553391,0,0.25,0,0,0,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2000,Yes,52,0,2,23,0.304347826,28,0.609,20,9,11,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2001,Yes,76,0,21,30,0.120185043,26,0.933,15,8,7,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2002,Yes,109,0,51,54,0.101232079,4,0.982,23,21,2,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2003,Yes,291,0,106,98,0.105232534,88,0.823,40,21,19,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2004,Yes,683,0,49,462,0.028445746,172,0.906,186,134,51,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2005,Yes,423,0,72,205,0.091351134,147,0.995,91,52,38,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2006,Yes,214,0,152,54,0.19269859,9,0.98,28,14,4,mr,p.te,weir located above Vey Meadows (RKM 309)
+UGR,2007,Yes,115,0,81,19,0.468626221,15,1,1,1,0,mr,p.te,weir located dnstm of Starkey (RKM 291)
+UGR,2008,Yes,551,0,144,390,1.050960148,18,0.095,31,26,5,redd.exp,p.te,weir located dnstm of Starkey (RKM 291)
+UGR,2009,Yes,1003,0,448,299,0.187148284,257,0.859,52,50,2,mr,p.te,weir located dnstm of Starkey (RKM 291)
+UGR,2010,Yes,2567,49,179,2275,0.042481609,64,0.462,360,342,18,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2011,Yes,1723,0,164,1546,0.397864015,13,0.052,227,223,4,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2012,Yes,896,0,178,707,0.073627172,11,0.695,97,95,2,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2013,Yes,1208,0,124,1084,0.428494453,0,0.051,41,41,0,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2014,Yes,2091,12,161,1893,0.225818061,25,0.273,261,255,6,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2015,Yes,2043,15,187,1841,0.144900394,0,0.457,123,123,0,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2016,Yes,393,2,152,239,0.433903608,0,0.387,73,73,0,redd.reg,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2017,Yes,286,2,129,155,0.439294752,0,0.062,29,29,0,redd.reg,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2018,Yes,379,0,169,211,0.114953799,0,0.874,37,37,0,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2019,Yes,193,0,158,32,0.376828962,3,0.885,6,5,1,redd.reg,p.rec,weir located dnstm of Starkey (RKM 291)
