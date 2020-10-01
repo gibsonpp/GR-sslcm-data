@@ -1,0 +1,473 @@
+---
+title: "GR-SSLCM Exploratory Analysis"
+author: "P. Gibson"
+date: '2020-09-30'
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    df_print: paged
+subtitle: Population Composition - Weir vs Carcass
+---
+
+Most recent commits at time of original analysis (last updated 2020-09-30):
+
+- **GR_SSLCM:** `47c6107`
+- **GR_SSLCM-data:** `c2265b8`
+
+```{r settings, echo=FALSE}
+data_dir <- "../GR-sslcm-data/bio"
+```
+
+# Research Questions 
+In years before weirs were installed, or for populations without weirs, carcass recoveries provide the only source of information about the population composition of the returning adults, in terms of **origin, sex,** and **age**. Therefore we need to determine to what extent population composition estimates based on carcass recoveries are comparable to the equivalent estimates based on data from the year, using years/populations for which both types of data are available.   
+
+- Are the carcass vs. weir estimates (of population composition) correlated?
+
+- If so, are the carcass vs. weir estimates reasonably equivalent, or are there consistent biases in the carcass data, relative to the weir versions? Can the carcass versions be adjusted to account for any differences?
+
+- Do the patterns in carcass vs. weir estimates differ among populations?
+
+Weir efficiency (i.e., the proportion of all adult fish above the weir that were caught and processed at the weir) varies widely among years and populations. In years with weir low efficiency, the weir data account for only a small portion of the total population. Our analysis necessarily assumes that the un-sampled fish are random with respect to origin, sex, and age.  
+
+# Extra Packages
+A few packages used here that are not used in the rest of the repo. Load them here rather than place them in `00-packages.R`.
+```{r packages, warning=FALSE, message=FALSE}
+library(ggplot2)   # for easy plotting
+```
+
+# Data Preparation
+Follow the data preparation method used in generating the basic `bio_dat` table, to match the data set that will be used in the model. This approach excludes any records that do not have known origin, sex, and age. An alternative approach could to work with each dimension (origin vs. sex vs. age) one at a time, and to exclude only the records that are unknown for that dimension.  
+
+First, generate the `bio_dat` data frame, which provides summarized carcass and weir counts as currently used in the model. 
+
+```{r source_prep-bio-dat, message=FALSE, warning=FALSE}
+source("00-data/prep-bio-data.R")
+```
+
+Function to convert counts to proportions, for one dimension (origin, sex, or age) at a time: 
+```{r}
+calc_proportion <- function(df, group.id) {    # assumes input df already has a [n_all] column.
+  group.count.cur <- rowSums(df[, grep(pattern=group.id, x=colnames(df))], na.rm=TRUE)
+  prop.cur <- round(group.count.cur/df$n_all, 3)
+  df <- cbind(df, prop.cur) 
+  colnames(df)[which(colnames(df)=="prop.cur")] <- paste0("p", group.id)
+  return(df)
+}
+```
+
+### Carcass data
+Retain only the carcass count fields:
+```{r}
+adult_carc_composition <- bio_dat[, c(which(colnames(bio_dat)=="population"),
+                                      which(colnames(bio_dat)=="brood_year"),
+                                      grep(pattern="carc_", x=colnames(bio_dat)))]
+```
+
+Sum total number of carcasses sampled by population/year:
+```{r}
+adult_carc_composition$n_all <- 
+  rowSums(adult_carc_composition[, grep(pattern="carc", x=colnames(adult_carc_composition))], na.rm=TRUE)
+```
+
+Calculate proportion of total carcasses in each year/population that are (1) hatchery origin (`p_Hat`); (2) female (`p_F`); and (3) age 3 (`p_3`) vs. age 4 (`p_4`) vs. age 5 (`p_5`).  At this time, proportions for origin, sex, and age are all being calculated independently of one another. 
+```{r}
+for (i in c("_Hat", "_F", "_3", "_4", "_5")) {
+  adult_carc_composition <- calc_proportion(df=adult_carc_composition, group.id=i)
+}
+
+carc <- adult_carc_composition[, c(which(colnames(adult_carc_composition)=="population"),
+                                   which(colnames(adult_carc_composition)=="brood_year"),
+                                   which(colnames(adult_carc_composition)=="n_all"),  # include sample size for carcasses
+                                   grep(pattern="p_", x=colnames(adult_carc_composition)))]
+
+colnames(carc)[3:ncol(carc)] = paste("carc", colnames(carc)[3:ncol(carc)], sep = "_")
+```
+
+Finally, add a factor for classifying carcass sample size to categorical levels (making it easier to examine in plots).
+```{r}
+carc$carc_smp_size <- cut(x=carc$carc_n_all, 
+                          breaks = c(0, 21, 100, 500, 1000, 5000))
+```
+
+
+
+### Weir data: all fish
+Retain only the weir count fields:
+```{r}
+adult_weir_composition <- bio_dat[, c(which(colnames(bio_dat)=="population"),
+                                      which(colnames(bio_dat)=="brood_year"),
+                                      grep(pattern="weir_", x=colnames(bio_dat)))]
+
+```
+
+Sum total number of fish sampled at the weir:
+```{r}
+adult_weir_composition$n_all <- 
+  rowSums(adult_weir_composition[, grep(pattern="weir", x=colnames(adult_weir_composition))], na.rm=TRUE)
+```
+
+Calculate proportion of total fish sampled in each year/population that are (1) hatchery origin (`p_Hat`); (2) female (`p_F`); and (3) age 3 (`p_3`) vs. age 4 (`p_4`) vs. age 5 (`p_5`).  At this time, proportions for origin, sex, and age are all being calculated independently of one another. 
+```{r}
+for (i in c("_Hat", "_F", "_3", "_4", "_5")) {
+  adult_weir_composition <- calc_proportion(df=adult_weir_composition, group.id=i)
+}
+
+# weir <- select(adult_weir_composition, population, brood_year, starts_with("p_"))
+
+weir <- adult_weir_composition[, c(which(colnames(adult_weir_composition)=="population"),
+                                   which(colnames(adult_weir_composition)=="brood_year"),
+                                   grep(pattern="p_", x=colnames(adult_weir_composition)))]
+
+colnames(weir)[3:ncol(weir)] = paste("weir", colnames(weir)[3:ncol(weir)], sep = "_")
+```
+
+
+### Weir data: passed fish
+
+The weir data set as used in `bio-dat` describes *all fish* trapped at the weir.  However, fish removed at the weir are non-random with respect to origin, sex, and age; in general, hatchery managers limit the number of hatchery-origin fish released above the weir (ie, hatchery-origin fish are more likely to be removed than natural-origin fish), and my understanding is that they sometimes try to limit the numbers of three-year-old hatchery fish, in particular, above the weir, making that age class more likely to be removed, although on the other hand older fish are preferred over younger fish for broodstock (all else being equal).  
+
+In any case, given the deliberate manipulation of the population composition of returning adults at the weir, it seems reasonable that the population composition of carcass recoveries may more closely match the composition of fish passed above the weir, rather than the composition of the full population of fish arriving at the weir (at least in years with high weir efficiency). Therefore I also calculated composition fractions for fish passed above the weir.  
+
+To summarize counts for these passed-above fish, I copied the code from `prep-bio-dat.R`, `ADULT COMPOSITION: WEIR REMOVAL DATA`, but limited the data set to the fish that were passed above the weir rather than the fish that were removed from the population. 
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+data_dir <- "../GR-sslcm-data/bio"
+
+# read the data
+tmp = read.csv(file.path(data_dir, "02b-adult-indiv-weir.csv"), stringsAsFactors = F)
+
+# new age_best variable
+# some of the age_best are NA, but there are age records in the other columns
+# this will correct that issue and use an age if present, while prioritizing age methods
+tmp$age_best2 = NA
+tmp$age_best2 = ifelse(is.na(tmp$age_best2) & !is.na(tmp$age_cwt), tmp$age_cwt, tmp$age_best2)
+tmp$age_best2 = ifelse(is.na(tmp$age_best2) & !is.na(tmp$age_pit), tmp$age_pit, tmp$age_best2)
+tmp$age_best2 = ifelse(is.na(tmp$age_best2) & !is.na(tmp$age_scale), tmp$age_scale, tmp$age_best2)
+tmp$age_best2 = ifelse(is.na(tmp$age_best2) & !is.na(tmp$age_length), tmp$age_length, tmp$age_best2)
+
+## THE FOLLOWING DISCARD LINES
+## throw out about 7.5% of the records
+## the big one is missing age.
+## would be nice to find a way to use these records
+
+# discard records with unknown age
+tmp = tmp[!is.na(tmp$age_best2),]
+
+# discard records with age assigned as 2
+tmp = tmp[tmp$age_best2 > 2,]
+
+# discard records with unknown sex
+tmp = tmp[tmp$sex != "Unk",]
+
+# discard records with unknown origin
+tmp = tmp[tmp$origin != "Unk",]
+
+# rename trap_year to year
+colnames(tmp)[colnames(tmp) == "trap_year"] = "year"
+```
+
+```{r}
+# keep only fish that were removed
+tmp = tmp[tmp$disposition == "passed",]
+
+# keep only relevant columns
+tmp = tmp[,c("population", "year", "sex", "origin", "age_best2", "count")]
+
+# calculate the sum of the counts by population, year, sex, age, and origin
+tmp = aggregate(count ~ population + year + sex + origin + age_best2, data = tmp, FUN = sum)
+
+# reformat: to wide
+tmp = dcast(tmp, population + year ~ origin + sex + age_best2, value.var = "count")
+
+# update column names
+# note: year renamed to "brood_year" to allow merging with other data sets
+# and for consistent indexing in model.
+# just note that for adults, brood_year is the year is the year adults SPAWNED, NOT the year they WERE SPAWNED
+colnames(tmp)[2] = "brood_year"
+colnames(tmp)[3:ncol(tmp)] = paste("pass", colnames(tmp)[3:ncol(tmp)], sep = "_")
+
+# rename the data frame, and remove "tmp" objects
+adult_pass_composition = tmp; rm(tmp)
+```
+
+Calculate proportions for these passed fish as for carcass recoveries and for all fish processed at the weir.
+
+Sum total number of fish passed:
+```{r}
+adult_pass_composition$n_all <- 
+  rowSums(adult_pass_composition[, grep(pattern="pass", x=colnames(adult_pass_composition))], na.rm=TRUE)
+```
+
+Calculate proportion of total fish passed in each year/population that are (1) hatchery origin (`p_Hat`); (2) female (`p_F`); and (3) age 3 (`p_3`) vs. age 4 (`p_4`) vs. age 5 (`p_5`).  At this time, proportions for origin, sex, and age are all being calculated independently of one another. 
+```{r}
+for (i in c("_Hat", "_F", "_3", "_4", "_5")) {
+  adult_pass_composition <- calc_proportion(df=adult_pass_composition, group.id=i)
+}
+
+# pass <- select(adult_pass_composition, population, brood_year, starts_with("p_"))
+pass <- adult_pass_composition[, c(which(colnames(adult_pass_composition)=="population"),
+                                   which(colnames(adult_pass_composition)=="brood_year"),
+                                   grep(pattern="p_", x=colnames(adult_pass_composition)))]
+
+colnames(pass)[3:ncol(pass)] = paste("pass", colnames(pass)[3:ncol(pass)], sep = "_")
+```
+
+
+### Weir efficiency
+Finally, include a rough measure of weir efficiency (as provided in the adult-abundance data set) to provide context for the weir-vs-carcass comparison.
+
+```{r}
+# read in the adult abundance data set
+tmp = read.csv(file.path(data_dir, "01-adult-abundance.csv"), stringsAsFactors = F)
+
+# retain only the variables that will be useful for this analysis
+tmp <- tmp[, c("population", "return_year", "weir_efficiency", "n_returned", "n_above_weir")]
+colnames(tmp)[colnames(tmp)=="return_year"] <- "brood_year"
+
+# rename the data frame
+adult_abundance <- tmp; rm(tmp)
+```
+
+### Combine data
+Bring all the calculated proportions together into a common data frame. This merge will also limit the data set to include only the populations and years for which we have both carcass and weir data.
+```{r, warning=FALSE, message=FALSE}
+props <- merge(carc, weir, by=c("population", "brood_year"), all=FALSE)
+props <- merge(props, pass, by=c("population", "brood_year"), all=FALSE)
+props <- merge(props, adult_abundance, by=c("population", "brood_year"), all=FALSE)
+```
+
+
+# Question 1: Origin ratios
+How does proportion hatchery origin estimated from weir data compare with the proportion estimated from carcass recoveries?
+```{r, fig.width=9, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+plot.base <- ggplot(data=props) +
+  geom_abline(slope=1, intercept=0, lty="dashed") +
+  facet_wrap(~population) +
+  scale_color_gradient(low = "red", high = "blue") +
+  theme_bw()
+
+plot.origin.pass <- plot.base +
+  geom_point(aes(x=carc_p_Hat, y=pass_p_Hat, color=weir_efficiency), size=2) +
+  ggtitle("proportion hatchery origin: carcass recoveries vs. fish passed above weir")
+
+print(plot.origin.pass)
+
+```
+When considering only fish released above the weir, proportion hatchery origin estimated from carcass recoveries is consistently higher than proportion hatchery origin in fish released above the year. In years of low returns, it is not uncommon for zero hatchery-origin fish to be released above the weir (ie, `pass_p_Hat = 0`). But it is less clear why the proportion hatchery origin would still usually be higher in carcasses, even for years with good weir efficiency and good carcass sample size.   
+
+However, the proportions in the carcass data better match the weir data when using all fish sampled at the weir, rather than only those fish passed above: 
+```{r, fig.width=9, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+plot.origin.pass <- plot.base +
+  geom_point(aes(x=carc_p_Hat, y=weir_p_Hat, color=weir_efficiency), size=2) +
+  ggtitle("proportion hatchery origin: carcass recoveries vs. all fish processed at weir")
+
+print(plot.origin.pass)
+```
+
+The following plot pools all the populations, and color-codes the points by the carcass recovery sample size (in categorical bins). In general, very high and very low proportions in the carcass recovery data are (as expected) associated with small carcass sample size, and so are more likely to overestimate/underestimate (respectively) the equivalent proportions in the weir data.  
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+print(ggplot(data=props) +
+  geom_point(aes(x=carc_p_Hat, y=weir_p_Hat, color=carc_smp_size, shape=population), size=2) +
+  geom_abline(slope=1, intercept=0, lty="dashed") +  # the one-to-one line 
+  # geom_smooth(aes(x=carc_p_Hat, y=weir_p_Hat), method="lm", se=TRUE) +
+  theme_bw())
+```
+The outlier data point in this figure (`carc_p_Hat=0.738, weir_p_Hat=0.053`) is from UGR in 2014. Approximate weir efficiency that year was fairly low (`r props$weir_efficiency[props$population=="UGR" & props$brood_year==2014]`), but not that low relative to all data (~0.25 percentile), and carcass sample size (`r props$carc_n_all[props$population=="UGR" & props$brood_year==2014]`) and weir sample size (`r adult_weir_composition$n_all[adult_weir_composition$population=="UGR" & adult_weir_composition$brood_year==2014]`) were good. So, not clear what was going on there.
+
+**INITIAL CONCLUSION**: Proportion hatchery origin is reasonably consistent between weir vs. carcass data, when weir data include all fish sampled at the weir. If needed we could apply some kind of correction factor to the carcass proportion, at least for especially low or especially high estimates of proportion hatchery origin.  Maybe some kind of asymptotic function?  
+
+# Question 2: Sex ratios
+How does population sex ratio (proportion female) estimated from weir data compare with the ratio estimated from carcass recoveries?
+```{r, fig.width=9, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+plot.sex.pass <- plot.base +
+  geom_point(aes(x=carc_p_F, y=pass_p_F, color=weir_efficiency), size=2) +
+  ggtitle("proportion female: carcass recoveries vs. fish passed above weir")
+
+print(plot.sex.pass)
+```
+
+```{r, fig.width=9, fig.height=4, echo=FALSE, warning=FALSE, message=FALSE}
+plot.sex.weir <- plot.base +
+  geom_point(aes(x=carc_p_F, y=weir_p_F, color=weir_efficiency), size=2) +
+  ggtitle("proportion female: carcass recoveries vs. all fish processed at weir")
+
+print(plot.sex.weir)
+```
+As expected, the proportion female in carcass recoveries is consistently higher than the proportion female in weir data, whether considering all weir data or only the fish passed above the weir.  
+
+Recovery probability is known to be higher for female carcasses than for male carcasses, because (a) females tend to be larger than males, and recovery probability is positively related to size; and (b) behaviorally, females are more likely to stay and guard the redd as long as possible (and thus end up dying near the redd, where they are more likely to be found), while males are more likely to drift downstream and end up in places where they are less likely to be found (*Murdoch et al 2009*).
+
+Pooling all populations:
+```{r, echo=FALSE}
+ggplot(data=props, aes(x=carc_p_F, y=weir_p_F)) +
+  geom_point(aes(color=carc_smp_size, shape=population), size=2) +
+  geom_abline(slope=1, intercept=0, lty="dashed") +  # the one-to-one line 
+  # geom_smooth(aes(y=weir_p_F, x=carc_p_F), method="lm", se=TRUE) +
+  theme_bw()
+```
+**INITIAL CONCLUSION**: Calculating sex ratio based on carcass recoveries will generally overestimate the number of females and underestimate the number of males.  It should be possible to develop some kind of correction factor to account for this, although THE years with few carcass recoveries (ie, low carcass sample size) will always be problematic. 
+
+# Question 3: Age structure
+How do the proportions of fish in each age class (3-, 4-, and 5-year-olds) estimated from carcass recoveries compare to the age proportions in weir data?
+
+### Proportion Age-3
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.3yo.pass <- plot.base +
+  geom_point(aes(x=carc_p_3, y=pass_p_3, color=weir_efficiency), size=2) +
+  ggtitle("proportion age 3: carcass recoveries vs. fish passed above weir")
+
+print(plot.3yo.pass)
+```
+
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.3yo.weir <- plot.base +
+  geom_point(aes(x=carc_p_3, y=weir_p_3, color=weir_efficiency), size=2) +
+  ggtitle("proportion age 3: carcass recoveries vs. all fish processed at weir")
+
+print(plot.3yo.weir)
+```
+As expected, the proportion Age-3 is consistently higher in weir data than in carcass data, although this appears less true for UGR than for the other two populations.  Recovery rate for age-3 fish (the large majority of which are males) is usually very low.  Joseph Feldhaus (ODFW) uses half the Age-4/Age-5 recovery rate as a very rough estimate of the expected carcass recovery rate for 3-year-olds. 
+
+The age-3 proportions in carcass recoveries are closer to the proportions in fish passed above the weir than to the proportions in all fish sampled at the weir.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(data=props) +
+  geom_point(aes(x=carc_p_3, y=pass_p_3, color=carc_smp_size), size=2) +
+  geom_abline(slope=1, intercept=0, lty="dashed") +
+  ggtitle("proportion age-3: carcass recoveries vs. fish passed above the weir")
+  # geom_smooth(aes(x=carc_p_3, y=pass_p_3), method="lm")
+
+# summary(lm(weir_p_3 ~ carc_p_3, data=props[props$carc_n_all>20, ]))
+```
+
+### Proportion Age-4
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.4yo.pass <- plot.base +
+  geom_point(aes(x=carc_p_4, y=pass_p_4, color=weir_efficiency), size=2) +
+  ggtitle("proportion age 4: carcass recoveries vs. fish passed above the weir")
+
+print(plot.4yo.pass)
+``` 
+
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.4yo.weir <- plot.base +
+  geom_point(aes(x=carc_p_4, y=weir_p_4, color=weir_efficiency), size=2) +
+  ggtitle("proportion age 4: carcass recoveries vs. all fish processed at weir")
+
+print(plot.4yo.weir)
+``` 
+Plots suggest some tendency for age-4 to be over-represented in carcass recoveries relative to weir data. 
+
+### Proportion Age-5
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.5yo.pass <- plot.base +
+  geom_point(aes(x=carc_p_5, y=pass_p_5, color=weir_efficiency), size=2) +
+  coord_cartesian(xlim=c(0, 0.5), ylim=c(0,0.5)) + 
+  ggtitle("proportion age 5: carcass recoveries vs. fish passed above the weir")
+
+print(plot.5yo.pass)
+``` 
+
+```{r, fig.width=9, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+plot.5yo.weir <- plot.base +
+  geom_point(aes(x=carc_p_5, y=weir_p_5, color=weir_efficiency), size=2) +
+  coord_cartesian(xlim=c(0, 0.5), ylim=c(0,0.5)) + 
+  ggtitle("proportion age 5: carcass recoveries vs. all fish processed at weir")
+
+print(plot.5yo.weir)
+``` 
+Plots suggest that proportion age-5 is quite consistent between carcass vs. weir data (although UGR data is always problematic).
+
+# Full multinomial categories
+The above analysis considered origin, sex, and age all independently from one another.  However, in reality these dimensions are not independent. Hatchery fish are more likely than natural origin-fish to return as 3-year-olds; 3-year-olds are much more likely to be male than to be female. Therefore we may need to consider all three dimensions of population composition together (although the small sample sizes for carcasses in many years makes this difficult).
+
+### Data preparation
+Convert the adult composition counts (as observed at the weirs and in carcass recoveries) into observed proportions in each age/sex/origin category.   
+```{r}
+## Carcass data
+
+# separate data frame for modification
+adult_carc_prop <- adult_carc_composition
+
+# quickly convert counts to percentages
+for (i in 3:14){
+  adult_carc_prop[, i] <- round(adult_carc_prop[, i]/adult_carc_prop$n_all, 3)  
+}
+
+# reshape to get a single proportion column
+carc_long <- melt(adult_carc_prop[, 1:14], 
+                  id.vars=c("population", "brood_year"),
+                  variable.name="identity", value.name="proportion")
+carc_long$identity <- substr(x=carc_long$identity, start=6, stop=12)
+carc_long$data_type <- "carc"
+
+
+## Weir data
+
+# separate data frame for modification
+adult_weir_prop <- adult_weir_composition
+
+# quickly convert counts to percentages
+for (i in 3:14){
+  adult_weir_prop[, i] <- round(adult_weir_prop[, i]/adult_weir_prop$n_all, 3)  
+}
+
+# reshape to get a single proportion column
+weir_long <- melt(adult_weir_prop[, 1:14], 
+                  id.vars=c("population", "brood_year"),
+                  variable.name="identity", value.name="proportion")
+weir_long$identity <- substr(x=weir_long$identity, start=6, stop=12)
+weir_long$data_type <- "weir"
+
+
+## Combine weir and carcass data
+carc_and_weir <- rbind(carc_long, weir_long)
+carc_and_weir <- carc_and_weir[carc_and_weir$brood_year >= 1997, ]
+carc_and_weir$proportion[is.na(carc_and_weir$proportion)] <- 0
+
+# reshape again to compare carcass vs weir
+comp_CvsW <- dcast(carc_and_weir, 
+                   population + brood_year + identity ~ data_type, 
+                   value.var="proportion")
+
+# reorder identity labels for better plotting
+comp_CvsW$identity <- ordered(comp_CvsW$identity, levels = c(
+  "Hat_F_3", "Hat_F_4", "Hat_F_5",
+  "Nat_F_3", "Nat_F_4", "Nat_F_5", 
+  "Hat_M_3", "Hat_M_4", "Hat_M_5",
+  "Nat_M_3", "Nat_M_4", "Nat_M_5") )
+
+# add reference information by population/year 
+comp_CvsW <- merge(comp_CvsW, 
+                   props[, c("population", "brood_year", "weir_efficiency", "carc_n_all", "carc_smp_size")],
+                   by=c("population", "brood_year"), 
+                   all=FALSE)
+```
+
+
+### Compare observed proportions
+```{r, echo=FALSE, fig.width=10, fig.height=10}
+# one big plot showing correlations for each composition category
+# (all populations are pooled in this figure)
+(plot.multinomial <- ggplot(data=comp_CvsW) +
+  geom_point(aes(x=carc, y=weir, shape=population, color=carc_smp_size), size=2) +
+  geom_abline(slope=1, intercept=0, lty="dashed") +
+  facet_wrap(~ identity, ncol=3) +
+  xlab("Observed proportion in carcass recoveries") +
+  ylab("Observed proportion at the weir (all processed fish)") + 
+  ggtitle("Population composition: weir data vs carcass data") + 
+  theme_bw())
+```
+
+- Females in general, though it appears especially Hat_F_4 females, are over-represented in carcass recoveries. 
+
+- Female age-3 fish very rare for both hatchery- and natural-origin.  
+
+- Age-5 hatchery fish are rare; age-5 is less rare for natural fish, but age-4 is still more common. 
+
+- Hatchery age-3 males (Hat_M_3) are under-represented in carcass recoveries (natural age-3 males are less common). 
+
+# Next steps
+Develop correction factors for adjusting carcass proportions to account for recovery rates that differ by origin/sex/age - where necessary. 
