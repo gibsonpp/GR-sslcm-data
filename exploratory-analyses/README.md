@@ -1,0 +1,1 @@
+This directory is for storing side projects or explorations related to data for the [GR-sslcm](https://github.com/bstaton1/GR-sslcm), to document how and why decisions were made about how to use the data.  
