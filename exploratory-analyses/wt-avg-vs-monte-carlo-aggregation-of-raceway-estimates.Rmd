@@ -1,0 +1,214 @@
+---
+title: "GR-SSLCM Exploratory Analysis"
+author: "B. Staton"
+date: '2020-11-17'
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    df_print: paged
+subtitle: Monte Carlo Approach to Aggregating Hatchery Smolt Survival to LGD
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+```
+
+# Objective
+
+**What we want**: annual aggregate estimates of hatchery smolt survival to LGD, representative of all fish released and with associated standard error.
+
+**What we have**: annual raceway-specific estimates of survival to LGD, with associated standard error, as well as the number of smolt released from each raceway. 
+
+**Problem**: do the aggregate estimates/uncertainty differ based on which of two simple methods is used?
+
+**The Methods**: 
+
+(a) an average weighted by release sample size
+(b) a Monte Carlo approach that involves simulation from the available estimates and summarization of random quantities
+
+**Things of note**
+
+*  The standard errors on the raceway-specific estimates seem pretty small - majority are <0.05 (probability scale), max is ~0.2. This indicates that whichever way we do this, the LCM will fit to these data fairly closely.
+*  The Monte Carlo approach allows assuming different correlations within a year and among raceways, the weighted average approach has an assumption baked in.
+*  We will limit this analysis to only smolt releases in spring. The rare cases (<5 pop/year combos) where parr or fry were released prior to this aren't worth accounting for
+
+# Prepare Data
+
+We begin with some simple clean up of the raceway-specific release data and survival estimates.
+
+```{r}
+# read in the by-raceway data
+dat = read.csv("hatchery-releases-by-raceway.csv")
+
+# drop cases where the survival estimate, its se, or n_released is not known
+dat = subset(dat, !is.na(surv_est) & !is.na(surv_se) & !is.na(n_released))
+
+# drop cases where the lifestage is not smolt
+dat = subset(dat, lifestage == "smolt")
+```
+
+# Necessary Functions {.tabset .tabset-pills .tabset-fade}
+
+I wrote a handful of functions to help out, you can find their purpose and definition in each tab.
+
+## `logit()`
+
+_Performs the logit transformation. I always forget which one `plogis()` and `qlogis()` does, so I just define these for clarity._
+
+```{r}
+logit = function(p) log(p/(1 - p))
+```
+
+## `expit()`
+
+_Performs the inverse-logit transformation. Same reasoning as for `logit()`._
+
+```{r}
+expit = function(lp) exp(lp)/(1 + exp(lp))
+```
+
+## `prob_se_to_logit_prob_se()`
+
+_Converts a standard error of a probability to be the standard error of the logit of that probability. Allows using a logit-normal distribution to generate Monte Carlo samples. Alternative would be a beta distribution, where the shape parameters are derived via moment matching._
+
+```{r}
+prob_se_to_logit_prob_se = function(prob_est, prob_est_se) {
+  # turn se's on probability scale to ci on probability scale
+  p_lwr = prob_est + qnorm(0.025) * prob_est_se
+  p_upr = prob_est + qnorm(0.975) * prob_est_se
+  
+  # cap the CI
+  p_lwr = ifelse(p_lwr <= 0, 0.001, p_lwr)
+  p_upr = ifelse(p_upr >= 1, 0.999, p_upr)
+  
+  # convert CI on probability into logit-normal standard error: M. Liermann's approximation
+  (logit(p_upr) - logit(p_lwr))/(2 * qnorm(0.975))
+}
+```
+
+## `MC_aggregate_surv()`
+
+_Performs the Monte Carlo routine. See the function body to determine precisely what it does._
+
+```{r}
+MC_aggregate_surv = function(pop, by, nsim = 1000, assume_rho = 0) {
+  
+  # 1.) extract the information for this pop and brood year
+  dat_sub = subset(dat, population == pop & brood_year == by)
+  
+  # 2.) calculate the number of raceways
+  n_race = nrow(dat_sub)
+  
+  # 3.) build a covariance matrix for random survivals
+  rho_mat = vcov_mat = matrix(NA, n_race, n_race)
+  for (i in 1:n_race) {
+    for (j in 1:n_race) {
+      rho_mat[i,j] = ifelse(i == j, 1, assume_rho)
+      vcov_mat[i,j] = rho_mat[i,j] * dat_sub$logit_surv_se[i] * dat_sub$logit_surv_se[j]
+    }
+  }
+  
+  # 4.) for each raceway, sample random survival parameters given uncertainty
+  MC_surv_race = expit(mvtnorm::rmvnorm(nsim, logit(dat_sub$surv_est), vcov_mat))
+  
+  # 5.) for each raceway and random survival, determine how many smolts would make it to LGD
+  MC_LGD_race = sapply(1:n_race, function(r) MC_surv_race[,r] * dat_sub$n_released[r])
+  
+  # 6.) for each random sample, sum the number of smolts at LGD across raceways
+  MC_LGD = rowSums(MC_LGD_race)
+  
+  # 7.) for each random sample, divide the total number of smolts arriving at LGD by the total released
+  MC_surv = MC_LGD/sum(dat_sub$n_released)
+  
+  # 8.) summarize and return
+  c(MC_surv_est = mean(MC_surv), MC_surv_se = sd(MC_surv))
+  
+}
+```
+
+## `WA_aggregate_surv()`
+
+_Performs the weighted average approach to aggregating survival across raceways_
+
+```{r}
+WA_aggregate_surv = function(pop, by) {
+  # 1.) extract the information for this pop and brood year
+  dat_sub = subset(dat, population == pop & brood_year == by)
+
+  # 2.) calculate weighting factor
+  p_wt = dat_sub$n_released/sum(dat_sub$n_released)
+
+  # 3.) get weighted average point estimates
+  surv_est = sum(dat_sub$surv_est * p_wt)
+
+  # 4.) get weighted average se estimates
+  surv_se = sqrt(sum(dat_sub$surv_se^2 * p_wt))
+
+  # 5.) summarize and return
+  c(WA_surv_est = surv_est, WA_surv_se = surv_se)
+}
+```
+
+
+
+# Execute Aggregation Routines
+
+For the Monte Carlo approach, we'll need to transform the standard error to be a logit-scale standard error:
+
+```{r}
+dat$logit_surv_se = prob_se_to_logit_prob_se(dat$surv_est, dat$surv_se)
+```
+
+Now we can apply the both routines to each population/year combination:
+
+```{r}
+# build a container to store Monte Carlo estimates
+dat$pop_by = paste(dat$population, dat$brood_year, sep = "-")
+agg_dat = dat[!duplicated(dat$pop_by), c("population", "brood_year")]
+agg_dat$MC_surv_est = agg_dat$MC_surv_se = agg_dat$WA_surv_est = agg_dat$WA_surv_se = NA
+
+# loop over pop/year combos
+for (i in 1:nrow(agg_dat)) {
+  # perform the routines for this pop/year combo
+  MC_tmp = MC_aggregate_surv(pop = agg_dat$population[i], by = agg_dat$brood_year[i], assume_rho = 1)
+  WA_tmp = WA_aggregate_surv(pop = agg_dat$population[i], by = agg_dat$brood_year[i])
+  
+  # store the estimates in the appropriate spot
+  agg_dat$MC_surv_est[i] = MC_tmp["MC_surv_est"]
+  agg_dat$MC_surv_se[i] = MC_tmp["MC_surv_se"]
+  agg_dat$WA_surv_est[i] = WA_tmp["WA_surv_est"]
+  agg_dat$WA_surv_se[i] = WA_tmp["WA_surv_se"]
+}
+```
+
+# Comparison of Aggregate Estimates with Weighted Average Approach {.tabset .tabset-pills .tabset-fade}
+
+Here are some plots for comparison (dashed line is 1:1; horizontal and vertical lines are the means of each dimension):
+
+## Survival Estimates
+
+```{r, echo = F, fig.width = 4, fig.height = 4}
+# plot for point estimate
+par(mgp = c(2,0.35,0), tcl = -0.15, mar = c(3,3,2,1))
+plot(MC_surv_est ~ WA_surv_est, data = agg_dat, xlim = range(MC_surv_est, WA_surv_est), ylim = range(MC_surv_est, WA_surv_est), xlab = "Weighted Average", ylab = "Monte Carlo", 
+     main = "Survival Point Estimate")
+abline(c(0,1), lty = 2)
+abline(h = mean(agg_dat$MC_surv_est))
+abline(v = mean(agg_dat$WA_surv_est))
+```
+
+## SE of Survival Estimates
+
+```{r, echo = F, fig.width = 4, fig.height = 4}
+# plot for se
+par(mgp = c(2,0.35,0), tcl = -0.15, mar = c(3,3,2,1))
+plot(MC_surv_se ~ WA_surv_se, data = agg_dat, xlim = range(MC_surv_se, WA_surv_se), ylim = range(MC_surv_se, WA_surv_se), xlab = "Weighted Average", ylab = "Monte Carlo", 
+     main = "Survival Standard Error")
+abline(c(0,1), lty = 2)
+abline(h = mean(agg_dat$MC_surv_se))
+abline(v = mean(agg_dat$WA_surv_se))
+```
