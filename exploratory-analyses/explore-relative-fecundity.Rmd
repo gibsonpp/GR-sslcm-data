@@ -1,0 +1,267 @@
+---
+title: "GR-SSLCM Exploratory Analysis: Relative Fecundity"
+author: "Polly Gibson"
+date: '2021-01-11'
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    df_print: paged
+---
+
+```{r settings, echo=FALSE}
+data_dir <- "../GR-sslcm-data/exploratory-analyses"
+```
+
+## Research question
+Currently the GR-LCM assumes that all fish are equivalent in producing eggs/parr.  However, we do have a substantial empirical data set of numbers of eggs per female, collected as part of hatchery spawning operations, in order to directly quantify the relative fecundity of Grande Ronde basin fish. The primary goal of this analysis is to quantify the relative difference in relative reproductive output by age; additionally, we can also consider the effect of origin (Natural vs. Hatchery), population (excluding Minam), and spawn year on relative fecundity.  
+
+### Extra packages
+```{r message=FALSE, warning=FALSE}
+library(lme4)     # for fitting mixed-effects models with random year effects
+library(dplyr)    # to keep things simple for me
+library(ggplot2)  # for making some basic figures
+library(knitr)
+library(kableExtra)  # for displaying nicer tables
+```
+
+
+## Data set
+The hatcheries collect both hatchery-origin and natural-origin returning adults for broodstock, although due to the nature of hatchery operations they generally collect more Hatchery than Natural fish. 
+For this analysis, I extracted data directly from the hatchery spawning databases: all fecundity (total egg count) records for females of known age (or at least, with an assigned "best age") and origin, from the CAT, UGR, and LOS populations. 
+
+```{r read_data, echo=FALSE, results="hide"}
+# read the data
+spawn.dat <- read.csv(file.path(data_dir, "fecundity.csv"), stringsAsFactors = F)
+# sum(is.na(spawn.dat$fecundity))  #no null records
+spawn.dat$age_best <- as.factor(spawn.dat$age_best)
+```
+
+
+The data provide a time series extending back to `r min(spawn.dat$spawn_year)`:
+```{r}
+table(spawn.dat$population, spawn.dat$spawn_year)
+```
+
+There are more records for hatchery fish than for natural fish, as expected, but still decent numbers of natural origin fish in most years. In the first three years of this record (2001-2003), data are almost entirely from natural origin fish.
+```{r}
+table(spawn.dat$population, spawn.dat$origin)
+table(spawn.dat$origin, spawn.dat$spawn_year)
+```
+
+Age-4 fish are much more common than age-5 fish, for all populations and years. Age-3 females are extremely rare (`r paste0("n=", sum(spawn.dat$age_best==3))` in this data set). 
+```{r}
+table(spawn.dat$age_best, spawn.dat$population)
+```
+
+## 1. Effect of age
+In general older/larger fish are known to have greater fecundity than younger/smaller fish, and that pattern is clearly evident in our data set.  
+```{r}
+# Distribution of fecundity values based on age
+ggplot(data=spawn.dat, aes(y=fecundity)) +
+  geom_boxplot(aes(x=age_best)) 
+```
+
+In general, fecundity might be better predicted by using the size of the fish, rather than age, but age makes a reasonable proxy for estimating average fecundity. There are a substantial number of low outliers, fish with far lower reported fecundity than would be expected based on the fish's age/size.  
+
+```{r message=FALSE, warning=FALSE}
+ggplot(data=spawn.dat, aes(x=fork_length, y=fecundity)) +
+  geom_point(aes(color=age_best))
+```
+
+Using age alone as a predictor, average fecundity of an age-4 fish is **`r round(mean(spawn.dat$fecundity[spawn.dat$age_best==4]), 0)` eggs/fish**, while for age-5 fish it is **`r round(mean(spawn.dat$fecundity[spawn.dat$age_best==5]), 0)` eggs/fish.**
+```{r, warning=FALSE, message=FALSE}
+spawn.dat %>%
+  group_by(age_best) %>%
+  summarize(mean_fec = round(mean(fecundity), 0),
+            st_dev = round(sd(fecundity), 0)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = ("striped"), position="left", font_size=12, full_width=FALSE)
+```
+
+
+## 2. Effects of population and origin
+This quick analysis generally follows the `model-selection-writeup.Rmd` from the `gh-practice` repo.  
+
+Handy AIC formatting function, copied directly from `gh-practice`.
+```{r}
+# create an AIC table based on a list of model objects
+createAICtable <- function(...){
+  AICvals <- AIC(...)
+  row.names(AICvals) <- c()
+  AICvals$dAIC <- AICvals$AIC - min(AICvals$AIC)
+  AICvals$lik <- exp(-0.5 * AICvals$dAIC)
+  AICvals$wt <- AICvals$lik/sum(AICvals$lik)
+  AICvals <- cbind(model = paste0("`", modText, "`"), AICvals)
+  AICvals <- AICvals[order(AICvals$wt, decreasing = T),]
+  AICvals
+}
+```
+
+Define the different models.  We already know that age is strongly predictive of fecundity, so age is included in all candidate models. 
+```{r}
+f1 <- formula(fecundity ~ age_best)
+f2 <- formula(fecundity ~ age_best + population)
+f3 <- formula(fecundity ~ age_best * population)
+f4 <- formula(fecundity ~ age_best + origin)
+f5 <- formula(fecundity ~ age_best * origin)
+f6 <- formula(fecundity ~ age_best + population + origin)
+f7 <- formula(fecundity ~ age_best * population * origin)
+
+fList <- list(f1,f2,f3,f4,f5,f6,f7)
+modText <- sapply(fList,function(x) as.character(x)[3])
+```
+
+Fit the models...for now just using simple linear models with no random year effect.
+```{r}
+m1 <- lm(f1, data=spawn.dat)
+m2 <- lm(f2, data=spawn.dat)
+m3 <- lm(f3, data=spawn.dat)
+m4 <- lm(f4, data=spawn.dat)
+m5 <- lm(f5, data=spawn.dat)
+m6 <- lm(f6, data=spawn.dat)
+m7 <- lm(f7, data=spawn.dat)
+```
+
+Compare using AIC.
+```{r warning=FALSE,message=FALSE}
+AICvals <- createAICtable(m1,m2,m3,m4,m5,m6,m7)
+knitr::kable(
+  AICvals[,c("model","df", "dAIC", "wt")],
+  row.names=FALSE,digits=2,col.names=c("Model","K","$\\Delta$AIC","Model Weight"))
+```
+
+
+This model comparison supports including both origin and population and their interactions in the model, although the effects of population and origin are much smaller, and less consistent, than the effects of age. Boxplots of distributions in these categories indicate that the apparent effects of population and origin both depend on age, i.e., effects are different for age-4 vs. for age-5 fish.
+In general, population appears to be more influential than origin. However, when considering use of population-specific fecundity terms, we do have to keep in mind that we have no empirical fecundity data for the Minam population. 
+
+```{r, echo=FALSE}
+ggplot(data=spawn.dat, aes(x=population, y=fecundity)) + 
+  geom_boxplot(aes(fill=origin)) +
+  facet_grid(~age_best)
+```
+
+```{r}
+# top-ranked model 
+summary(m7)
+```
+
+## 3. Inter-annual variability
+The models considered above for looking at effects of population and origin assume that there is a single, time-constant fecundity term per population and origin (and per age, of course). However, fecundity might also vary by year.  Qualitatively examining distributions of fecundity values by year does rather suggest that there may be some year-specific effects.
+
+```{r}
+ggplot(data=spawn.dat[spawn.dat$age_best!=3,], aes(x=spawn_year, y=fecundity)) +
+  geom_point(aes(color=origin)) +
+  # geom_boxplot(aes(group=spawn_year)) + 
+  facet_grid(population ~ age_best)
+```
+
+Repeat simple model selection exercise from section 2, but this time including a year effect that varies by population.
+```{r}
+f21 <- formula(fecundity ~ age_best + (1|population:spawn_year))
+f22 <- formula(fecundity ~ age_best + population + (1|population:spawn_year))
+f23 <- formula(fecundity ~ age_best * population + (1|population:spawn_year))
+f24 <- formula(fecundity ~ age_best + origin + (1|population:spawn_year))
+f25 <- formula(fecundity ~ age_best * origin + (1|population:spawn_year))
+f26 <- formula(fecundity ~ age_best + population + origin + (1|population:spawn_year))
+f27 <- formula(fecundity ~ age_best * population * origin + (1|population:spawn_year))
+
+f2List <- list(f21,f22,f23,f24,f25,f26,f27)
+modText <- sapply(f2List,function(x) as.character(x)[3])
+```
+
+Fit the models.
+```{r}
+m21 <- lmer(f21, data=spawn.dat, REML=FALSE)
+m22 <- lmer(f22, data=spawn.dat, REML=FALSE)
+m23 <- lmer(f23, data=spawn.dat, REML=FALSE)
+m24 <- lmer(f24, data=spawn.dat, REML=FALSE)
+m25 <- lmer(f25, data=spawn.dat, REML=FALSE)
+m26 <- lmer(f26, data=spawn.dat, REML=FALSE)
+m27 <- lmer(f27, data=spawn.dat, REML=FALSE)
+```
+
+Compare using AIC.
+```{r warning=FALSE,message=FALSE}
+AIC2vals <- createAICtable(m21,m22,m23,m24,m25,m26,m27)
+knitr::kable(
+  AIC2vals[,c("model","df", "dAIC", "wt")],
+  row.names=FALSE,digits=2,col.names=c("Model","K","$\\Delta$AIC","Model Weight"))
+```
+
+This comparison, like the fixed-effects version, again supports the model that includes population and origin and interactions. 
+
+```{r}
+# top-rated model
+summary(m27)
+```
+
+
+Directly comparing the equivalent models with and without the year effects:
+```{r}
+# m7 is fixed effects model, m27 includes random year effects
+aic <- AIC(m7, m27)
+aic$model <- rownames(aic)
+aic %>%
+  arrange(AIC) %>%
+  select(model, df, AIC) %>%
+  mutate(deltaAIC = round(AIC - (AIC[1]), 1)) %>%
+  kable %>%
+  kable_styling(bootstrap_options = ("striped"), position="left", font_size=12, full_width=FALSE)
+```
+In this comparison, AIC favors the model that does include year effects. Delta AIC is `r round(AIC(m7, m27)[1,2] - AIC(m7, m27)[2,2],1)`.
+
+## 3b. Covariablity among populations
+If there are year effects, the next question is whether populations vary independently, or whether there is covariability among populations by year. 
+The following exploration follows B. Staton's exploration of the prespawn mortality data. 
+```{r}
+# function copied directly from `explore-prespawn-data.html`.
+fit_fun = function(pop) {
+  # fit the model
+  fit = lmer(fecundity ~ age_best + (1|spawn_year), data = subset(spawn.dat, population == pop))
+  
+  # extract year-level effects
+  x = ranef(fit)$spawn_year
+  
+  # format as data frame
+  out = data.frame(spawn_year = as.numeric(rownames(x)), effect = x$`(Intercept)`)
+  colnames(out)[2] = pop
+  
+  # return
+  return(out)
+}
+```
+
+```{r}
+los <- fit_fun("LOS")
+ugr <- fit_fun("UGR")
+cat <- fit_fun("CAT")
+year.effects <- merge(los, ugr, all=TRUE)
+year.effects <- merge(year.effects, cat, all=TRUE)
+```
+
+Plotting the year effects per population against each other population:
+```{r, echo=FALSE}
+pairs(year.effects[,2:4])
+```
+
+Pearson correlation coefficients for each comparsion:
+```{r, echo=FALSE}
+round(cor(year.effects[,2:4], use="pairwise.complete.obs"), 3)
+```
+The plots and correlation coefficients do suggest covariability between Lostine and UGR; the evidence is less convincing for the CAT-LOS and CAT-UGR comparisons, although both correlation terms are positive.
+
+## Conclusions
+As expected, the empirical data for fecundity in Grande Ronde basin fish show that fecundity depends on age (and/or size).  Based on age alone, expected fecundity is 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+spawn.dat %>%
+  group_by(age_best) %>%
+  summarize(mean_fec = round(mean(fecundity), 0),
+            st_dev = round(sd(fecundity), 0),
+            cv = round(st_dev/mean_fec, 3)) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = ("striped"), position="left", font_size=12, full_width=FALSE)
+```
+
+Based on plotted distributions and AIC model comparisons, there is some evidence that fecundity also varies by population, origin, and year.  However those effects are much weaker and less consistent than the effect of age. Further, using population-specific fecundity terms will be complicated by the fact that we have no fecundity data for the Minam population (because there is no Minam hathery program).  
