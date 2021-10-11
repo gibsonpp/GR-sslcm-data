@@ -1,0 +1,333 @@
+---
+title: "GR-SSLCM Exploratory Analysis"
+subtitle: "Mortality Caused by Sea Lions below Bonneville"
+author: B. Staton
+date: "`r lubridate::today()`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Summary of Discussion/Motivation of Analyses
+
+* Some members of the GR-SSLCM modeling team met with Doug Hatch on June 4, 2021.
+* We discussed three citeable works that quantify sea lion mortality on spring Chinook: 
+  * [Rub et al. (2019)](https://cdnsciencepub.com/doi/pdf/10.1139/cjfas-2018-0290) -- Documents a study where adults were captured and tagged near Astoria and any fish that did not successfully pass Bonneville were assumed to have died, with the predominate cause of death attributed to sea lions. They provide estimates from 2010 -- 2015 of survival from all mortality sources other than harvest for the aggregate run of spring Chinook salmon.
+  * [Sorel et al. (2020)](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.13772) -- Presents a modeling framework for estimating population-specific survival estimates from Astoria to Bonneville. They use the same tagging data as Rub et al., but integrate it with run timing data from 18 populations (including the four included in the GR-SSLCM). They show earlier migrating populations suffer higher mortality than later running populations.
+  * [Tidwell and vander Leeuw (2021)](http://pweb.crohms.org/tmt/documents/FPOM/2010/Task%20Groups/Task%20Group%20Pinnipeds/2020%20Pinniped%20Annual%20Report.pdf) -- Presents a long-term monitoring effort to track sea lion abundance and predation events immediately downstream of Bonneville. Provides estimates from 2000 - 2020 of aggregate-run mortality that occurs immediately downstream of Bonneville.
+* Doug emphasized two key sources of variability that should be accounted for in modeling historical adult returns:
+   * __Variability in sea lion mortality across populations__ resulting from differential overlap in run timing and sea lion peak abundance. Sea lion abundance is generally higher earlier in spring because they are drawn in by other prey sources (eulachon) and are at high abundance by the time the earliest populations show up.
+   * __Variability in sea lion mortality over time__ resulting from an inter-annual trend of increasing abundance of sea lions showing up downstream of Bonneville.
+* Doug thought an approach where we model temporal variability using a set of 3 - 4 time blocks where the survival is constant within a block but differs among blocks would be appropriate and that we could somehow use the output from Sorel et al. to reflect among-population variability in sea lion mortality.
+* The problem: total survival (what we need) is only available currently for 2010 - 2015 (in Rub et al. and Sorel et al.). The longer time series (USACE) only covers the area closest to Bonneville.
+  * Potential solution: regress Rub et al. against the USACE estiamtes to obtain a predictive model that can be used to produce estimates on the Rub et al. scale but that go back to 2000.
+  * Build time blocks off of this predicted time series to pass to the LCM
+  * This time series wouldn't be population-specific, would need to some how relate Rub et al. estimates with the Sorel estimates to get population-specific time series
+
+This document is a follow up to that discussion and presents the analyses and results on some of these items.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", fig.width = 7, fig.height = 5)
+library(magrittr)
+library(details)
+rm(list = ls(all = TRUE))
+```
+
+```{r}
+fit_regression = function(y_variable) {
+  
+  formula = formula(stringr::str_replace("qlogis(y_variable) ~ usace", "y_variable", y_variable))
+  lm(formula, data = S)
+}
+
+make_predictions = function(fit) {
+  pred_data = data.frame(usace = seq(min(fit$model$usace), max(fit$model$usace), length = 20))
+  preds = predict(fit, newdata = pred_data, se.fit = TRUE)
+  pred_data$mean = plogis(preds$fit)
+  pred_data$lwr = plogis(preds$fit + qt(0.025, preds$df) * preds$se.fit)
+  pred_data$upr = plogis(preds$fit + qt(0.975, preds$df) * preds$se.fit)
+  pred_data
+}
+
+plot_regression = function(fit, pred, ylim = NULL, ylab = "", xlab = "", main = "") {
+  par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+  
+  x_obs = fit$model$usace
+  y_obs = plogis(fit$model[,1])
+  
+  if (is.null(ylim)) {
+    ylim = range(pred$lwr, pred$upr, y_obs)
+  }
+  
+  plot(y_obs ~ x_obs, type = "n", ylim = ylim,
+       ylab = ylab, xlab = xlab, main = main, las = 1)
+  
+  with(pred, polygon(c(usace, rev(usace)), c(lwr, rev(upr)), col = "grey90", border = NA))
+  lines(mean ~ usace, data = pred, lty = 1, lwd = 2)
+  lines(lwr ~ usace, data = pred, col = "grey")
+  lines(upr ~ usace, data = pred, col = "grey")
+  points(y_obs ~ x_obs, pch = 16, col = "red")
+  usr = par("usr")
+  text(usr[2], usr[3] + diff(usr[3:4]) * 0.05, labels = paste0("R^2 = ", round(summary(fit)$r.squared,2)), pos = 2)
+}
+```
+
+# Relationship between Rub et al. tagging study and USACE Estimates
+
+Here are the data for the analysis: 'Rub et al.' comes from Table 5 therein and 'USACE' comes from Tidwell and vander Leeuw (2021) (Table 4 therein). The values for this analysis have been converted to survival (1 - mortality).
+
+```{r}
+# enter data from Rub et al. (2019) Table X
+rub = data.frame(year = 2010:2015, rub = 1 - c(0.2, 0.22, 0.2, 0.22, 0.29, 0.44))
+
+# enter data from USACE report Table X
+usace = data.frame(year = 2002:2020, usace = 1 - c(0.004, 0.011, 0.019, 0.034, 0.031, 0.047, 0.032, 0.027, 0.024, 0.018, 0.014, 0.024, 0.021, 0.043, 0.058, 0.047, 0.030, 0.033, 0.025))
+
+# combine into one data set
+S = merge(rub, usace, by = "year", all = TRUE)
+```
+
+```{r}
+# build a table displaying the data
+S_table = S
+S_table[is.na(S_table)] = ""
+colnames(S_table) = c("Year", "Rub et al.", "USACE")
+knitr::kable(S_table, "html", align = "lcc") %>%
+  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("condensed", "striped")) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::add_header_above(c(" " = 1, "Survival Estimate" = 2))
+```
+
+When plotted, there appears to be some correlation, but this is driven mostly by the contrast provided by 2015:
+
+```{r}
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+plot(rub ~ usace, data = S, pch = 16, col = "red",
+     ylab = "Total Survival (Astoria -> BON; Rub et al.)",
+     xlab = "Survival Near BON (USACE)", las = 1,
+     xlim = range(usace[!is.na(rub)]), ylim = range(rub, na.rm = TRUE) * c(1, 1.05))
+text(rub ~ usace, data = S, labels = year, pos = 3, cex = 0.8)
+```
+
+With these data, we fit the following regression model (`qlogis()` applies the log odds transformation - constrains predicted values to be between 0-1 regardless of covariate values). The intent is to be able to predict total mortality (quantified in several years by Rub et al.) from near Bonneville mortality (quantified in all years between `r min(S$year)` and `r max(S$year)`).
+
+```{r, eval = FALSE, echo = TRUE}
+fit = lm(qlogis(rub) ~ usace, data = S)
+```
+
+```{r}
+fit = fit_regression("rub")
+```
+
+The R-squared value is decent and the slope term is significant:
+
+```{details, echo = F, details.summary = "Click to View Model Output Summary"}
+summary(fit)
+```
+
+This plot displays the fitted curve (with 95% confidence intervals) over top the data (x-axis spans range of all years of USACE estimates):
+
+```{r}
+pred = make_predictions(fit)
+plot_regression(fit, pred, ylab = "Total Non-Harvest Survival (Rub et al.)", xlab = "Survival Near BON (USACE)")
+```
+
+If we use this regression model to predict total survival by plugging in the near Bonneville survival estimates from all years, we get this pattern:
+
+```{r}
+pred = predict(fit, newdata = S, se.fit = TRUE)
+S$pred_rub = plogis(pred$fit)
+S$pred_rub_lwr = plogis(pred$fit + qt(0.025, pred$df) * pred$se.fit)
+S$pred_rub_upr = plogis(pred$fit + qt(0.975, pred$df) * pred$se.fit)
+
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+plot(pred_rub ~ year, data = S, type = "n", xaxt = "n",
+     ylim = range(S$pred_rub_lwr, S$pred_rub_upr), las = 1,
+     xlab = "Return Year", ylab = "Total Non-Harvest Survival (Astoria -> BON)")
+with(S, polygon(c(year, rev(year)), c(pred_rub_lwr, rev(pred_rub_upr)), col = "grey90", border = NA))
+lines(pred_rub_lwr ~ year, data = S, col = "grey")
+lines(pred_rub_upr ~ year, data = S, col = "grey")
+points(rub ~ year, data = S, type = "o", col = "red", pch = 16)
+points(pred_rub ~ year, data = S, type = "o", pch = 16, lty = 2)
+legend("topright", legend = c("Rub et al. Estimates", "Regression Predictions"),
+       pch = 16, col = c("red", "black"), lty = c(1, 2), bty = "n")
+axis(side = 1, at = S$year, labels = F, tcl = -0.15)
+axis(side = 1, at = c(2005, 2010, 2015, 2020), labels = TRUE, tcl = -0.30)
+```
+
+
+Based on this, I could see building time blocks of constant mortality for the life cycle model like this: 
+  
+*  __1991 -- 2000__: no additional mortality due to sea lions, or something very low like 5%
+*  __2001 -- 2012__: use average of regression predictions between 2002 and 2012 (`r round(mean(S$pred_rub[S$year %in% 2002:2012]), 2)`)
+*  __2013 -- present__: use average of regression predictions between 2013 and 2020 (`r round(mean(S$pred_rub[S$year %in% 2013:2020]), 2)`)
+
+Which would look like this graphically:
+
+```{r}
+blocks = data.frame(year = 1991:2020, rub = NA)
+blocks$rub = ifelse(blocks$year <= 2000, 0.95, blocks$rub)
+blocks$rub = ifelse(blocks$year > 2000 & blocks$year <= 2012, round(mean(S$pred_rub[S$year %in% 2001:2012]), 2), blocks$rub)
+blocks$rub = ifelse(blocks$year > 2012, round(mean(S$pred_rub[S$year %in% 2013:2020]), 2), blocks$rub)
+
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+plot(pred_rub ~ year, data = S, type = "n", xaxt = "n",
+     ylim = range(1, S$pred_rub_lwr, S$pred_rub_upr), las = 1,
+     xlim = range(blocks$year),
+     xlab = "Return Year", ylab = "Total Non-Harvest Survival (Astoria -> BON)")
+with(S, polygon(c(year, rev(year)), c(pred_rub_lwr, rev(pred_rub_upr)), col = "grey90", border = NA))
+lines(pred_rub_lwr ~ year, data = S, col = "grey")
+lines(pred_rub_upr ~ year, data = S, col = "grey")
+points(rub ~ year, data = S, type = "o", col = "red", pch = 16)
+points(pred_rub ~ year, data = S, type = "o", pch = 16, lty = 2)
+legend("bottomleft", legend = c("Rub et al. Estimates", "Regression Predictions", "Proposed for LCM"),
+       pch = c(16, 16, NA), col = c("red", "black", "blue"), lty = c(1, 2, 1), lwd = c(1,1,2), bty = "n")
+axis(side = 1, at = blocks$year, labels = F, tcl = -0.15)
+axis(side = 1, at = seq(1995, 2020, by = 5), labels = TRUE, tcl = -0.30)
+lines(rub ~ year, data = blocks, lwd = 2, col = "blue")
+```
+
+# Population-Specific Survival
+
+There is another study that uses these same tagging data and combines it with population-specific run timing to build population-specific survival natural-origin estimates from Astoria to Bonneville ([Sorel et al. 2020](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2664.13772)). I have received from the lead author their year- and population-specific survival estimates (these are the means across bootstrap samples):
+
+```{r}
+
+load("boot_pop_surv_from-Sorel.Rdata")
+# dimnames(pop_surv_out)
+
+keep_pops = c("Catherine Creek", "Lostine River", "Minam River", "Upper Grande Ronde")
+
+pop_surv_out = pop_surv_out[keep_pops,,]
+
+sorel_S_ests = apply(pop_surv_out, 1, function(x) rowMeans(x))
+sorel_S_ests = sorel_S_ests[-which(stringr::str_detect(rownames(sorel_S_ests), "ave")),]
+
+S$cat = NA; S$cat[S$year %in% rownames(sorel_S_ests)] = sorel_S_ests[,"Catherine Creek"]
+S$los = NA; S$los[S$year %in% rownames(sorel_S_ests)] = sorel_S_ests[,"Lostine River"]
+S$min = NA; S$min[S$year %in% rownames(sorel_S_ests)] = sorel_S_ests[,"Minam River"]
+S$ugr = NA; S$ugr[S$year %in% rownames(sorel_S_ests)] = sorel_S_ests[,"Upper Grande Ronde"]
+
+```
+
+```{r}
+knitr::kable(na.omit(S[,c("year", "rub", "cat", "los", "min", "ugr")]), "html", col.names = c("Return Year", "Rub et al.", "CAT", "LOS", "MIN", "UGR"), row.names = FALSE, digits = 2) %>%
+  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "condensed")) %>%
+  kableExtra::add_header_above(c(" " = 2, "Sorel et al. (2020) Estimates" = 4)) %>%
+  kableExtra::column_spec(1, bold = TRUE)
+```
+
+This figure from Sorel et al. (2020) shows that UGR, CAT, and MIN are on the earlier side of the aggregate run and LOS is on the later side -- which coincides with the table above (Lostine has highest survival on average).
+
+```{r}
+knitr::include_graphics("Sorel-fig3-screenshot.png")
+```
+
+Just as for the Rub et al. estimates, let's see if there is much of a relationship with the USACE estimates that might allow predicting these time series backwards.
+
+The population-specific relationships are much weaker than the relationship with with Rub et al. aggregate estimate.
+
+```{r}
+par(mfrow = c(2,2), oma = c(1,1,0,0))
+junk = sapply(c("cat", "los", "min", "ugr"), function(pop) {
+  fit = fit_regression(pop)
+  pred = make_predictions(fit)
+  plot_regression(fit, pred, ylim = c(0.25, 0.9), main = toupper(pop))
+})
+mtext(side = 1, outer = T, line = 0.05, "Survival Near BON (USACE)")
+mtext(side = 2, outer = T, line = 0.05, "Total Non-Harvest Survival (Astoria -> BON)")
+```
+
+Let's compare the population-specific estimates with the Rub et al. estimates. It looks like the population-specific estimates of Sorel et al. generally follow the pattern of the Rub et al. estimates -- which makes sense because the same tagging data were used by both studies. However, the population-specific estimates show vertical variability -- the Lostine has the highest survival followed by the other three populations -- also makes sense given the screenshot above from Sorel et al.
+
+```{r}
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+with(S[!is.na(S$rub),], {
+  plot(rub ~ year, ylim = c(0.5, 1), las = 1, xlab = "Return Year", ylab = "Total Non-Harvest Survival (Astoria -> Bon)", pch = 16, col = "black", type = "o", cex = 1.5, lwd = 2)
+  lines(cat ~ year, pch = 16, col = "blue", type = "o")
+  lines(los ~ year, pch = 16, col = "forestgreen", type = "o")
+  lines(min ~ year, pch = 16, col = "orange", type = "o")
+  lines(ugr ~ year, pch = 16, col = "salmon", type = "o")
+})
+
+legend("topright", legend = c("CAT", "LOS", "MIN", "UGR", "Rub et al."), 
+       col = c("blue", "forestgreen", "orange", "salmon", "black"), pch = 16, lwd = c(1,1,1,1,2), pt.cex = c(1,1,1,1,1.5), bty = "n")
+
+```
+
+Perhaps we could calculate the average odds ratio between each population and the Rub et al. estimates. Then, we could apply this odds ratio to the time-blocked values from the Rub et al. vs. USACE regression to get population-specific time blocks. 
+
+Here are the odds ratios (horizontal dashed lines are the means across the 6 years). It looks like the average lines are fairly representative of the overall pattern -- the obvious exception is 2015 for Lostine.
+
+```{r}
+odds = function(x) x/(1 - x)
+odds_inverse = function(x) x/(1 + x)
+
+or_S = data.frame(year = S$year, 
+                  cat = odds(S$cat)/odds(S$rub),
+                  los = odds(S$los)/odds(S$rub),
+                  min = odds(S$min)/odds(S$rub),
+                  ugr = odds(S$ugr)/odds(S$rub))
+
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+with(or_S[!is.na(or_S$cat),], {
+  plot(cat ~ year, ylim = c(0.3, 4), las = 1, type = "n", xlab = "Return Year", ylab = "Odds Ratio (POP/Rub)")
+  lines(cat ~ year, pch = 16, col = "blue", type = "o"); abline(h = mean(cat), col = "blue", lty = 2)
+  lines(los ~ year, pch = 16, col = "forestgreen", type = "o"); abline(h = mean(los), col = "forestgreen", lty = 2)
+  lines(min ~ year, pch = 16, col = "orange", type = "o"); abline(h = mean(min), col = "orange", lty = 2)
+  lines(ugr ~ year, pch = 16, col = "salmon", type = "o"); abline(h = mean(ugr), col = "salmon", lty = 2)
+  
+})
+
+legend("topleft", legend = c("CAT", "LOS", "MIN", "UGR"), 
+       col = c("blue", "forestgreen", "orange", "salmon"), pch = 16, lwd = c(1,1,1,1), pt.cex = c(1,1,1,1), bty = "n")
+```
+
+Here are the survival values that would be applied in the LCM in each time period and population if we used this approach:
+
+```{r}
+blocks$cat = round(odds_inverse(odds(blocks$rub) * mean(or_S$cat, na.rm = TRUE)), 2)
+blocks$los = round(odds_inverse(odds(blocks$rub) * mean(or_S$los, na.rm = TRUE)), 2)
+blocks$min = round(odds_inverse(odds(blocks$rub) * mean(or_S$min, na.rm = TRUE)), 2)
+blocks$ugr = round(odds_inverse(odds(blocks$rub) * mean(or_S$ugr, na.rm = TRUE)), 2)
+
+par(mar = c(3,3,1,1), mgp = c(2,0.35,0), tcl = -0.15)
+plot(pred_rub ~ year, data = S, type = "n", xaxt = "n",
+     ylim = range(1, S$pred_rub_lwr, S$pred_rub_upr), las = 1,
+     xlim = range(blocks$year),
+     xlab = "Return Year", ylab = "Total Non-Harvest Survival (Astoria -> BON)")
+with(S, polygon(c(year, rev(year)), c(pred_rub_lwr, rev(pred_rub_upr)), col = "grey90", border = NA))
+lines(pred_rub_lwr ~ year, data = S, col = "grey")
+lines(pred_rub_upr ~ year, data = S, col = "grey")
+points(rub ~ year, data = S, type = "o", col = "red", pch = 16)
+points(pred_rub ~ year, data = S, type = "o", pch = 16, lty = 2)
+legend("bottomleft", legend = c("Rub et al. Estimates", "Regression Predictions", "CAT (LCM)", "LOS (LCM)", "MIN (LCM)", "UGR (LCM)"),
+       pch = c(16, 16, NA, NA, NA, NA), col = c("red", "black", "blue", "forestgreen", "orange", "salmon"), lty = c(1, 2, 1, 1, 1, 1), lwd = c(1,1,2,2,2,2), bty = "n")
+axis(side = 1, at = blocks$year, labels = F, tcl = -0.15)
+axis(side = 1, at = seq(1995, 2020, by = 5), labels = TRUE, tcl = -0.30)
+lines(cat ~ year, data = blocks, lwd = 2, col = "blue")
+lines(los ~ year, data = blocks, lwd = 2, col = "forestgreen")
+lines(min ~ year, data = blocks, lwd = 2, col = "orange")
+lines(ugr ~ year, data = blocks, lwd = 2, col = "salmon")
+```
+
+```{r}
+# export the blocks to be used by the LCM
+blocks_out = blocks[,-which(colnames(blocks) == "rub")]
+colnames(blocks_out)[2:5] = toupper(colnames(blocks_out)[2:5])
+write.csv(blocks_out, "07-sea-lion-survival.csv", row.names = FALSE)
+```
+
+# Feedback
+
+If you have thoughts on these topics or others, please let me know what you think.
+
+_Some feedback now documented in issue [#69](https://github.com/bstaton1/GR-sslcm/issues/69)._
+
+* Does the approach I used make sense?
+* What do you think of the time blocks I chose (i.e., 1991 -- 2000, 2001 -- 2012, 2013 -- present)? 
+* Does the output look reasonable?
+* Disadvantage of approach: the regression uses model output as both response and predictor variables, but we don't account for the error in either source. Are we comfortable with this?
+* I envision incorporating these time blocks as fixed (not stochastic) quantities in the LCM. I'm concerned that the ocean survival estimation will fall apart if we allow quantities on the upstream migration to be stochastic. Are you okay with this?
+* With respect to origin and how we model harvest: I used the "non-harvest mortality" estimates from Rub et al. and the Sorel et al. estimates are for unclipped fish. Because most of the harvest downstream of Bonneville is mark-selective, the Sorel et al. estimates should have very little mortality included from harvest (would only be release mortality). I'm thinking we would use these rates to kill fish by origin equally due to sea lions and that we model harvest mortality below Bonneville by origin separately. Does this make sense to you or am I missing something?
+
