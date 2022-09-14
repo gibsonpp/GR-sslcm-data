@@ -1,5 +1,6 @@
 ---
 title: "Justification for FW Survival Dynamics"
+subtitle: "GR-sslcm Supplemental Analysis"
 date: "`r lubridate::today()`"
 output:
   bookdown::html_document2:
@@ -18,7 +19,7 @@ mark {
   color: black;
 }
 
-div.blue {
+div.note {
   background-color: #e6f0ff; 
   border-radius: 5px; 
   padding: 5px;
@@ -30,9 +31,9 @@ div {
 }
 ```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.align = "center", fig.width = 6, fig.height = 5)
-knitr::opts_knit$set(root.dir = "../")
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center", fig.width = 6, fig.height = 5, warning = FALSE, message = FALSE)
+knitr::opts_knit$set(root.dir = "../../GR-sslcm")
 ```
 
 ```{r load-pkg}
@@ -40,33 +41,8 @@ library(knitr)
 library(kableExtra)
 ```
 
-:::{.blue}
-# Notes for Co-Authors {-}
-
-_I'm intending this document to be an extension of Martin's analysis from several months ago, and to eventually serve as a supplement to the manuscript that will justify the way we structured the freshwater juvenile survival dynamics._
-
-If you have any feedback, please include responses to at least some of these questions:
-
-1. Are you supportive of using mean length as a key variable for modeling freshwater survival dynamics?
-2. Are the findings in Analyses [#1](#a1) -- [#8](#a8) sufficient to justify the model structure (i.e., as laid out in the [conclusions section](#conclusions)).
-3. If not, what other analyses can we do? Preferably nothing too complicated.
-4. **FOR POLLY** Is it possible to get mean length (and standard error) for all fish sampled at summer and spring periods, i.e., including those that are PIT-tagged and those that are not? 
-
-Additionally, any text below that is <mark>highlighted</mark> needs work and I welcome your input.
-:::
-
-# Motivation
-
-The way in which we structured the dynamics of freshwater juvenile survival rates was fairly complex, and was enabled by a wealth of standardized monitoring in the form of PIT tagging, biological data (i.e., individual length measurements), and abundance estimates from rotary screw trap sampling.
-
-The life cycle model includes a set of assumptions (i.e., hypotheses) about how density-dependence impacts freshwater juvenile survival dynamics, specifically when/where it occurs and how a central variable (size) plays a key role in mediating inter-annual variability in survival.
-We wished to capture as fully as possible any density-mediated trade-offs between size and survival, since without this feature it is likely that the model may be overly optimistic about the population-level effects of management interventions that increase the number of parr reaching the end of summer.
-
-This document describes the evidence that motivated us to structure the model as we did (summarized in the [conclusions](#conclusions)).
-We use only raw data (i.e., independent of the life cycle model output) for this illustration, but we do use "reconstructed estimates" of total egg and parr production as indices of abundance, which are calculated from combining the raw data similarly to the calculations performed in the life cycle model to inform latent states.
-
 ```{r load-main-LCM-data}
-scenario = "base-vlong"
+scenario = "test"
 
 # load packages
 source("00-packages.R")
@@ -108,6 +84,16 @@ to_df = function(x, var_name = "x") {
 }
 ```
 
+# Motivation
+
+The way in which we structured the dynamics of freshwater juvenile survival rates was fairly complex, and was enabled by a wealth of standardized monitoring in the form of PIT tagging, biological data (i.e., individual length measurements), and abundance estimates from rotary screw trap sampling.
+
+The life cycle model includes a set of assumptions (i.e., hypotheses) about how density-dependence impacts freshwater juvenile survival dynamics, specifically when/where it occurs and how a central variable (size) plays a key role in mediating inter-annual variability in survival.
+We wished to capture as fully as possible any density-mediated trade-offs between size and survival, since without this feature it is likely that the model may be overly optimistic about the population-level effects of management interventions that increase the number of parr reaching the end of summer.
+
+This document describes the evidence that motivated us to structure the model as we did (summarized in the [conclusions](#conclusions)).
+We use only raw data (i.e., independent of the life cycle model output) for this illustration, but we do use "reconstructed estimates" of total egg and parr production as indices of abundance, which are calculated from combining the raw data similarly to the calculations performed in the life cycle model to inform latent states.
+
 ```{r get-LCM-ests}
 # this section queries estimates used in LCM
 # or reconstructs values the LCM uses based on similar assumptions as found in the LCM
@@ -133,10 +119,10 @@ spring_length_ests = to_df(jags_data$L_Mb_obs, "spring_length_est")
 
 ```{r a1-prep-analysis}
 ## this section prepares and conducts the analysis on individual tagged fish
-## most other data is combined survival/lengtha across many fish
+## most other data is combined survival/length across many fish
 
 # read in the raw individual outcome data set
-dat = read.csv("C:/Users/bstaton/Desktop/Staton/1_critfc/analyses/GR-sslcm-data/exploratory-analyses/parr-summer-tags-lengths-detections.csv")
+dat = read.csv("../GR-sslcm-data/exploratory-analyses/parr-summer-tags-lengths-detections.csv")
 
 # discard fish that did not have length measured
 dat = dat[!is.na(dat$length),]
@@ -254,6 +240,9 @@ ests$growth_factor = ests$spring_length_est/ests$summer_length_est
 ests$growth_mm = ests$spring_length_est - ests$summer_length_est
 ```
 
+```{r set-colors}
+solid = c(data = "royalblue", model = "salmon")
+tranp = scales::alpha(solid, 0.35); names(tranp) = names(solid)
 ```
 
 ```{r generic-plotting function}
@@ -293,14 +282,14 @@ plot_fun = function(pop_keep, dat, x_var, y_var, y_fun = function(y) {y}, y_ifun
        main = pop_keep)
   
   # draw the confidence region for relationship
-  polygon(c(pred_x, rev(pred_x)), c(lwr, rev(upr)), col = scales::alpha("grey25", 0.25), border = NA)
-  lines(mn ~ pred_x, lwd = 2)
-  lines(lwr ~ pred_x, col = "grey")
-  lines(upr ~ pred_x, col = "grey")
+  polygon(c(pred_x, rev(pred_x)), c(lwr, rev(upr)), col = tranp["model"], border = NA)
+  lines(mn ~ pred_x, lwd = 3, col = solid["model"])
+  lines(lwr ~ pred_x, col = solid["model"])
+  lines(upr ~ pred_x, col = solid["model"])
   
   # draw the data points
   points(y_var ~ x_var, data = plot_dat, pch = 21, cex = 1.5,
-         col = scales::alpha("grey25", 0.5), bg = scales::alpha("grey25", 0.25))
+         col = solid["data"], bg = tranp["data"])
   
   # return the fitted model
   return(fit)
@@ -308,6 +297,10 @@ plot_fun = function(pop_keep, dat, x_var, y_var, y_fun = function(y) {y}, y_ifun
 ```
 
 # Analyses
+
+:::{.note}
+**NOTE**: due to inter-annual variability of capture timing for summer sampling, the mean length data required standardization for additional growth incurred in years of later sampling; all summer mean length data used in the analyses that follow use the standardized version. See the [Appendix](#appendix) for more details.
+:::
 
 ## Analysis #1: Does Parr Recruitment Appear Density-Dependent? {#a1}
 
@@ -369,9 +362,9 @@ Thus, when taken in aggregate (i.e., `mean(fate)`) this estimate under-estimates
 We analyzed the data by fitting population- and brood year-specific logistic regression models with size-at-tagging as the sole independent variable (i.e., `glm(fate ~ length, family = binomial`)).
 We were interested in determining whether the relationships were overwhelmingly positive (i.e. survival probability increases with the size of the individual).
 
-**NOTE:** <mark>Only data for brood years 2000 and later were included in this analysis because these were most easily accessible from PTAGIS. Updated analyses will include all years.</mark>
-
-**NOTE:** <mark>Some years currently have mean length values for the tagged population. Polly will recompile this for all sampled fish for all populations and years.</mark>
+:::{.note}
+**NOTE:** Only data for brood years 2000 and later were included in this analysis because these were most easily accessible from PTAGIS; the same is true for Analysis [#5](#a5).
+:::
 
 ### Results
 
@@ -381,7 +374,7 @@ We were interested in determining whether the relationships were overwhelmingly 
 plot_f = function(pop_keep) {
   plot_dat = subset(pred_surv_at_lengths, pop == pop_keep)
   plot(1, 1, type = "n", xlim = range(plot_dat$length), ylim = range(plot_dat$surv), main = pop_keep)
-  junk = sapply(unique(plot_dat$brood_year), function(y) lines(surv ~ length, data = subset(plot_dat, brood_year == y), col = scales::alpha("grey25", 0.5)))
+  junk = sapply(unique(plot_dat$brood_year), function(y) lines(surv ~ length, data = subset(plot_dat, brood_year == y), col = tranp["model"]))
 }
 
 my_par()
@@ -411,13 +404,13 @@ round(do.call(rbind, eff_summary), 2) %>%
 
 In Analysis [#2](#a2), individual outcomes were used to quantify the effect of length on the probability of individual-level survival.
 However, the life cycle model uses compiled estimates (based on these individuals using CJS methods) as input data and models survival on an aggregate basis at the population level. 
-Given this, we wished to determine if the population-level estimates of survival correlate with the average length of the sampled population (<mark>tagged and untagged</mark>), as should be expected from the findings of Analysis [#2](#a2).
+Given this, we wished to determine if the population-level estimates of survival correlate with the average length of the sampled population (tagged and untagged), as should be expected from the findings of Analysis [#2](#a2).
 
 ### Analytical Approach
 
 For this analysis, we used the estimates of survival from summer tagging to LGR ($\hat{\phi}^{P^{b} \to M^{a}}_{y,j}$) as the response variable and the average size of the fish at time of capture as the sole predictor variable in a simple linear regression analysis (survival placed on log-odds scale prior to fitting).
 We used four separate models -- one per population.
-Some fish are too small for PIT tagging (<55mm fork length) -- this <mark>average size includes the length of all fish captured, not only those that received tags [WILL BE TRUE WITH UPDATED DATA SET]</mark>.
+Some fish are too small for PIT tagging (<55mm fork length) -- this average size includes the length of all fish captured, not only those that received tags.
 This was intended to obtain the most reliable estimate of population mean length as possible -- if we were to use only the lengths of tagged fish, the truncation caused by the minimum tagging size will bias the mean length more in years with slower growth rates.
 
 ### Results
@@ -435,7 +428,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Mean Length at Summer Tagging (mm)")
 mtext(side = 2, outer = TRUE, line = 1, "Estimated Population Survival (Summer -> LGR)")
 ```
 
-```{r a2-tab}
+```{r a3-tab}
 # extract the mean length effect from each model and create a basic table
 eff = unlist(lapply(fits, function(fit) summary(fit)$coefficients["x_var","Estimate"]))
 eff = exp(eff * 5)
@@ -482,23 +475,21 @@ mtext(side = 2, outer = TRUE, line = 1, "Mean Length at Summer Tagging (mm)")
 Note from Analyses [#2](#a2) and [#3](#a3) that much inter-annual variability exists in survival even for an individual of the same size (Analysis [#2](#a2)) or years with approximately the same mean length (Analysis [#3](#a3)).
 Analysis [#4](#a4) suggests that spring/summer growth may be density-mediated.
 However, is some of the additional inter-annual variability also density-mediated, independent of length?
-If so, this may indicate that account for post-parr recruitment density-dependent dynamics using only length may be insufficient.
+If so, this may indicate that accounting for post-parr recruitment density-dependent dynamics using only mean length may be insufficient.
 
 ### Analytical Approach
 
 We used simple linear regression to investigate this question.
 The response variable was the expected survival probability for a fish of 65mm each year (from Analysis [#2](#a2); log-odds transformed prior to fitting) -- this provides an estimate of baseline annual survival probability each year after controlling for inter-annual variability in growth rates.
-The sole predictor was the reconstructed parr variable described in Analysis [#4](#a4).
+The sole predictor was the reconstructed parr variable described in Analysis [#1](#a1).
 We used four separate models, one per population.
 
-### Results
-
-:::{.blue}
-If retained, these results need to be caveated -- mention that some of the vertical scatter is due partially to differences in detection probability across years -- may mask true relationships. Unless we fitted this as a CJS model. I welcome feedback on how I addressed this below.</mark>
+:::{.note}
+**NOTE**: An important caveat to this analysis is that inter-annual variability in detectability inserts more scatter than should be expected if these were true survival estimates.
+A complete handling of this analysis would involve re-fitting CJS models with a length covariate so inter-annual variability in detectability is accounted for; we felt that effort was not warranted for this exploratory analysis.
 :::
 
-**NOTE**: An important caveat to this analysis is that inter-annual variability in detectability inserts more scatter than should be expected if these were true survival estimates.
-A complete handling of this analysis would involve re-fitting CJS models with a length covariate so inter-annual variability in detectability is accounted for; we felt that effort was not warranted to answer this basic question. 
+### Results
 
 ```{r a5-fig, fig.cap = "Population-specific relationships between the expected survival probability for a 65mm fish and a reconstructed estimate of parr abundance at the end of the summer."}
 my_par()
@@ -549,7 +540,7 @@ mtext(side = 2, outer = TRUE, line = 1, "Population-Level Survival (Spring -> LG
 
 ### Context
 
-If years with larger parr on average at end-of-summer also coincide with years with larger smolt at the time of out-migration, this suggests a "carry-over" effect of high parr densities in the prior spring/summer on the size (and survival rates via (Analysis [#6](#a6))) at out-migration, which has ramifications for how we capture the change in mean size between summer and spring in the LCM.
+If years with larger parr on average at end-of-summer also coincide with years with larger smolt at the time of out-migration, this suggests a "carry-over" effect of high parr densities in the prior spring/summer on the size (and survival rates via Analysis [#6](#a6)) at out-migration, which has ramifications for how we capture the change in mean size between summer and spring in the LCM.
 
 ### Analytical Approach
 
@@ -654,7 +645,7 @@ _<u>Implications for LCM</u>_ -- Because parr size is density-dependent and beca
 
 _<u>Findings</u>_ -- Via Analysis [#5](#a5), we have illustrated there may be some evidence of additional explanatory power of parr density on survival independent of density-mediated growth dynamics, but if so, it is relatively weak and not as homogeneous across the populations as were the findings from Analyses [#2](#a2), [#3](#a3), and [#4](#a4).
 
-_<u>Implications for LCM</u>_ -- This finding implies that accounting for density-dependent effects post-parr recruitment through size-mediated relationships should be sufficient, and that we do not need to be concerned that we are strongly underestimating the effect of density-dependence through size alone.
+_<u>Implications for LCM</u>_ -- Although we cannot entirely exclude the possibility of non-size-mediated density dependent mechanisms post-parr recruitment, our findings gives us confidence that we are not grossly under-accounting the effect of density-dependence by using through size alone.
 
 :::
 
