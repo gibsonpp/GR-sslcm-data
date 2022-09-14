@@ -9,6 +9,12 @@ output:
     toc_depth: 2
     toc_float: TRUE
     toc_collapse: TRUE
+  # bookdown::word_document2:
+    # reference_docx: "C:/Users/bstaton/Desktop/Staton/3_general/Rmd-docx-template/Rmd-docx-template-update.docx"
+params:
+  scenario:
+    value: "base-vshort"
+always_allow_html: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -32,7 +38,11 @@ div {
 ```
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.align = "center", fig.width = 6, fig.height = 5, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center",
+                      fig.width = 6 * ifelse(knitr::is_html_output(), 1, 0.75),
+                      fig.height = 5 * ifelse(knitr::is_html_output(), 1, 0.75),
+                      warning = FALSE, message = FALSE)
+if (!knitr::is_html_output()) knitr::opts_chunk$set(dpi = 300)
 knitr::opts_knit$set(root.dir = "../../GR-sslcm")
 ```
 
@@ -42,8 +52,6 @@ library(kableExtra)
 ```
 
 ```{r load-main-LCM-data}
-scenario = "test"
-
 # load packages
 source("00-packages.R")
 
@@ -54,7 +62,7 @@ invisible(sapply(list.files(path = "01-functions", pattern = "\\.R$", full.names
 in_dir = "02-model/model-output"
 
 # read information from this model
-model_info = readRDS(file.path(in_dir, paste0("output-", scenario, ".rds")))
+model_info = readRDS(file.path(in_dir, paste0("output-", params$scenario, ".rds")))
 
 # get only the data element
 jags_data = model_info$jags_data; rm(model_info)
@@ -345,6 +353,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Reconstructed Total Egg Production")
 mtext(side = 2, outer = TRUE, line = 1, "Reconstructed Egg-to-Parr Survival")
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #2: Do Larger Parr Survive Better to LGR? {#a2}
 
 ### Context
@@ -383,21 +392,29 @@ mtext(side = 1, outer = TRUE, line = 1, "Fish Length at Summer Tagging (mm)")
 mtext(side = 2, outer = TRUE, line = 1, "Survival from Summer Tagging to LGR")
 ```
 
-```{r a1-table}
+```{r a2-table}
 # extract the length-effect each year/population and build a summary table
 eff_sizes = ids
 eff_sizes$effect = unlist(lapply(fits, get_eff))
 eff_sizes = na.omit(eff_sizes)
 eff_sizes$effect = exp(eff_sizes$effect * 5)
 eff_summary = with(eff_sizes, tapply(effect, pop, function(x) c(nyrs = length(x), mean = mean(x), min = min(x), max = max(x), p_pos = mean(x > 1))))
-round(do.call(rbind, eff_summary), 2) %>%
-  kable("html", col.names = c("Years", "Mean", "Min", "Max", "% > 1"), align = "ccccc",
-        caption = "Within-population, across-year summaries of the length effect, expressed as the odds ratio for every 5mm increase in fish length (i.e., _for every 5mm increase in length, fish were [ODDS RATIO] times as likely to survive_). The '% > 1' shows the proportion of years with an effect greater than 1, i.e., survival was estimated to increase with increasing length.") %>%
+
+kbl = round(do.call(rbind, eff_summary), 2) %>%
+  kable(ifelse(is_html_output(), "html", "pandoc"), col.names = c("Years", "Mean", "Min", "Max", "% > 1"), align = "ccccc",
+        caption = "Within-population, across-year summaries of the length effect, expressed as the odds ratio for every 5mm increase in fish length (i.e., _for every 5mm increase in length, fish were [ODDS RATIO] times as likely to survive_). The '% > 1' shows the proportion of years with an effect greater than 1, i.e., survival was estimated to increase with increasing length.")
+
+if (is_html_output()) {
+  kbl %>%
   kable_styling(full_width = TRUE, bootstrap_options = c("condensed")) %>%
   add_header_above(c(" " = 2, "Odds Ratio per 5mm Increase" = 4)) %>%
   column_spec(1, bold = TRUE)
+} else {
+  kbl
+}
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #3: Is Population Survival Higher in Years where Fish were on Average Larger? {#a3}
 
 ### Context
@@ -434,12 +451,19 @@ eff = unlist(lapply(fits, function(fit) summary(fit)$coefficients["x_var","Estim
 eff = exp(eff * 5)
 eff = data.frame(eff = eff)
 rownames(eff) = unique(ests$pop)
-eff %>%
-  kable("html", digits = 2, col.names = c("Odds Ratio per 5mm Increase"), caption = "Population-specific mean length effect on survival from summer tagging to LGR, expressed as the odds ratio for every 5mm increase in mean length (i.e., _for every 5mm increase in length, fish were [ODDS RATIO] times as likely to survive_).") %>%
+kbl = eff %>%
+  kable(ifelse(is_html_output(), "html", "pandoc"), digits = 2, col.names = c("Odds Ratio per 5mm Increase"), caption = "Population-specific mean length effect on survival from summer tagging to LGR, expressed as the odds ratio for every 5mm increase in mean length (i.e., _for every 5mm increase in length, fish were [ODDS RATIO] times as likely to survive_).")
+
+if (is_html_output()) {
+  kbl %>%
   kable_styling(full_width = TRUE, bootstrap_options = c("condensed")) %>%
   column_spec(1, bold = TRUE)
+} else {
+  kbl
+}
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #4: Does Mean Length at Tagging Appear Density-Dependent? {#a4}
 
 ### Context
@@ -468,6 +492,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Reconstructed Total Egg Production (100
 mtext(side = 2, outer = TRUE, line = 1, "Mean Length at Summer Tagging (mm)")
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #5: Does Density-Dependence Explain Inter-Annual Variability in Survival After Controlling for Length? {#a5}
 
 ### Context
@@ -504,6 +529,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Reconstructed Parr Abundance (1000s)")
 mtext(side = 2, outer = TRUE, line = 1, "Predicted Survival (Summer -> LGR) of a 65mm Individual")
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #6: Is Survival from Spring Tagging to LGR a Function of Length at Tagging? {#a6}
 
 ### Context
@@ -536,6 +562,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Mean Length at Spring Tagging (mm)")
 mtext(side = 2, outer = TRUE, line = 1, "Population-Level Survival (Spring -> LGR)")
 ```
 
+`r if (!is_html_output()) "#####"`
 ## Analysis #7: Is Size at Spring Tagging Related to Size at Summer Tagging? {#a7}
 
 ### Context
@@ -563,7 +590,7 @@ mtext(side = 1, outer = TRUE, line = 1, "Mean Length at Summer Tagging (mm)")
 mtext(side = 2, outer = TRUE, line = 1, "Mean Length at Spring Tagging (mm)")
 ```
 
-
+`r if (!is_html_output()) "#####"`
 ## Analysis #8: Is The Change in Mean Size From Summer to Spring Related to Initial Size? {#a8}
 
 ### Context
@@ -602,11 +629,12 @@ mtext(side = 1, outer = TRUE, line = 1, "Mean Length at Summer Tagging")
 mtext(side = 2, outer = TRUE, line = 1, "Spring - Summer Mean Length (mm)")
 ```
 
+`r if (!is_html_output()) "#####"`
 # Conclusions {#conclusions}
 
 ## Summary of Findings
 
-##### _**Egg-to-parr survival appears density-dependent**_
+_**Egg-to-parr survival appears density-dependent**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -616,7 +644,7 @@ _<u>Implications for LCM</u>_ -- In modeling the production of parr from eggs th
 
 :::
 
-##### _**Parr size correlates with parr survival**_
+_**Parr size correlates with parr survival**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -629,7 +657,7 @@ Further, our finding that population-level survival correlates to overall mean l
 
 :::
 
-##### _**Parr size appears density-dependent**_
+_**Parr size appears density-dependent**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -639,7 +667,7 @@ _<u>Implications for LCM</u>_ -- Because parr size is density-dependent and beca
 
 :::
 
-##### _**After controlling for size, the correlation between density and survival is weak**_
+_**After controlling for size, the correlation between density and survival is weak**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -649,7 +677,7 @@ _<u>Implications for LCM</u>_ -- Although we cannot entirely exclude the possibi
 
 :::
 
-##### _**Smolt size correlates with migration survival**_
+_**Smolt size correlates with migration survival**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -662,7 +690,7 @@ There is still some uncertainty whether all of this size-based survival is in th
 
 :::
 
-##### _**Smolt size correlates with parr size**_
+_**Smolt size correlates with parr size**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -672,7 +700,7 @@ _<u>Implications for LCM</u>_ -- This implies that smolt size and parr size are 
 
 :::
 
-##### _**The "growth factor" from summer to spring is size-dependent**_
+_**The "growth factor" from summer to spring is size-dependent**_
 
 :::{.p style="margin-left: 30px; margin-right: 30px;"}
 
@@ -693,6 +721,7 @@ Note that this list describes the deterministic component of the process model; 
 4. Expected mean size at the time of spring out-migration (i.e., spring tagging at screw trap) is the product of end-of-summer mean size and a "growth factor"; the growth factor is allowed to be a function of end-of-summer mean size.
 5. Expected migration survival for smolts to LGR is a function of mean smolt size.
 
+`r if (!is_html_output()) "#####"`
 # Appendix: Standardization of Summer Parr Mean Length Data {#appendix}
 
 ## Context
@@ -768,7 +797,7 @@ plot_fn = function(df) {
   lim = range(df$len_mean_adj, df$len_mean, na.rm = TRUE)
   col = scales::alpha("grey20", 0.25)
   cex = 2.1
-  par(mfrow = c(3,2), mar = c(2.5,2.5,1,1), mgp = c(1.5,0.25,0), tcl = -0.15, oma = c(0,0,2,0), cex.axis = 1.2, cex.lab = 1.2, lend = "square")
+  par(mfrow = c(3,2), mar = c(2.5,2.5,1,1), mgp = c(1.5,0.25,0), tcl = -0.15, cex.axis = 1.2, cex.lab = 1.2, lend = "square")
   
   # (a) length vs. capture date: shows the problem & fitted growth curve
   plot(len_mean ~ jday_med, data = df, xlab = "Median Capture DOY", ylab = "Observed Mean Length (mm)",  pch = 21, cex = cex, col = solid["data"], bg = tranp["data"]); abline(fit, lwd = 3, col = solid["model"])
@@ -791,7 +820,7 @@ plot_fn = function(df) {
   plot(len_mean ~ brood_year, data = df, ylim = lim, 
        xlab = "Brood Year", ylab = "Mean Length (mm)", lwd = 2, type = "l", col = solid["data"])
   lines(len_mean_adj ~ brood_year, data = df, col = solid["model"], lwd = 2)
-  legend("topright", title = "Type", legend = c("Observed", "Standardized"), col = solid[c("data", "model")], bty = "n", pch = 15, pt.cex = 2)
+  legend("topright", title = "Length Type", legend = c("Observed", "Standardized"), col = solid[c("data", "model")], bty = "n", pch = 15, pt.cex = 2)
   label("(e)")
   
   plot(jday_med ~ brood_year, data = df, type = "l", ylab = "Median Capture DOY", xlab = "Brood Year", col = solid["data"], lwd = 2)
@@ -870,25 +899,25 @@ _<u>Purpose</u>_ -- illustrates that for some populations sampling occurred late
 
 ### CAT
 
-```{r CAT-len-adj, fig.width = 5, fig.height = 7, fig.cap = "Summer mean length data standardization for Catherine Creek. See list above for the interpretation of each panel."}
+```{r CAT-len-adj, fig.width = 5, fig.height = 6.75, fig.cap = "Summer mean length data standardization for Catherine Creek. See list above for the interpretation of each panel."}
 plot_fn(subset(tmp, population == "CAT"))
 ```
 
 ### LOS
 
-```{r LOS-len-adj, fig.width = 5, fig.height = 7, fig.cap = "Summer mean length data standardization for Lostine River. See list above for the interpretation of each panel."}
+```{r LOS-len-adj, fig.width = 5, fig.height = 6.75, fig.cap = "Summer mean length data standardization for Lostine River. See list above for the interpretation of each panel."}
 plot_fn(subset(tmp, population == "LOS"))
 ```
 
 ### MIN
 
-```{r MIN-len-adj, fig.width = 5, fig.height = 7, fig.cap = "Summer mean length data standardization for Minam River. See list above for the interpretation of each panel."}
+```{r MIN-len-adj, fig.width = 5, fig.height = 6.75, fig.cap = "Summer mean length data standardization for Minam River. See list above for the interpretation of each panel."}
 plot_fn(subset(tmp, population == "MIN"))
 ```
 
 ### UGR
 
-```{r UGR-len-adj, fig.width = 5, fig.height = 7, fig.cap = "Summer mean length data standardization for Upper Grande Ronde. See list above for the interpretation of each panel."}
+```{r UGR-len-adj, fig.width = 5, fig.height = 6.75, fig.cap = "Summer mean length data standardization for Upper Grande Ronde. See list above for the interpretation of each panel."}
 plot_fn(subset(tmp, population == "UGR"))
 ```
 
