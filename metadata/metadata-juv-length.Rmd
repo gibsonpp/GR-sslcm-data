@@ -1,8 +1,12 @@
 ---
 title: "Metadata for juvenile length statistics"
 author: "Polly Gibson"
-date: '2022-08-05'
-output: html_document
+date: '2022-01-11'
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
 ---
 
 
@@ -17,15 +21,13 @@ library(dplyr)
 
 
 ## Dataset description
-The juvenile length dataset provides summary statistics for all recorded length measurements of wild juvenile Chinook from brood years 1991 - 2020.  All lengths are fork length in millimeters; all lengths are at the time of tagging (or at the time of capture, for non-tagged fish). 
+The juvenile length dataset provides summary statistics for all recorded length measurements of wild juvenile Chinook from brood years 1991 - 2020.  All lengths are **fork length in millimeters**; all lengths are at the time of tagging (or at the time of capture, for non-tagged fish). 
 
 Length statistics are reported by population, brood year, and season (summer, fall, winter, and spring), following the structure of the reported survival estimates. 
 
-In most seasons, not all fish captured and measured are PIT tagged. In fall and spring, at the rotary screw traps, this is primarily because we typically capture many more fish than we have tags available.  In the summer, in recent years this is primarily because some fish are too small to PIT tag: since 2011, 55mm has been the minimum length that can be tagged, but in earlier years this threshold was either set lower (or occasionally higher) or not strictly observed. Additionally, in some earlier years (BY 2000 - 2005) large numbers of fish were captured and measured/marked as part of mark-recapture population abundance estimates, creating a very large data set of length data from non-PIT  fish.  In the winter, essentially all fish captured are PIT tagged; therefore there is no length data for non-PIT tagged fish (hereafter abbreviated as **NPT**) in winter.
+In most seasons, not all fish captured and measured are PIT tagged. In fall and spring, at the rotary screw traps, this is primarily because we often capture many more fish than we have tags available.  In the summer, in recent years this is primarily because some fish are too small to PIT tag: since 2011, 55 mm fork length has been the minimum length threshold for PIT tagging (fish smaller than 55 mm fork length may not be tagged), but in earlier years this threshold was either closer to 50 mm (or occasionally 60 or 65 mm) or else not strictly observed. Additionally, in some earlier years (BY 2000 - 2005), large numbers of fish were captured and measured/marked as part of mark-recapture population abundance estimates, creating a very large data set of length data from non-PIT fish.  In the winter, essentially all fish captured are PIT tagged; therefore there is no length data for non-PIT tagged fish (hereafter abbreviated as **NPT**) in winter, and the PIT length data set is assumed to provide an adequate sample of the population for the winter tag group.
 
-Because in some circumstances we may want statistics for PIT tagged fish only, while in other circumstances we want statistics for the full population, this data set reports both sets of statistics for each population/brood year/season (with a few exceptions).
-
-At this time (August 2022) length statistics have been re-compiled only for summer and winter tag groups; length statistics for fall and spring will come later. 
+Because in some circumstances we may want statistics for PIT tagged fish only (ie, the set of fish used to generate the survival estimates; `[fish_subset] = "PIT"`), while in other circumstances we want statistics for the full population (`[fish_subset] = "all"`), this mean length data set reports both sets of statistics for each population/brood year/season (with a few exceptions). The sets of PIT tagged fish used to calculate the mean lengths reported here are the same sets of fish (roughly) as were used to generate the survival estimates.  
 
 
 ## Source data 
@@ -33,11 +35,13 @@ These statistics summarize all available recorded length data from fish that mee
 
 - Fish was captured above the rotary screw trap (or at it, for fall and spring fish); exclude any fish captured below the traps.
 
-- Fish was a unmarked at the time of the length measurement; exclude all recaptures. 
+- Fish was unmarked at the time of the length measurement; exclude all recaptures. 
 
 - Fish was not recorded as precocious or fry/young of year (i.e., a younger cohort than the target age class in a given year).
 
 - Fish was not captured as part of parr collection for captive broodstock (occurred only in CAT and LOS, for brood years 1994 and 1995). 
+
+- For fall and spring seasons (i.e., fish caught at the rotary screw traps), fish was caught between Sept 1 and Dec 15 (fall), or between Feb 15 and June 30 (spring). These date limits were applied to ensure some level of consistency and comparability among years with highly variable dates of trap operation. 
 
 
 ## Fields
@@ -49,31 +53,56 @@ juv_length_fields_tbl <- data.frame(
             "len_mean",	"len_sd",	"len_min",	"len_max",	
             "jday_med",	"rkm_mean"),
   Description = c(
-    "Indicates whether the statistics in the record describe all measured fish (**`all`**) vs. only the PIT tagged fish (**`PIT`**). With a few exceptions (Lostine summer brood years 1997 and 1998), both sets of statistics (i.e., two rows of data) are provided for each population/year/season combination. Note that for winter season, `PIT` and `all` statistics are the same; in winter very few fish are ever measured without being PIT tagged, and it is extremely rare to get fish that are too small to tag during this season.",
+    "Indicates whether the statistics in the record describe all measured fish (**`all`**) vs. only the PIT tagged fish (**`PIT`**). With a few exceptions, both sets of statistics (i.e., two rows of data) are provided for each population/year/season combination. Note that for winter season, `PIT` and `all` statistics are always the same, because typically there are almost no non-PIT tagged fish during winter and no undersize fish.",
     "`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River; `UGR` = Upper Grande Ronde River.", 
     "Calendar year when the cohort of fish was spawned.",
     "Calendar year when the cohort of fish migrated out to the ocean; equivalent to `[brood_year] + 2`.",
-    "Describes both the season when the fish were captured/tagged, and the method by which the fish were captured. `summer` and `winter` fish are actively captured by snorkel-herding throughout the rearing habitat, while `fall` and `spring` fish are passively captured in rotary screw traps.",
+    "Indicates both the season when the fish were captured/tagged, and the method by which the fish were captured. `summer` and `winter` fish are actively captured by snorkel-herding throughout the rearing habitat, while `fall` and `spring` fish are passively captured in rotary screw traps.",
     "Number of length values included in the reported statistics. Equivalent to `[n_pit] + [n_npt]`.",
-    "A subset of `[n_length]`: number of PIT-tagged fish included in the reported length statistics. When `[fish_subset] = PIT`, `[n_pit]` is equal to `[n_npt]`.",
-    "A subset of `[n_length]`: number of **not PIT-tagged** fish included in the reported length statistics.",
+    "A subset of `[n_length]`: number of PIT-tagged fish included in the reported length statistics. When `[fish_subset] = PIT`, `[n_pit]` is equal to `[n_length]`.",
+    "A subset of `[n_length]`: number of **not PIT-tagged** fish included in the reported length statistics. When `[fish_subset] = PIT`, `[n_npt]` is 0.",
     "Mean length",
     "Standard deviation of length values",
     "Minimum recorded length",
     "Maximum recorded length",
-    "Median Julian day (i.e., day of year; January 1 is Julian day 1, December 31 is Julian day 365 (or 366 in leap years)) when fish were tagged.  Note that Julian day is a strong predictor of population average size for summer tagging - see below.",
-    "Average river kilometer from which fish were captured. For each measured fish, river kilometer where the fish was captured is recorded. River kilometers start at the mouth and count upstream, so higher numbers indicate higher position in the watershed. This metric provides an indicator of where in the watershed most fish were captured in a given year, because average fish size is partly a function of watershed position."
+    "Median Julian day (i.e., day of year; January 1 is Julian day 1, December 31 is Julian day 365 (or 366 in leap years)) when fish were tagged.  Julian day is a strong predictor of population average size for summer tagging - see below.",
+    "Average river kilometer from which fish were captured. River kilometer is recorded for each measured fish. River kilometers start at the mouth and count upstream, so higher numbers indicate higher position in the watershed. This metric provides an indicator of where in the watershed most fish were captured in a given year, because average fish size is partly a function of watershed position."
   )
 )
 
 kable(juv_length_fields_tbl) %>%
-  kable_styling(full_width = T, font_size = 9) %>%
+  kable_styling(full_width = T, font_size = 10) %>%
   column_spec(1, bold = T, border_right = T) %>%
   column_spec(2) #, width = "30em"
 
 # source: http://haozhu233.github.io/kableExtra/awesome_table_in_html.html#column__row_specification
 ```
 
+
+## Missing data
+Some populations/years/seasons are missing or excluded from the mean length statistics. 
+
+* **No sampling:** Length data sets are entirely missing because no sampling occurred (trap did not operate or there was no snorkeling effort).
+
+  + fall- LOS MY04
+
+  + winter- UGR MY96-97, MY01-03, MY09
+
+  + summer- LOS MY98; UGR MY96-07, MY09
+
+  + spring - no fully missing data sets, but for LOS MY04 spring the trap ran only during the second half of the season (April 19 - June 18).
+  
+* **Non-tag data missing:** There are some population/seasons for which the data for non-tag fish was either not collected or has not yet been found. For the following population/season groups, length statistics are reported for `[fish_subset]=PIT` but not for `[fish_subset]=all` because we do not have adequate data for non-tag fish.
+
+  + summer - LOS MY99 and MY00. Non-tag data are missing and PIT length distributions show truncation effects due (presumably) to undersize fish.
+  
+  + fall and spring - CAT MY97. Trap catch and PIT tag numbers for this migration year indicate that there were substantial numbers of non-tagged fish,  but no non-tag data have been found.
+
+* **Inadequate sample size:** There were several population/season samples (primarily trap seasons at UGR), where sampling did occur, but the sampling was minimal/ineffective and caught so few fish that the available data do not provide an adequate sample of the population. A minimum sample size threshold of n=50 has been applied for reporting mean length: if there were fewer than 50 fish measured in a given season then mean length in that season is reported as `NA`, in place of reporting a mean based on a very small sample size.
+
+  + fall: UGR MY96-97, MY01, MY09, and MYY21
+  
+  + spring: UGR MY97, MY01, and MY09
 
 ## Notes and limitations
 
