@@ -1,106 +1,118 @@
 "population","brood_year","mig_year","season","abund_est","abund_se","expansion_factor","abund_notes"
-"CAT",1993,1995,"fall",8966,682.1,1,NA
-"CAT",1993,1995,"spring",8667,804.6,1,NA
+"CAT",1993,1995,"fall",8966,682.1,1,"Trap was started late, thereby potentially missing some early migrants."
+"CAT",1993,1995,"spring",8667,804.6,1,"Trap was started late, thereby potentially missing some early migrants."
 "CAT",1994,1996,"fall",4985,224.5,1,NA
 "CAT",1994,1996,"spring",1872,269.9,1,NA
-"CAT",1995,1997,"fall",4029,570.4,1,NA
-"CAT",1995,1997,"spring",413,52.6,1,NA
+"CAT",1995,1997,"fall",4029,570.4,1,"Trap was started late, thereby potentially missing some early migrants."
+"CAT",1995,1997,"spring",413,52.6,1,"Trap was started late, thereby potentially missing some early migrants."
 "CAT",1996,1998,"fall",7058,581.6,1,NA
 "CAT",1996,1998,"spring",2823,205.6,1,NA
-"CAT",1997,1999,"fall",12887,1048.3,0.978260869565217,NA
-"CAT",1997,1999,"spring",7875,581.5,0.978260869565217,NA
+"CAT",1997,1999,"fall",12887,1071.6,0.978260869565217,NA
+"CAT",1997,1999,"spring",7875,594.4,0.978260869565217,NA
 "CAT",1998,2000,"fall",19769,1100,1,NA
 "CAT",1998,2000,"spring",4222,466.3,1,NA
-"CAT",1999,2001,"fall",19996,1188.5,0.95,NA
-"CAT",1999,2001,"spring",3095,299.7,0.95,NA
-"CAT",2000,2002,"fall",27701,1898.8,0.764705882352941,NA
-"CAT",2000,2002,"spring",2849,248.9,0.764705882352941,NA
-"CAT",2001,2003,"fall",30217,1242.7,0.984962406015038,NA
-"CAT",2001,2003,"spring",4934,538.2,0.984962406015038,NA
-"CAT",2002,2004,"fall",54401,1961.6,0.987341772151899,NA
-"CAT",2002,2004,"spring",10432,932.2,0.987341772151899,NA
-"CAT",2003,2005,"fall",51244,3356.5,0.988023952095808,NA
-"CAT",2003,2005,"spring",5533,867.5,0.988023952095808,NA
-"CAT",2004,2006,"fall",23309,1133.8,0.979166666666667,NA
-"CAT",2004,2006,"spring",4489,486.7,0.979166666666667,NA
-"CAT",2005,2007,"fall",11240,413.2,0.972972972972973,NA
-"CAT",2005,2007,"spring",2975,349.8,0.972972972972973,NA
-"CAT",2006,2008,"fall",20859,882.4,0.982905982905983,NA
-"CAT",2006,2008,"spring",5747,639,0.982905982905983,NA
-"CAT",2007,2009,"fall",16735,1438,0.966101694915254,NA
-"CAT",2007,2009,"spring",5233,701.3,0.966101694915254,NA
-"CAT",2008,2010,"fall",32682,3275.8,0.99009900990099,NA
-"CAT",2008,2010,"spring",11390,1689.2,0.99009900990099,NA
-"CAT",2009,2011,"fall",8265,173.3,0.97752808988764,NA
-"CAT",2009,2011,"spring",4619,551.7,0.97752808988764,NA
-"CAT",2010,2012,"fall",37526,518.6,0.970108695652174,NA
-"CAT",2010,2012,"spring",22720,1707.7,0.970108695652174,NA
+"CAT",1999,2001,"fall",19996,1251.1,0.95,NA
+"CAT",1999,2001,"spring",3095,315.5,0.95,NA
+"CAT",2000,2002,"fall",27701,2483.1,0.764705882352941,NA
+"CAT",2000,2002,"spring",2849,325.4,0.764705882352941,NA
+"CAT",2001,2003,"fall",30217,1261.6,0.984962406015038,NA
+"CAT",2001,2003,"spring",4934,546.4,0.984962406015038,NA
+"CAT",2002,2004,"fall",54401,1986.7,0.987341772151899,NA
+"CAT",2002,2004,"spring",10432,944.2,0.987341772151899,NA
+"CAT",2003,2005,"fall",51244,3397.2,0.988023952095808,NA
+"CAT",2003,2005,"spring",5533,878,0.988023952095808,NA
+"CAT",2004,2006,"fall",23309,1158,0.979166666666667,NA
+"CAT",2004,2006,"spring",4489,497.1,0.979166666666667,NA
+"CAT",2005,2007,"fall",11240,424.7,0.972972972972973,NA
+"CAT",2005,2007,"spring",2975,359.4,0.972972972972973,NA
+"CAT",2006,2008,"fall",20859,897.8,0.982905982905983,NA
+"CAT",2006,2008,"spring",5747,650.1,0.982905982905983,NA
+"CAT",2007,2009,"fall",17201,1488.5,0.966101694915254,NA
+"CAT",2007,2009,"spring",5233,725.9,0.966101694915254,NA
+"CAT",2008,2010,"fall",32682,3308.1,0.99009900990099,NA
+"CAT",2008,2010,"spring",11390,1705.6,0.99009900990099,NA
+"CAT",2009,2011,"fall",8265,177.3,0.97752808988764,NA
+"CAT",2009,2011,"spring",4619,564.4,0.97752808988764,NA
+"CAT",2010,2012,"fall",37526,534.5,0.970108695652174,NA
+"CAT",2010,2012,"spring",22720,1760.3,0.970108695652174,NA
 "CAT",2011,2013,"fall",26393,1285.2,1,NA
 "CAT",2011,2013,"spring",5782,378.1,1,NA
-"CAT",2012,2014,"fall",18088,670.2,0.9957805907173,NA
-"CAT",2012,2014,"spring",12833,1092.4,0.9957805907173,NA
+"CAT",2012,2014,"fall",18088,673,0.9957805907173,NA
+"CAT",2012,2014,"spring",12833,1097,0.9957805907173,NA
 "CAT",2013,2015,"fall",10261,148,1,NA
 "CAT",2013,2015,"spring",2064,432.7,1,NA
-"CAT",2014,2016,"fall",23871,1504.2,0.952755905511811,NA
-"CAT",2014,2016,"spring",4277,355.6,0.952755905511811,NA
-"CAT",2015,2017,"fall",17811,1195.9,0.968468468468468,NA
-"CAT",2015,2017,"spring",5832,348.8,0.968468468468468,NA
-"CAT",2016,2018,"fall",17975,642.6,0.972602739726027,NA
-"CAT",2016,2018,"spring",7970,473.7,0.972602739726027,NA
-"CAT",2017,2019,"fall",9296,639.1,0.980392156862745,NA
-"CAT",2017,2019,"spring",3888,464.7,0.980392156862745,NA
-"LOS",1995,1997,"fall",2175,121.9,1,NA
-"LOS",1995,1997,"spring",2321,284.2,1,NA
+"CAT",2014,2016,"fall",23871,1578.8,0.952755905511811,NA
+"CAT",2014,2016,"spring",4277,373.2,0.952755905511811,NA
+"CAT",2015,2017,"fall",17811,1234.8,0.968468468468468,NA
+"CAT",2015,2017,"spring",5832,360.1,0.968468468468468,NA
+"CAT",2016,2018,"fall",17975,660.7,0.972602739726027,NA
+"CAT",2016,2018,"spring",7970,487,0.972602739726027,NA
+"CAT",2017,2019,"fall",9296,651.8,0.980392156862745,NA
+"CAT",2017,2019,"spring",5842,559.5,0.980392156862745,NA
+"CAT",2018,2020,"fall",16819,2539.8,1,"Fall trap season was interrupted due to ice for 9 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"CAT",2018,2020,"spring",2039,202.6,1,"Fall trap season was interrupted due to ice for 9 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"CAT",2019,2021,"fall",23302,619.9,1,NA
+"CAT",2019,2021,"spring",11008,1104.1,1,NA
+"CAT",2020,2022,"fall",21578,956.7,0.984126984126984,NA
+"CAT",2020,2022,"spring",10909,1139.4,0.984126984126984,NA
+"LOS",1995,1997,"fall",2175,121.9,1,"Trap was started late, thereby potentially missing some early migrants."
+"LOS",1995,1997,"spring",2321,284.2,1,"Trap was started late, thereby potentially missing some early migrants."
 "LOS",1996,1998,"fall",11381,1210.7,1,NA
 "LOS",1996,1998,"spring",6158,555.6,1,NA
-"LOS",1997,1999,"fall",20990,1045.7,0.959183673469388,NA
-"LOS",1997,1999,"spring",14735,930.3,0.959183673469388,NA
-"LOS",1998,2000,"fall",10462,532.5,0.8,NA
-"LOS",1998,2000,"spring",4850,190.7,0.8,NA
-"LOS",1999,2001,"fall",13272,805.2,0.789473684210526,NA
-"LOS",1999,2001,"spring",3967,354.8,0.789473684210526,NA
-"LOS",2000,2002,"fall",18546,1460.8,0.828125,NA
-"LOS",2000,2002,"spring",3359,321.6,0.828125,NA
-"LOS",2001,2003,"fall",25462,995,0.748091603053435,NA
-"LOS",2001,2003,"spring",13222,791.8,0.748091603053435,NA
-"LOS",2002,2004,"fall",NA,NA,0.842105263157895,"No juvenile migrant data"
-"LOS",2002,2004,"spring",NA,NA,0.842105263157895,"No juvenile migrant data"
-"LOS",2003,2005,"fall",67675,5188,0.608247422680412,NA
-"LOS",2003,2005,"spring",22095,2232.9,0.608247422680412,NA
-"LOS",2004,2006,"fall",58718,6127.1,0.724867724867725,NA
-"LOS",2004,2006,"spring",16148,965.7,0.724867724867725,NA
-"LOS",2005,2007,"fall",42958,3020.4,0.797297297297297,NA
-"LOS",2005,2007,"spring",14967,648.2,0.797297297297297,NA
-"LOS",2006,2008,"fall",18937,1636.7,0.810810810810811,NA
-"LOS",2006,2008,"spring",13274,1488.8,0.810810810810811,NA
-"LOS",2007,2009,"fall",34550,4142.8,0.894230769230769,NA
-"LOS",2007,2009,"spring",8990,661.8,0.894230769230769,NA
-"LOS",2008,2010,"fall",31663,1538.5,0.901023890784983,NA
-"LOS",2008,2010,"spring",21261,874.9,0.901023890784983,NA
-"LOS",2009,2011,"fall",68402,7305.3,0.755813953488372,NA
-"LOS",2009,2011,"spring",17275,710.8,0.755813953488372,NA
-"LOS",2010,2012,"fall",103596,4472.1,0.994252873563218,NA
-"LOS",2010,2012,"spring",35030,3087.1,0.994252873563218,NA
-"LOS",2011,2013,"fall",63563,4758.1,0.953690303907381,NA
-"LOS",2011,2013,"spring",18683,1716.2,0.953690303907381,NA
-"LOS",2012,2014,"fall",78191,4284.9,0.646080760095012,NA
-"LOS",2012,2014,"spring",27130,2020,0.646080760095012,NA
-"LOS",2013,2015,"fall",24004,1098.5,0.721311475409836,NA
-"LOS",2013,2015,"spring",9454,440.7,0.721311475409836,NA
-"LOS",2014,2016,"fall",60214,5171.6,0.80561122244489,NA
-"LOS",2014,2016,"spring",10881,537.7,0.80561122244489,NA
-"LOS",2015,2017,"fall",42975,2640.5,0.638211382113821,NA
-"LOS",2015,2017,"spring",16806,1794.7,0.638211382113821,NA
-"LOS",2016,2018,"fall",61693,4562.8,0.737556561085973,NA
-"LOS",2016,2018,"spring",7378,457.9,0.737556561085973,NA
-"LOS",2017,2019,"fall",8651,538.6,0.870503597122302,NA
-"LOS",2017,2019,"spring",4782,461.8,0.870503597122302,NA
-"MIN",1999,2001,"fall",10224,1438.8,1,NA
-"MIN",1999,2001,"spring",17985,1882.1,1,NA
-"MIN",2000,2002,"fall",62708,5146.9,1,NA
-"MIN",2000,2002,"spring",16292,2018.9,1,NA
-"MIN",2001,2003,"fall",19674,1907.1,1,NA
-"MIN",2001,2003,"spring",43473,5092.9,1,NA
+"LOS",1997,1999,"fall",20990,1090.3,0.959183673469388,NA
+"LOS",1997,1999,"spring",14735,969.9,0.959183673469388,NA
+"LOS",1998,2000,"fall",10462,665.6,0.8,NA
+"LOS",1998,2000,"spring",4850,238.4,0.8,NA
+"LOS",1999,2001,"fall",13272,1020,0.789473684210526,NA
+"LOS",1999,2001,"spring",3967,449.4,0.789473684210526,NA
+"LOS",2000,2002,"fall",18546,1764,0.828125,NA
+"LOS",2000,2002,"spring",3359,388.3,0.828125,NA
+"LOS",2001,2003,"fall",25462,1330.1,0.748091603053435,NA
+"LOS",2001,2003,"spring",13222,1058.5,0.748091603053435,NA
+"LOS",2002,2004,"fall",NA,NA,0.842105263157895,"Limited trapping operations prevented population estimates and migration timing."
+"LOS",2002,2004,"spring",NA,NA,0.842105263157895,"Limited trapping operations prevented population estimates and migration timing."
+"LOS",2003,2005,"fall",67675,8529.5,0.608247422680412,NA
+"LOS",2003,2005,"spring",22095,3671.1,0.608247422680412,NA
+"LOS",2004,2006,"fall",58718,8452.7,0.724867724867725,NA
+"LOS",2004,2006,"spring",16148,1332.3,0.724867724867725,NA
+"LOS",2005,2007,"fall",42958,3788.3,0.797297297297297,NA
+"LOS",2005,2007,"spring",14967,813.1,0.797297297297297,NA
+"LOS",2006,2008,"fall",18937,2018.6,0.810810810810811,NA
+"LOS",2006,2008,"spring",13274,1836.1,0.810810810810811,NA
+"LOS",2007,2009,"fall",34550,4632.7,0.894230769230769,NA
+"LOS",2007,2009,"spring",8990,740.1,0.894230769230769,NA
+"LOS",2008,2010,"fall",31663,1707.5,0.901023890784983,NA
+"LOS",2008,2010,"spring",21261,970.9,0.901023890784983,NA
+"LOS",2009,2011,"fall",68402,9665.5,0.755813953488372,NA
+"LOS",2009,2011,"spring",17275,940.4,0.755813953488372,NA
+"LOS",2010,2012,"fall",103596,4498,0.994252873563218,NA
+"LOS",2010,2012,"spring",35030,3104.9,0.994252873563218,NA
+"LOS",2011,2013,"fall",63563,4989.2,0.953690303907381,NA
+"LOS",2011,2013,"spring",18683,1799.5,0.953690303907381,NA
+"LOS",2012,2014,"fall",78191,6632,0.646080760095012,NA
+"LOS",2012,2014,"spring",27130,3126.6,0.646080760095012,NA
+"LOS",2013,2015,"fall",24004,1522.9,0.721311475409836,NA
+"LOS",2013,2015,"spring",9454,610.9,0.721311475409836,NA
+"LOS",2014,2016,"fall",60214,6419.5,0.80561122244489,NA
+"LOS",2014,2016,"spring",10881,667.4,0.80561122244489,NA
+"LOS",2015,2017,"fall",42975,4137.4,0.638211382113821,NA
+"LOS",2015,2017,"spring",16806,2812,0.638211382113821,NA
+"LOS",2016,2018,"fall",61693,6185.4,0.737556561085973,NA
+"LOS",2016,2018,"spring",7378,620.9,0.737556561085973,NA
+"LOS",2017,2019,"fall",8651,618.7,0.870503597122302,NA
+"LOS",2017,2019,"spring",4782,530.5,0.870503597122302,NA
+"LOS",2018,2020,"fall",24408,2063,0.966480446927374,"Fall abundance likely substantially underestimates true abundance of fall migrants. The fall trap season was interrupted due to trap-clogging leaves for 13 consecutive days during the fall migration, thereby likely missing a substantial portion of the fall migrants. Additionally, trap was started late, potentially missing some additional migrants early in the season."
+"LOS",2018,2020,"spring",23795,3218.3,0.966480446927374,"Fall abundance likely substantially underestimates true abundance of fall migrants. The fall trap season was interrupted due to trap-clogging leaves for 13 consecutive days during the fall migration, thereby likely missing a substantial portion of the fall migrants. Additionally, trap was started late, potentially missing some additional migrants early in the season."
+"LOS",2019,2021,"fall",21817,2561.1,0.885496183206107,NA
+"LOS",2019,2021,"spring",5425,572.6,0.885496183206107,NA
+"LOS",2020,2022,"fall",28755,1906.8,0.940677966101695,NA
+"LOS",2020,2022,"spring",10478,1047.7,0.940677966101695,NA
+"MIN",1999,2001,"fall",10224,1438.8,1,"Trap was started late, thereby potentially missing some early migrants."
+"MIN",1999,2001,"spring",17985,1882.1,1,"Trap was started late, thereby potentially missing some early migrants."
+"MIN",2000,2002,"fall",62708,5146.9,1,"Trap was started late, thereby potentially missing some early migrants."
+"MIN",2000,2002,"spring",16292,2018.9,1,"Trap was started late, thereby potentially missing some early migrants."
+"MIN",2001,2003,"fall",19674,1907.1,1,"Trap was started late, thereby potentially missing some early migrants."
+"MIN",2001,2003,"spring",43473,5092.9,1,"Trap was started late, thereby potentially missing some early migrants."
 "MIN",2002,2004,"fall",42978,2924.5,1,NA
 "MIN",2002,2004,"spring",22207,3572.4,1,NA
 "MIN",2003,2005,"fall",47924,1419.4,1,NA
@@ -113,7 +125,7 @@
 "MIN",2006,2008,"spring",43709,5481.6,1,NA
 "MIN",2007,2009,"fall",27167,3423.5,1,NA
 "MIN",2007,2009,"spring",16476,3011.2,1,NA
-"MIN",2008,2010,"fall",75070,6882.7,1,NA
+"MIN",2008,2010,"fall",75070,6882.1,1,NA
 "MIN",2008,2010,"spring",90948,16868.9,1,NA
 "MIN",2009,2011,"fall",41128,3321.9,1,NA
 "MIN",2009,2011,"spring",32517,4474,1,NA
@@ -131,57 +143,69 @@
 "MIN",2015,2017,"spring",13619,2383.7,1,NA
 "MIN",2016,2018,"fall",36560,2284.7,1,NA
 "MIN",2016,2018,"spring",16404,1728.1,1,NA
-"MIN",2017,2019,"fall",9047,461.7,1,NA
+"MIN",2017,2019,"fall",12650,714.3,1,NA
 "MIN",2017,2019,"spring",17410,1983.2,1,NA
-"UGR",1992,1994,"fall",2616,95.9,1,NA
-"UGR",1992,1994,"spring",22175,1629.1,1,NA
-"UGR",1993,1995,"fall",4859,924,1,NA
-"UGR",1993,1995,"spring",33866,6408.2,1,NA
-"UGR",1994,1996,"fall",13,7.7,1,NA
-"UGR",1994,1996,"spring",1105,98,1,NA
-"UGR",1995,1997,"fall",68,14.3,1,NA
-"UGR",1995,1997,"spring",14,15.3,1,NA
+"MIN",2018,2020,"fall",17064,2318.4,1,"Fall trap season was interrupted due to ice for 16 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"MIN",2018,2020,"spring",24007,3423,1,"Fall trap season was interrupted due to ice for 16 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"MIN",2019,2021,"fall",11625,1070.9,1,NA
+"MIN",2019,2021,"spring",13064,1786.2,1,NA
+"MIN",2020,2022,"fall",54616,3289.3,1,"Spring trap season started late, potentially missing a portion of late migrants."
+"MIN",2020,2022,"spring",20599,3436.7,1,"Spring trap season started late, potentially missing a portion of late migrants."
+"UGR",1992,1994,"fall",2616,95.9,1,"Trap was started late, thereby potentially missing some early migrants."
+"UGR",1992,1994,"spring",22175,1626.5,1,"Trap was started late, thereby potentially missing some early migrants."
+"UGR",1993,1995,"fall",4859,959.7,1,"Trap was located at RKM 257."
+"UGR",1993,1995,"spring",33866,6408.2,1,"Trap was located at RKM 257."
+"UGR",1994,1996,"fall",13,7.7,1,"Early migrant median date based on small sample size."
+"UGR",1994,1996,"spring",1105,98,1,"Early migrant median date based on small sample size."
+"UGR",1995,1997,"fall",68,14.3,1,"Late migrant median date based on small sample size."
+"UGR",1995,1997,"spring",14,5.6,1,"Late migrant median date based on small sample size."
 "UGR",1996,1998,"fall",2408,161.2,1,NA
-"UGR",1996,1998,"spring",4514,317.3,1,NA
+"UGR",1996,1998,"spring",4514,273,1,NA
 "UGR",1997,1999,"fall",2440,95.4,1,NA
-"UGR",1997,1999,"spring",12418,1592.9,1,NA
+"UGR",1997,1999,"spring",12418,1589.8,1,NA
 "UGR",1998,2000,"fall",3839,196.9,1,NA
-"UGR",1998,2000,"spring",10941,1056.1,1,NA
-"UGR",1999,2001,"fall",NA,NA,NA,NA
-"UGR",1999,2001,"spring",NA,NA,NA,NA
+"UGR",1998,2000,"spring",10941,1037.2,1,NA
+"UGR",1999,2001,"fall",6,4.6,1,"Early migrant median date based on small sample size."
+"UGR",1999,2001,"spring",45,15.3,1,"Early migrant median date based on small sample size."
 "UGR",2000,2002,"fall",1625,91.8,1,NA
-"UGR",2000,2002,"spring",7508,788.3,1,NA
+"UGR",2000,2002,"spring",7508,782.7,1,NA
 "UGR",2001,2003,"fall",1350,53.6,1,NA
-"UGR",2001,2003,"spring",3572,239.8,1,NA
+"UGR",2001,2003,"spring",3572,233.7,1,NA
 "UGR",2002,2004,"fall",467,41.3,1,NA
-"UGR",2002,2004,"spring",4387,327.6,1,NA
+"UGR",2002,2004,"spring",4387,325,1,NA
 "UGR",2003,2005,"fall",1094,62.8,1,NA
-"UGR",2003,2005,"spring",5163,425.5,1,NA
-"UGR",2004,2006,"fall",8589,697,0.913513513513514,NA
-"UGR",2004,2006,"spring",29366,2970.7,0.913513513513514,NA
+"UGR",2003,2005,"spring",5163,420.9,1,NA
+"UGR",2004,2006,"fall",8589,763,0.913513513513514,NA
+"UGR",2004,2006,"spring",29366,3160.9,0.913513513513514,NA
 "UGR",2005,2007,"fall",5356,156.1,1,NA
-"UGR",2005,2007,"spring",11753,871.4,1,NA
+"UGR",2005,2007,"spring",11753,857.1,1,NA
 "UGR",2006,2008,"fall",4576,878.1,1,NA
-"UGR",2006,2008,"spring",7108,1688.8,1,NA
-"UGR",2007,2009,"fall",8,4.6,1,NA
-"UGR",2007,2009,"spring",26,6.6,1,NA
-"UGR",2008,2010,"fall",5642,358.6,0.8125,NA
-"UGR",2008,2010,"spring",19913,1217,0.8125,NA
-"UGR",2009,2011,"fall",11750,386,0.942307692307692,NA
-"UGR",2009,2011,"spring",14922,1191.2,0.942307692307692,NA
-"UGR",2010,2012,"fall",25262,324.7,0.705555555555556,NA
-"UGR",2010,2012,"spring",53844,3128.2,0.705555555555556,NA
-"UGR",2011,2013,"fall",9637,439.7,0.929515418502203,NA
-"UGR",2011,2013,"spring",13610,515.4,0.929515418502203,NA
-"UGR",2012,2014,"fall",17251,654.7,0.948453608247423,NA
-"UGR",2012,2014,"spring",17376,2421.8,0.948453608247423,NA
-"UGR",2013,2015,"fall",2624,41.1,0.82,NA
-"UGR",2013,2015,"spring",14370,336,0.82,NA
-"UGR",2014,2016,"fall",8190,229,0.784246575342466,NA
-"UGR",2014,2016,"spring",20312,1453.4,0.784246575342466,NA
-"UGR",2015,2017,"fall",9827,167.5,0.870967741935484,NA
-"UGR",2015,2017,"spring",25879,1774.4,0.870967741935484,NA
-"UGR",2016,2018,"fall",10798,199,0.933333333333333,NA
-"UGR",2016,2018,"spring",12373,766.4,0.933333333333333,NA
+"UGR",2006,2008,"spring",7108,1442.9,1,NA
+"UGR",2007,2009,"fall",8,4.6,1,"Early and late migrant median dates based on small sample sizes."
+"UGR",2007,2009,"spring",26,5.1,1,"Early and late migrant median dates based on small sample sizes."
+"UGR",2008,2010,"fall",5642,441.3,0.8125,NA
+"UGR",2008,2010,"spring",19913,1430.6,0.8125,NA
+"UGR",2009,2011,"fall",11750,409.7,0.942307692307692,NA
+"UGR",2009,2011,"spring",14922,1264.1,0.942307692307692,NA
+"UGR",2010,2012,"fall",25262,460.2,0.705555555555556,NA
+"UGR",2010,2012,"spring",53844,4433.7,0.705555555555556,NA
+"UGR",2011,2013,"fall",9637,473.6,0.929515418502203,NA
+"UGR",2011,2013,"spring",13610,554.5,0.929515418502203,NA
+"UGR",2012,2014,"fall",17251,690.2,0.948453608247423,NA
+"UGR",2012,2014,"spring",17376,2553.4,0.948453608247423,NA
+"UGR",2013,2015,"fall",2624,50.1,0.82,NA
+"UGR",2013,2015,"spring",14370,409.8,0.82,NA
+"UGR",2014,2016,"fall",8190,292,0.784246575342466,"Spring trap season ended prematurely, missing a portion of late migrants."
+"UGR",2014,2016,"spring",20312,1853.2,0.784246575342466,"Spring trap season ended prematurely, missing a portion of late migrants."
+"UGR",2015,2017,"fall",9827,192.4,0.870967741935484,NA
+"UGR",2015,2017,"spring",25879,2037.2,0.870967741935484,NA
+"UGR",2016,2018,"fall",10798,213.2,0.933333333333333,NA
+"UGR",2016,2018,"spring",12373,821.2,0.933333333333333,NA
 "UGR",2017,2019,"fall",4259,112.8,1,NA
 "UGR",2017,2019,"spring",8772,667.9,1,NA
+"UGR",2018,2020,"fall",4736,127.6,1,"Fall trap season was interrupted due to ice for 16 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"UGR",2018,2020,"spring",13613,931.6,1,"Fall trap season was interrupted due to ice for 16 consecutive days during the fall migration, thereby missing a portion of the fall migrants."
+"UGR",2019,2021,"fall",NA,NA,0.833333333333333,"No fall abundance estimate, trap ran only a few days. Estimate for fall season abundance based on median pct.late value is 2043 fish."
+"UGR",2019,2021,"spring",6977,1047,0.833333333333333,"No fall abundance estimate, trap ran only a few days. Estimate for fall season abundance based on median pct.late value is 2043 fish."
+"UGR",2020,2022,"fall",2082,146.5,0.964285714285714,NA
+"UGR",2020,2022,"spring",13738,1279,0.964285714285714,NA
