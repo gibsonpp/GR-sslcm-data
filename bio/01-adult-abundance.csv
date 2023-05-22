@@ -33,6 +33,9 @@ CAT,2016,Yes,543,0,120,409,0.056448219,12,1,146,142,4,mr,p.rec,
 CAT,2017,Yes,241,0,100,138,0.060192927,3,0.883,51,50,1,mr,p.rec,
 CAT,2018,Yes,248,0,107,143,0.03280011,0,0.962,69,69,0,mr,p.rec,
 CAT,2019,Yes,324,0,120,204,0.020211302,0,0.974,82,82,0,mr,p.rec,
+CAT,2020,Yes,467,0,,281,0.032348641,,,,,,mr,p.rec,
+CAT,2021,Yes,645,0,,385,0.008373652,,,,,,mr,p.rec,
+CAT,2022,Yes,882,0,,540,0.028152453,,,,,,mr,p.rec,
 LOS,1986,No,340,0,0,340,0.44,NA,NA,96,61,NA,redd.exp,redd.exp,
 LOS,1987,No,374,0,0,374,0.44,NA,NA,105,75,NA,redd.exp,redd.exp,
 LOS,1988,No,717,0,0,717,0.44,NA,NA,202,182,NA,redd.exp,redd.exp,
@@ -67,6 +70,9 @@ LOS,2016,Yes,1761,154,305,1079,0.025006001,225,0.852,221,185,36,mr,p.rec,
 LOS,2017,Yes,880,68,434,359,0.082355373,46,0.633,139,125,14,mr,p.rec,
 LOS,2018,Yes,1172,104,354,666,0.052055276,28,0.842,179,172,7,mr,p.rec,
 LOS,2019,Yes,748,5,300,403,0.028521166,38,0.886,128,119,9,mr,p.rec,
+LOS,2020,Yes,1110,34,,648,0.01623416,,,,,,mr,p.rec,
+LOS,2021,Yes,671,4,,448,0.06291558,,,,,,mr,p.rec,
+LOS,2022,Yes,1981,4,,1192,0.09683526,,,,,,mr,p.rec,
 MIN,1986,No,728,0,300,728,0.44,NA,NA,205,62,NA,redd.exp,redd.exp,
 MIN,1987,No,1009,0,0,1009,0.44,NA,NA,284,115,NA,redd.exp,redd.exp,
 MIN,1988,No,964,0,0,964,0.44,NA,NA,271,104,NA,redd.exp,redd.exp,
@@ -101,6 +107,9 @@ MIN,2016,No,682,0,0,682,0.44,NA,NA,192,186,NA,redd.exp,redd.exp,
 MIN,2017,No,231,0,0,231,0.44,NA,NA,65,65,NA,redd.exp,redd.exp,
 MIN,2018,No,345,0,0,345,0.44,NA,NA,97,97,NA,redd.exp,redd.exp,
 MIN,2019,No,334,0,0,334,0.44,NA,NA,94,72,NA,redd.exp,redd.exp,
+MIN,2020,No,604,0,0,604,0.44,NA,NA,,,,redd.exp,redd.exp,
+MIN,2021,No,367,0,0,367,0.44,NA,NA,,,,redd.exp,redd.exp,
+MIN,2022,No,423,0,0,423,0.44,NA,NA,,,,redd.exp,redd.exp,
 UGR,1986,No,193,0,0,193,0.44,NA,NA,53,54,NA,redd.exp,redd.exp,
 UGR,1987,No,805,0,0,805,0.44,NA,NA,221,200,NA,redd.exp,redd.exp,
 UGR,1988,No,554,0,0,554,0.44,NA,NA,173,131,NA,redd.exp,redd.exp,
@@ -135,3 +144,6 @@ UGR,2016,Yes,393,2,152,239,0.433903608,0,0.387,73,73,0,redd.reg,p.rec,weir locat
 UGR,2017,Yes,286,2,129,155,0.439294752,0,0.062,29,29,0,redd.reg,p.rec,weir located dnstm of Starkey (RKM 291)
 UGR,2018,Yes,379,0,169,211,0.114953799,0,0.874,37,37,0,mr,p.rec,weir located dnstm of Starkey (RKM 291)
 UGR,2019,Yes,193,0,158,32,0.376828962,3,0.885,6,5,1,redd.reg,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2020,Yes,407,0,,237,0.483297372,,,,,,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2021,Yes,241,0,,108,0.496903995,,,,,,mr,p.rec,weir located dnstm of Starkey (RKM 291)
+UGR,2022,Yes,518,0,,308,0.440379502,,,,,,mr,p.rec,weir located dnstm of Starkey (RKM 291)
