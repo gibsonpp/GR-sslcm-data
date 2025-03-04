@@ -1907,7 +1907,6 @@ that of age-4 and age-5 fish to account for gillnet selectivity.
 
 ### Fields
 
-update field descriptions
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
