@@ -1893,13 +1893,9 @@ This auxiliary data set provides estimates of the proportion of adult
 fish returning to the mouth of the Columbia River in each return year
 that were harvested downstream of Bonneville Dam. (Note that harvest
 from the mainstem Columbia River upstream of Bonneville Dam is accounted
-for in the `BON-LGR-adult-PIT-detections` data set.) Harvest rates
-include commercial, tribal, and sport harvest. Starting in year 2001
-harvest rates differ substantially between natural origin vs. hatchery
-origin fish because many of the fisheries are mark-selective: often it
-is legal to retain hatchery-origin fish (i.e., adipose fin is clipped),
-while natural-origin fish (adipose fin intact) must be released
-unharmed.
+for in the `BON-LGR-adult-PIT-detections` data set.) 
+
+The harvest estimates are derived through the run reconstruction process conducted by the U.S. v. Oregon Technical Advisory Committee, which is state/tribal/federal body tasked with management issues for Columbia River fisheries. The harvest estimates (which include recreational, non-treaty commercial, and treaty fisheries) are developed using creel data, commercial fish tickets and biological monitoring information, and, for some treaty data, clip rate sampling data at Bonneville Dam. Almost all non-treaty harvest downstream of Bonneville has been mark-selective since the early 2000’s. In a mark-selective fishery harvest regulations differ for hatchery-origin fish (i.e., adipose fin is clipped) vs. for natural-origin fish (adipose fin intact). Often it is legal to retain some number of hatchery-origin fish, while natural-origin fish must be released unharmed.
 
 The harvest rates provided in this data set apply to age-4 and age-5
 fish. In the GR-LCM we assumed the harvest rate for age-3 fish was half
