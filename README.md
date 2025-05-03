@@ -675,19 +675,29 @@ Acronyms and other abbreviations used in this document:
 
 - **BON:** Bonneville Dam (the farthest downstream of the mainstem dams)
 
+- **CAT:** Catherine Creek
+
 - **CSS:** Comparative Survival Study
 
 - **CTUIR:** Confederated Tribes of the Umatilla Indian Reservation
 
 - **CWT:** coded wire tag
 
+- **GR-LCM:** Grande Ronde Life Cycle Model
+
+- **LOS:** Lostine River
+
 - **LGR:** Lower Granite Dam (the farthest upstream of the mainstem dams
   encountered by Grande Ronde fish)
+
+- **MIN:** Minam River
 
 - **MY:** migration year - year when a cohort of fish migrated from
   freshwater out to the ocean; equivalent to brood year + 2.
 
 - **NPT:** Nez Perce Tribe
+
+- **NPT** (alternate meaning): not PIT tagged
 
 - **ODFW:** Oregon Department of Fish and Wildlife
 
@@ -700,6 +710,8 @@ Acronyms and other abbreviations used in this document:
 - **RY:** return year - year when a group of adult fish return and
   spawn. Because adults return at a variety of ages, the adults in a
   given return year comprise multiple brood years of origin
+
+- **UGR:** Upper Grande Ronde River
 
 # Data set metadata
 
@@ -716,9 +728,11 @@ URL:
 
 ### Description
 
-This data set describes the *abundance* of natural origin juvenile
-Chinook observed passing rotary screw traps as the fish move downstream
-out of spawning areas in the headwaters.
+**Data access date:** 2023-05-02
+
+This data set describes the *abundance* of natural-origin juvenile
+Chinook salmon observed passing rotary screw traps as the fish move
+downstream out of spawning areas in the headwaters.
 
 Abundance is measured using rotary screw traps, located near the lower
 extent of spawning in each population. Generally the screw traps operate
@@ -743,11 +757,11 @@ one-sample bootstrap method (Thedinga et al. 1994).
 
 Because rotary screw traps only catch fish moving downstream past the
 trap, they do not count fish that were spawned downstream of the trap.
-In order to account for the contribution of any downstream spawning to
-juvenile production, in this data set the estimates of of the number of
-fish passing the screw traps are expanded by the ratio of the number of
-redds (from the appropriate brood year) counted above the screw trap to
-the total number of redds counted in the population for that brood year.
+To account for the contribution of any downstream spawning to juvenile
+production, in this data set the estimated number of fish passing the
+screw trap is expanded by the ratio of the number of redds (from the
+appropriate brood year) counted above the screw trap to the total number
+of redds counted in the population for that brood year.
 
 **Years of data:** 29 (BY 1992 - 2020)
 
@@ -863,52 +877,48 @@ traps is missed trapping days during the migration period: traps
 sometimes must be shut down for heavy debris loads, ice cover, or very
 high flows, and data may be unusable due to, for example, a log jamming
 the trap. In the pre-2019 abundance estimates, no attempt was made to
-account for these missed days, so the number and timing of missed days
-can strongly influence the total abundance estimate for the season.
-Additionally, any migrants that pass the trap before the start or after
-the end of trapping are not counted in the abundance estimates.
+account for these missed days. Additionally, any migrants that pass the
+trap before the start or after the end of trapping are not counted in
+the abundance estimates.
 
-At the Catherine Creek trap site, substantial numbers of young-of-year
-fish are regularly observed moving downstream past the trap in late
-spring and early summer, with unknown numbers moving during the portion
-of the summer when the trap does not operate (due to high temperatures).
-These fish are not accounted for in the abundance estimates, which only
-count fish that move downstream later in the fall as early migrants, or
-in the following spring as late migrants. Therefore the juvenile
-abundance estimates for Catherine Creek underestimate the true number of
-juvenile fish produced in that population, but the magnitude of this
-underestimate is not known. Although a few late-spring young-of-year are
-typically observed at the other screw trap sites, only Catherine Creek
-consistently sees large numbers of these fish.
+At the CAT trap site, substantial numbers of young-of-year fish are
+regularly observed moving downstream past the trap in late spring and
+early summer, with unknown numbers moving during the portion of the
+summer when the trap does not operate (due to high temperatures). These
+fish are not accounted for in the abundance estimates, which only count
+fish that move downstream later in the fall as early migrants, or in the
+following spring as late migrants. Therefore the juvenile abundance
+estimates for CAT underestimate the true number of juvenile fish
+produced in that population, but the magnitude of this underestimate is
+not known. Although a few late-spring young-of-year are typically
+observed at the other screw trap sites, only CAT consistently sees large
+numbers of these fish.
 
 During the spring when hatchery smolt are released, screw traps cannot
-operate continuously because the large numbers of hatchery origin fish
+operate continuously because the large numbers of hatchery-origin fish
 can quickly overfill a trap and cause mortality. Instead, systematic
 subsampling is often used to sample during hatchery release periods.
 During subsampling, the traps are operated for the four hours
 immediately after twilight (this period corresponds to the time of day
 when the majority of fish movement typically occurs), and then shut down
-for the rest of the night. In order to calibrate this subsampling, the
-trap is operated continuously (24 hour sampling) before and after the
-subsample nights, but the number of wild fish caught during the
-four-hour subsample window are counted separately from the fish caught
-during the rest of the 24-hour period, in order to determine the
-proportion of the full 24-hour catch that was caught during the
-four-hour subsampling window. This proportion is used to expand the
-catch during subsample nights to the expected number of fish that would
-have been caught with 24 hours of continuous sampling.
+for the rest of the night. Then the trap is operated continuously (24
+hour sampling) before and after the subsample nights, but the number of
+wild fish caught during the four-hour subsample window are counted
+separately from the fish caught during the rest of the 24-hour period,
+in order to determine the proportion of the full 24-hour catch that was
+caught during the four-hour subsampling window. This proportion is used
+to expand the catch during subsample nights to the expected number of
+fish that would have been caught with 24 hours of continuous sampling.
 
 Missing data:
 
-- The Lostine River trap was not operated during migration year 2004 (BY
-  2002).
+- The LOS trap was not operated during migration year 2004 (BY 2002).
 
-- The Upper Grande Ronde River trap does not have an abundance estimate
-  for fall 2021 (BY 2020; MY 2022) due to very limited trap operation
-  time, and low fish numbers observed during the period of operation.
-  There are also several other very uncertain abundance estimates from
-  the UGR trap, again due to limited trap operation time and very low
-  catch.
+- The UGR trap does not have an abundance estimate for fall 2021 (BY
+  2020; MY 2022) due to very limited trap operation time, and low fish
+  numbers observed during the period of operation. There are also
+  several other very uncertain abundance estimates from the UGR trap,
+  again due to limited trap operation time and very low catch.
 
 ## Juvenile: juv-survival
 
@@ -923,12 +933,14 @@ URL:
 
 ### Description
 
+**Data access date:** 2023-05-02
+
 This data set describes the estimated probability of *survival* for
-PIT-tagged natural origin juvenile Chinook parr and smolt from the time
-of tagging to arrival at Lower Granite Dam as smolt during the spring
-outmigration. Groups of juvenile Chinook (hereafter, “tag groups”) are
-captured and tagged at several different locations and time periods
-during their early life history:
+PIT-tagged natural-origin juvenile Chinook salmon parr and smolt from
+the time of tagging to arrival at Lower Granite Dam as smolt during the
+spring outmigration. Groups of juvenile Chinook (hereafter, “tag
+groups”) are captured and tagged at several different locations and time
+periods during their early life history:
 
 - Fish in the **summer** tag group are actively captured (by
   snorkel-herding) throughout the rearing habitat above the screw trap,
@@ -946,9 +958,9 @@ during their early life history:
   one week in early winter (usually early December). Because these fish
   are still upstream of the screw trap at the end of the fall movement
   period, all fish in the winter tag group display the ‘late migrant’
-  life history. There are no winter survival estimates for the Minam
-  population. (The Minam is a wilderness river and access is very
-  difficult during the winter.)
+  life history. There are no winter survival estimates for the MIN
+  population. (The Minam River is almost entirely within a wilderness
+  area and access is very difficult during the winter.)
 
 - Fish in the **spring** tag group (‘late migrants’) are passively
   captured at the rotary screw trap over the course of the spring
@@ -997,7 +1009,7 @@ conditions:
 
   - LOS: 26 years (BY 1995-2020)
 
-  - MIN: 0 years *(no winter PIT-tagging in Minam population)*
+  - MIN: 0 years *(no winter PIT-tagging in MIN population)*
 
   - UGR: 22 years (BY 1992-2020, with numerous missing estimates)
 
@@ -1111,9 +1123,9 @@ Comments on any specific limitations of the reported survival estimate.
 Precision of the survival estimates depends on the number of fish tagged
 (sample size), the probability of survival, and the probability of
 detection at Lower Granite Dam and at the other mainstem dams. Many of
-the calculated survival estimates have very wide confidence intervals
-for a combination of these reasons. In particular, detections downstream
-of Lower Granite Dam are often the rarest and most limiting piece of
+the calculated survival estimates have wide confidence intervals due to
+a combination of these reasons. In particular, detections downstream of
+Lower Granite Dam are often the rarest and most limiting piece of
 information for estimating survival.
 
 The survival estimates are assumed to be representative of the full
@@ -1130,8 +1142,8 @@ the goal is to roughly match the observed density and distribution of
 parr throughout the watershed. But, again, in practice this is not
 necessarily achieved due to access constraints, limited sampling time,
 and other logistical considerations. In practice large numbers of tags
-may go out in fish from a very limited spatial distribution, such that
-some stream reaches are over-represented and other reaches are
+may go out in fish from a limited spatial distribution, such that some
+stream reaches are over-represented and other reaches are
 under-represented in the tag group.
 
 Missing data:
@@ -1160,9 +1172,12 @@ URL:
 
 ### Description
 
+**Data access date:** 2023-01-12
+
 This data set provides summary statistics, including *mean length* for
-all recorded length measurements of natural origin juvenile Chinook. All
-lengths describe **fork length in millimeters**, at the time of capture.
+all recorded length measurements of natural-origin juvenile Chinook
+salmon. All lengths describe **fork length in millimeters**, at the time
+of capture.
 
 Length statistics are reported by population, brood year, and tag group
 (summer, fall, winter, and spring), following the structure of the
@@ -1188,19 +1203,19 @@ population for the winter tag group.
 Because in some circumstances we may want statistics for PIT tagged fish
 only (i.e., the set of fish used to generate the survival estimates;
 `[fish_subset] = "PIT"`), while in other circumstances we want
-statistics for the full population (`[fish_subset] = "all"`), this mean
+statistics for the full population (`[fish_subset] = "all"`), the mean
 length data set reports both sets of statistics for each
-population/brood year/season (with a few exceptions). The PIT tagged
-fish used to calculate the mean lengths reported here are the same
-groups of fish that were used to generate the survival estimates.
+population/brood year/season. The PIT tagged fish used to calculate the
+mean lengths reported here are the same groups of fish that were used to
+generate the survival estimates.
 
 Grande Ronde Chinook parr usually grow rapidly during summer, and the
 observed mean length of a population is strongly dependent on the day of
 year when fish are captured and measured. Because the summer tagging
 event occurs by active capture during a single week, and the timing of
 that week has varied among years, in the GR-LCM we used a correction
-factor to account for the effect of tag date (as day of year) on
-observed population mean length.
+factor to account for the effect of tag date on observed population mean
+length.
 
 From this full data set, the GR-LCM uses only the summer and spring tag
 groups (with `[fish_subset] = "all"`) for mean length and associated
@@ -1219,10 +1234,6 @@ that meet the following conditions:
 
 - Fish was not recorded as precocious or fry/young-of-year (i.e., a
   younger cohort than the target age class in a given year).
-
-- Fish was not captured as part of parr collection for captive
-  broodstock (occurred only in CAT and LOS, for brood years 1994 and
-  1995).
 
 - For fall and spring seasons (i.e., fish caught at the rotary screw
   traps), fish was caught between Sept 1 and Dec 15 (fall), or between
@@ -1418,35 +1429,23 @@ partly a function of watershed position.
 
 - Fish mean size at summer tagging also depends on watershed position
   (upstream reaches vs. downstream reaches), although it explains less
-  of the variaion in population mean size than does median date of
-  tagging. Fish in upperr reaches tend to emerge later, and for a given
+  of the variation in population mean size than does median date of
+  tagging. Fish in upper reaches tend to emerge later, and for a given
   date fish from the upper watershed tend to be substantially smaller
   than fish from the lower watershed. See also the discussion for the
   `juv-survival` data set.
 
 - For summers prior to 2001, recorded length data from undersize and
-  other non-PIT-tagged fish (NPT) was sparse, inconsistent, and
-  difficult to track down. For brood years 1991 and 1996 - 1999, no
-  recorded length data for summer NPT fish have been found, and it is
-  unclear whether this is because there simply were no undersize fish in
-  those years, vs. lengths of undersize fish were not recorded during
-  those years. But length distributions from the years without NPT data
+  other non-PIT-tagged fish (NPT) was unavailable. But length
+  distributions of PIT tagged fish from these years without NPT data
   mostly do not appear truncated, indicating that the available PIT tag
   length data are an acceptable measure of mean fish length for those
-  sampling events; the exceptions are Lostine summer fish from brood
-  years 1997 and (especially) 1998, where the distributions do show a
-  truncation at the 55 mm tagging threshold, indicating that the PIT tag
-  length data set is missing the smaller fish in the population.
-  Therefore there are no `[fish_subset] = "all"` records for Lostine
-  summer brood years 1997 and 1998.
-
-- In a few cases in the summer data, individual lengths were recorded
-  for the first ~20 undersize fish, and thereafter undersize fish were
-  only tallied. In order to account for these fish in the length summary
-  statistics, we simulated length values for the tallied undersize fish
-  records by sampling from the data set of measured undersize lengths
-  from a given population and year, limited to fish captured within a
-  few river kilometers of the tallied fish.
+  sampling events. Exceptions are LOS summer fish from brood years 1997
+  and (especially) 1998, where the distributions do show a truncation at
+  the 55 mm tagging threshold, indicating that the PIT tag length data
+  set is missing the smaller fish in the population. Therefore there are
+  no `[fish_subset] = "all"` records for LOS summer brood years 1997 and
+  1998.
 
 **Missing data**
 
@@ -1468,10 +1467,10 @@ length statistics.
     18).
 
 - **Non-tag data missing:** There are some population/seasons for which
-  the data for non-PIT-tagged (NPT) fish either were not collected or
-  have not yet been found. For the following population/season groups,
-  length statistics are reported for `[fish_subset]=PIT` but not for
-  `[fish_subset]=all` because we do not have adequate data for NPT fish.
+  the data for non-PIT-tagged (NPT) fish are not available. For the
+  following population/season groups, length statistics are reported for
+  `[fish_subset]=PIT` but not for `[fish_subset]=all` because we do not
+  have adequate data for NPT fish.
 
   - summer - LOS MY99 and MY00. Non-tag data are missing and PIT length
     distributions show truncation effects due (presumably) to undersize
@@ -1507,37 +1506,35 @@ Reservation, Island City, OR. URL:
 
 ### Description
 
+**Data access date:** 2023-09-03
+
 This data set describes *abundance* (number released) and *survival*
 (from the time of release to arrival at Lower Granite Dam) for
-hatchery-origin juvenile fish released into the Catherine Creek,
-Lostine, and Upper Grande Ronde populations. (There is no hatchery
-supplementation in the Minam population.) Fish are raised at the
-hatchery and released typically in the spring as age-2 smolt, at which
-point most fish immediately begin their migration out to the ocean. In
-rare instances some of the hatchery fish for a given population and
-brood year are released earlier, as age-1 parr during the fall, and in
-this situation the fish will overwinter in freshwater before migrating
-out to the ocean in the spring.
+hatchery-origin Chinook salmon smolts released into the CAT, LOS, and
+UGR populations. There is no hatchery supplementation in the MIN
+population. Fish are raised at Lookingglass Fish Hatchery and released
+in the spring as age-2 smolt. In rare instances some juvenile hatchery
+fish are released earlier, as age-1 parr during the fall. In this
+situation the parr will overwinter in freshwater before emigrating to
+the ocean in the spring.
 
 The number of hatchery fish released into each population each year is
-measured at the hatchery (based on estimates of fish per pound), and in
-the model we assumed that these numbers are known without error.
+determined at the time of release. In the GR-LCM we assumed that these
+numbers are known without error.
 
 Survival to Lower Granite Dam is based on detections of PIT-tagged fish
 at mainstem dams; the survival point estimate is calculated using a
 Cormack-Jolly-Seber model, with all detections at mainstem dams below
-Lower Granite pooled into a second survival interval. Confidence
+Lower Granite Dam pooled into a second survival interval. Confidence
 intervals are calculated based on profile likelihood. The existing
 survival estimates for hatchery-origin juveniles are calculated
-separately for each hatchery raceway (in a given brood year each
-population at the hatchery is distributed among ~4 different raceways);
-different raceways may have different release dates or, in the earlier
-years of hatchery operations, contain fish from different hatchery
-programs (i.e., fish from the captive broodstock program vs. fish from
-the conventional program). In order to generate a single point estimate
-of survival for each population and brood year for use in the GR-LCM, we
-calculated an average of the per-raceway survival estimates, weighted by
-the number of fish released from each raceway.
+separately for each hatchery raceway. Each year, juveniles from three
+different stocks are reared in separate raceways: CAT juveniles are
+typically reared in two raceways, LOS juveniles in four raceways, and
+UGR juveniles in four raceways. To generate a single point estimate of
+survival for each population and brood year, we calculated an average of
+the per-raceway survival estimates, weighted by the number of fish
+released from each raceway.
 
 **Years of data:** 24 (brood years 1997-2020)
 
@@ -1581,10 +1578,9 @@ release_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish was released. For standard smolt
-releases, fish are released in the spring and the release year is the
-same as the migration year (i.e., `[brood_year]` + 2); but in some cases
-fish are released as parr, in the calendar year prior to their
-outmigration year.
+releases, fish are released in the spring and the release year matches
+the migration year (i.e., `[brood_year]` + 2). When fish are released as
+parr the calendar year is one year prior to their outmigration year.
 </td>
 </tr>
 <tr>
@@ -1628,8 +1624,8 @@ includes_parr
 </td>
 <td style="text-align:left;">
 Indicates whether the reported \[n_smolt_released\] and \[surv_est\]
-values include any parr releases. This field is usually `FALSE`; the
-large majority of hatchery-origin fish are released as smolt.
+values include any parr releases. This field is usually `FALSE`; most
+hatchery-origin fish are released as smolt.
 </td>
 </tr>
 <tr>
@@ -1646,49 +1642,44 @@ values.
 
 ### Notes and limitations
 
-The conventional hatchery program for the Catherine Creek, Lostine
-River, and Upper Grande Ronde River populations, using endemic
-broodstock, was initiated with brood year 1997. Prior to this year,
-however, there were some inconsistent releases of hatchery fish (from
+The conventional hatchery program for the CAT, LOS, and UGR populations,
+using endemic broodstock, was initiated with brood year 1997. Prior to
+this year, there were a few releases of hatchery fish (produced with
 out-of-basin broodstock) into the Upper Grande Ronde and Catherine Creek
 in the 1980’s and early 1990’s. Most of these releases occurred before
-the time period being modeled by the GR-LCM, but some of the 1990’s
-releases could have produced returning adults during the time period
-being modeled. Additionally, releases of fish from out-of-basin stocks
-into the nearby Lookingglass Creek population through 2001 (brood year
-1999) produced high rates of straying in the returning adults. Both of
-these events (returning adults from early UGR and CAT releases, as well
-as straying adults from Lookingglass releases) could have produced the
-hatchery-origin adults seen in the adult return data prior to the start
-of the conventional hatchery programs. For simplicity, in the GR-LCM all
-of these hatchery-origin adults from before the start of conventional
-hatchery programs are treated as “strays” (i.e., extra adults simply
-added into the population as needed, rather than being generated by
-spawners and moved through all the modeled processes).
+the time period modeled by the GR-LCM, but some of the hatchery smolt
+releases in the 1990’s could have produced returning adults during the
+years being modeled. Additionally, there was a high stray rate among
+hatchery-origin adults returning to the nearby Lookingglass Creek
+population through the 1991 brood year cohort. Both of these events
+(returning adults from early UGR and CAT releases, as well as straying
+adults from Lookingglass releases) could have produced the
+hatchery-origin adults in the adult return data prior to the start of
+the conventional hatchery programs. For simplicity, in the GR-LCM all
+these hatchery-origin adults from before the start of conventional
+hatchery programs are treated as “strays”.
 
-Most hatchery-origin juvenile fish are released in the spring as smolt
-(or pre-smolt), but there have been a few instances where part of a
-hatchery brood year cohort was released as parr: Lostine brood years
-2007, 2008, and 2020; and Upper Grande Ronde brood year 2000. Although
-rates of survival and eventual adult returns from parr releases are much
-lower than they are for equivalent smolt releases, specific survival
-estimates (to Lower Granite Dam) for these parr releases are included in
-the aggregate weighted average `[surv_est]` values, and so overall the
-estimated of number of smolt arriving at Lower Granite Dam (i.e., smolt
-equivalents) for a given population and brood year using the aggregate
-release number and survival estimate accounts for the different expected
-survival of parr vs. smolt releases.
+Most hatchery-origin juvenile fish are released in the spring as age-2
+smolt, but some parr were released into the Lostine River from brood
+years 2007, 2008, and 2020, and into the Upper Grande Ronde River from
+brood year 2000. Although survival and adult return rates from parr
+releases are much lower than they are for smolt releases, specific
+survival estimates (to Lower Granite Dam) for these parr releases are
+incorporated in the aggregate weighted average `[surv_est]` values. The
+estimated number of smolts arriving at Lower Granite Dam (i.e., smolt
+equivalents) for a given population and brood year is calculated using
+the total number of fish released and the aggregate survival estimate.
+This approach accounts for the different expected survival rates of parr
+and smolt releases.
 
-For brood years 1998-2011, some of the hatchery-origin fish released
-included fish from the “captive broodstock” program. In a captive
-broodstock program, the fish used as broodstock spend their whole lives
-in the hatchery and never migrate out to the ocean; whereas in a
-conventional hatchery program, adult fish returning from the ocean are
-captured to use as broodstock. Whether a fish’s parents came from the
-conventional vs captive broodstock program is known to affect the fish’s
-probability of survival to Lower Granite Dam, but these different
-expected survival rates are accounted for in the individual survival
-estimates by raceway.
+For brood years 1998-2011, some hatchery smolt releases were from the
+“captive broodstock” program. In the Grande Ronde basin captive
+broodstock program, the parents used as broodstock spent their entire
+lives in the hatchery and never migrated to the ocean. In a conventional
+hatchery program, adult fish returning from the ocean are used for
+broodstock. Differences in adult return rates between Grande Ronde basin
+captive and conventionally produced smolts have been documented
+(Feldhaus et al. 2022).
 
 ## Juvenile: juv-survival-hydro
 
@@ -1703,15 +1694,17 @@ summer steelhead, and sockeye. 2022 Annual Report, BPA Project
 
 ### Description
 
+**Data access date:** 2023-09-11
+
 This data set describes annual *survival* probabilities for juvenile
-natural- and hatchery-origin fish moving downstream through the
-hydrosystem, from the tailrace of Lower Granite Dam (the first mainstem
-dam encountered by outmigrants) through the tailrace of Bonneville Dam
-(the final dam before fish reach the ocean). Survival estimates are
-calculated using a Cormack-Jolly-Seber model based on detections of
-PIT-tagged fish at the dams, as well as detections at sites downstream
-(primarily the estuary trawl), detections at bird colonies and other tag
-recoveries, and detections of returning adults.
+natural- and hatchery-origin Chinook salmon moving downstream through
+the hydrosystem, from the tailrace of Lower Granite Dam (the first
+mainstem dam encountered by outmigrants) through the tailrace of
+Bonneville Dam (the final dam before fish reach the ocean). Survival
+estimates are calculated using a Cormack-Jolly-Seber model based on
+detections of PIT-tagged fish at the dams, as well as detections at
+sites downstream (primarily the estuary trawl), detections at bird
+colonies and other tag recoveries, and detections of returning adults.
 
 For the GR-LCM, hydrosystem survival estimates are origin-specific
 (calculated separately for natural-origin vs. hatchery-origin fish), but
@@ -1720,9 +1713,9 @@ to experience a common survival rate moving through the hydrosystem.
 
 **Years of data**
 
-- natural origin: 27 (MY 1994-2021)
+- natural-origin: 27 (MY 1994-2021)
 
-- hatchery origin: 20 (MY 2002-2021)
+- hatchery-origin: 20 (MY 2002-2021)
 
 ### Source data
 
@@ -1730,12 +1723,11 @@ Hydrosystem survival estimates are calculated and provided by the
 Comparative Survival Study \[CSS\] (McCann et al. 2022, Table A1). The
 estimates for natural-origin fish are based on an aggregate of wild fish
 PIT tagged throughout the Snake River basin (upstream of Lower Granite
-Dam); this aggregation is necessary in order to get an adequate sample
-size of PIT-tagged natural-origin fish. The estimates used in the GR-LCM
-for hatchery-origin fish are based on PIT-tagged hatchery smolt from the
-Catherine Creek population. (Of the hatchery-supplemented populations
-modeled by the GR-LCM, only Catherine Creek is included in the
-Comparative Survival Study.)
+Dam); this aggregation is necessary to get an adequate sample size of
+PIT-tagged natural-origin fish. The estimates used in the GR-LCM for
+hatchery-origin fish are based on PIT-tagged hatchery smolt from the CAT
+population. Of the hatchery-supplemented populations modeled by the
+GR-LCM, only CAT is included in the Comparative Survival Study.
 
 Additional details on source data and calculation methods are provided
 in McCann et al. (2022).
@@ -1814,8 +1806,8 @@ hat_est
 </td>
 <td style="text-align:left;">
 Estimated in-river probability of survival from Lower Granite Dam to
-Bonneville Dam for hatchery-origin juvenile spring Chinook (Catherine
-Creek population).
+Bonneville Dam for hatchery-origin juvenile spring Chinook (CAT
+population).
 </td>
 </tr>
 <tr>
@@ -1842,23 +1834,22 @@ survival estimate.
 ### Notes and limitations
 
 At the time when data sets were being compiled for fitting the GR-LCM,
-hydrosystem survival estimates were available through 2021, and the 2022
-annual report was the most recent available published annual report.
+hydrosystem survival estimates were available through 2021.
 
-The survival estimates being used here are estimated survival
-probabilities only for fish that moved through the hydrosystem “in
-river”, i.e., the fish that were not transported (from one of the Snake
-River dams to below Bonneville). The overall proportion of outgoing
-juvenile Chinook that were transported varies among years. The CSS
-reports that “\[t\]ypically for years after 2005 about 40 percent of the
-PIT-tagged Snake River wild stocks were transported” (McCann et
-al. 2022). Prior to 2005, the proportion of outmigrating fish that were
-transported was typically higher, usually in the range of 80% (McCann et
-al. 2022, Figure 1.6). The survival of fish that were transported
-through the hydrosystem is not accounted for in this data set.
+The survival estimates used here are estimated survival probabilities
+only for fish that moved through the hydrosystem “in river”, i.e., the
+fish that were not transported (from one of the Snake River dams to
+below Bonneville Dam). The overall proportion of outgoing juvenile
+Chinook that were transported varies among years. The CSS reports that
+“\[t\]ypically for years after 2005 about 40 percent of the PIT-tagged
+Snake River wild stocks were transported” (McCann et al. 2022). Prior to
+2005, the proportion of outmigrating fish that were transported was
+typically higher, usually in the range of 80% (McCann et al. 2022,
+Figure 1.6). The survival of fish that were transported through the
+hydrosystem is not accounted for in this data set.
 
 The method used to calculate survival estimates in years 2006 and later
-is different from the method used in earlier years. This is because the
+is different from the method used prior to 2006. This is because the
 protocol for transport operations at the Snake River Dams changed in
 2006, and simultaneously the CSS began using a different method for
 assigning tagged fish to transport vs. in-river routes through the
@@ -1885,17 +1876,29 @@ years (2020 and 2021) were not yet finalized at the time when this
 ### Citation
 
 Data were compiled and provided by Stuart Ellis, Harvest Specialist,
-Columbia River Inter-Tribal Fish Commision. 2023.
+Columbia River Inter-Tribal Fish Commission, 2023.
 
 ### Description
 
 This auxiliary data set provides estimates of the proportion of adult
-fish returning to the mouth of the Columbia River in each return year
-that were harvested downstream of Bonneville Dam. (Note that harvest
-from the mainstem Columbia River upstream of Bonneville Dam is accounted
-for in the `BON-LGR-adult-PIT-detections` data set.) 
+Chinook salmon returning to the mouth of the Columbia River in each
+return year that were harvested downstream of Bonneville Dam. Note that
+harvest from the mainstem Columbia River upstream of Bonneville Dam is
+accounted for in the `BON-LGR-adult-PIT-detections` data set.
 
-The harvest estimates are derived through the run reconstruction process conducted by the U.S. v. Oregon Technical Advisory Committee, which is state/tribal/federal body tasked with management issues for Columbia River fisheries. The harvest estimates (which include recreational, non-treaty commercial, and treaty fisheries) are developed using creel data, commercial fish tickets and biological monitoring information, and, for some treaty data, clip rate sampling data at Bonneville Dam. Almost all non-treaty harvest downstream of Bonneville has been mark-selective since the early 2000’s. In a mark-selective fishery harvest regulations differ for hatchery-origin fish (i.e., adipose fin is clipped) vs. for natural-origin fish (adipose fin intact). Often it is legal to retain some number of hatchery-origin fish, while natural-origin fish must be released unharmed.
+The harvest estimates are derived through the run reconstruction process
+conducted by the U.S. v. Oregon Technical Advisory Committee, which is
+the state/tribal/federal body tasked with management issues for Columbia
+River fisheries. The harvest estimates (which include recreational,
+non-treaty commercial, and treaty fisheries) are developed using creel
+data, commercial fish tickets and biological monitoring information,
+and, for some treaty data, clip rate sampling data at Bonneville Dam.
+Almost all non-treaty harvest downstream of Bonneville has been
+mark-selective since the early 2000’s. In a mark-selective fishery
+harvest regulations differ for hatchery-origin fish (i.e., adipose fin
+is clipped) vs. for natural-origin fish (adipose fin intact). Often it
+is legal to retain some number of hatchery-origin fish, while
+natural-origin fish must be released unharmed.
 
 The harvest rates provided in this data set apply to age-4 and age-5
 fish. In the GR-LCM we assumed the harvest rate for age-3 fish was half
@@ -1903,7 +1906,6 @@ that of age-4 and age-5 fish to account for gillnet selectivity.
 
 ### Fields
 
-update field descriptions
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1960,42 +1962,29 @@ Available from
 
 ### Description
 
-This data set describes a metric of *survival* rate for adults migrating
-upstream through the hydrosystem (i.e., from Bonneville Dam up to Lower
-Granite Dam).
+**Data access date:** 2023-04-08
 
-For each year since 2000, the data set gives the number of unique
+This data set describes a metric of *survival* rate for adult Chinook
+salmon migrating upstream through the hydrosystem (i.e., from Bonneville
+Dam up to Lower Granite Dam).
+
+For each year since 2000, the data set reports the number of unique
 PIT-tagged adult spring/summer Chinook (originating from the Grande
 Ronde basin) that were detected at Bonneville Dam, and then the subset
 count of those unique PIT tags that were subsequently detected at Lower
-Granite Dam. The probability of survival for upstream migrating fish is
-roughly estimated as the ratio of the number of tags counted at Lower
-Granite Dam to the number of tags counted at Bonneville; this metric is
-known as a “conversion rate”. Rates are estimated separately for
-natural- and hatchery-origin fish.
-
-Although not a true survival estimate, this simple method still provides
-a good index of upstream survival rates because the probability of
-detection at Lower Granite and Bonneville for PIT-tagged adults moving
-upstream is very high - estimated at over 98% at all dams since 2006
-(Crozier et al. 2016).
+Granite Dam.
 
 For adults returning from the ocean, the probability of detecting
 PIT-tagged fish as they move upstream past mainstem dams has been near
-100% since the early 2000s (Crozier et al. 2016, or other study?).
-Therefore the proportion of the PIT-tagged adults detected at Bonneville
-Dam in a given year that were subsequently detected at Lower Granite Dam
-can be used as a measure of survival for adults moving upstream through
-the hydrosystem. This empirical survival rate (known as a “conversion
-rate” <https://www.cbr.washington.edu/dart/query/pitadult_conrate>?)
+100% since the early 2000s (Crozier et al. 2016). Therefore, the
+proportion of the PIT-tagged adults detected at Bonneville Dam each year
+that were subsequently detected at Lower Granite Dam can be used as a
+measure of survival for adults moving upstream through the hydrosystem.
+This empirical survival rate (known as a “conversion rate”;
+<https://www.cbr.washington.edu/dart/query/pitadult_conrate>?)
 integrates all sources of mortality that fish experience during this
 time, including losses due to harvest, straying, predation, and
 environmental conditions.
-
-For the GR-LCM we chose to use this simple, empirical metric of upstream
-survival rather than attempting to separately quantify rates of
-mortality and loss due to harvest, straying, predation, environmental
-conditions, etc.
 
 ### Source data
 
@@ -2057,7 +2046,7 @@ Calendar year when adult fish moved upstream through the hydrosystem
 origin
 </td>
 <td style="text-align:left;">
-Natural origin (NOR) vs. hatchery origin (HOR).
+Natural-origin (NOR) vs. hatchery-origin (HOR).
 </td>
 </tr>
 <tr>
@@ -2117,125 +2106,69 @@ Resources Management, Research Division. Lapwai, ID. URL:
 
 ### Description
 
-This data set provides estimates of the number of adult fish
-(*abundance*) that return to the mouth of their natal river each year.
+**Data access date:** 2020-07-10 (for return years 1991-2019);
+2023-05-17 (for return years 2020-2022)
+
+This data set provides estimated numbers of adult Chinook salmon
+(*abundance*) that return annually to the mouth of their natal river.
 This metric is known as “total return-to-river” (RTR), which is distinct
 from the number of *spawners* present in a given year and population.
 The total abundance (RTR) numbers include all adult fish (all ages, both
-hatchery and natural origin, both female and male); in the GR-LCM, we
-estimate the *composition* of these returning adults by age and origin
-each year based on the weir and carcass data sets.
+hatchery and natural-origin, both female and male); in the GR-LCM, we
+estimate the *composition* of the annual adult return by age and origin
+based on the weir and carcass data sets.
 
-Methods for estimating the total RTR are complex and vary depending on
-presence or absence of an adult weir, sample size, and other factors.
-The field and analysis methods are described in detail in Bliesner et
-al. (2020), but some relevant pieces are summarized here.
+Methods for estimating the total RTR are complex and vary by
+population.The field and analysis methods are described fully in
+Bliesner et al. (2020), but some relevant pieces are summarized here.
 
 There are two primary methods for estimating abundance of returning
-adults, depending on whether an adul weir is present. In the three
-supplemented populations (Catherine Creek, Lostine River, and Upper
-Grande Ronde River), weirs began operating in 1997. The unsupplemented
-Minam River population does not have an adult weir.
+adults, depending on whether an adult weir is present. In the three
+supplemented populations (CAT, LOS, and UGR), weirs began operating in
+1997. The unsupplemented MIN population does not have an adult weir.
 
-For years and populations without an adult weir (i.e., all years for the
-Minam population, and years prior to 1997 for the other three
-populations), the abundance of returning adults is estimated based on
-expansions from redd counts. Redd counts are either assumed to be a
-census, or counts are expanded to account for unsurveyed space or time.
-Then the total number of redds is expanded by a standard value of 3.2
-spawners per redd (2.23 in Catherine Creek), which was derived from
-comparing mark-recapture estimates of above-weir of spawner abundance
-(see below) against the above-weir redd counts from those years.
-Finally, this estimated number of spawners is expanded by the estimated
-rate of prespawn survival in order to calculate the total number of fish
-in the river prior to prespawn mortality. When there is an adequate
-sample size of carcass recoveries, the prespawn mortality rate can be
-estimated from the number of spawned vs. unspawned female carcasses
-recovered (see `prespawn-surv` data set). However, for most of the years
-using a redd-based abundance estimate, carcass recovery numbers tend to
-be low, and in practice a static estimate of 0.90 was often used for the
-prespawn survival rate. There was no recorded tributary harvest for the
-GR-LCM populations during any of the modeled years using a redd-based
-abundance estimate, so there is no need to account for tributary harvest
-in these estimates.
+For years and populations without a weir (i.e., all years for the MIN
+population, and years prior to 1997 for the other three populations),
+the abundance of returning adults is estimated based on redd counts.
+Redd counts are either assumed to be a census, or counts are expanded to
+account for unsurveyed space or time. The total counts are then expanded
+by a standard value of 3.2 spawners per redd (2.23 in CAT). Briefly,
+these values were derived from comparing mark-recapture above-weir
+abundance estimates against the above-weir redd counts. Finally, this
+estimated number of spawners is expanded by the estimated rate of
+prespawn survival in order to calculate the total number of fish in the
+river prior to prespawn mortality. There was no recorded tributary
+harvest for the GR-LCM populations during any of the modeled years using
+a redd-based abundance estimate, so there is no need to account for
+tributary harvest in these estimates.
 
 For years and populations where an adult weir is present (i.e., 1997 and
-later for all populations except Minam), the primary estimate of
-abundance is usually based on a mark-recapture estimate of the number of
-adult fish above the weir: fish that are handled at the weir are marked
-with an opercle punch\[es\] before being released upstream to spawn
-naturally, and then carcasses recovered during spawning ground surveys
-are checked for presence or absence of the opercle punch marking (with
-marked carcasses representing the “recaptures”). While this estimation
-method is straightforward, in practice the full weir-based RTR estimates
-are more complex. First, the abundance of age-3 fish (“jacks”) is
-estimated separately from the abundance of age-4 and age-5 fish, because
-jacks tend to have a lower probability of being handled at the weir and
-a substantially lower probability of being recovered on the spawning
-grounds, relative to age-4 and age-5 fish. Second, the sample size of
-recovered marked carcasses is not always large enough to provide a
-robust mark-recapture abundance estimate. In this situation, alternative
-methods (usually based on estimated carcass recovery rates) are used to
-estimate above weir abundance; details of the alternative methods used
-have varied over time and among populations, depending on sample sizes
-and weir efficiency. Third, weir-based abundance estimation methods only
-cover fish spawning upstream of the weirs, and must be expanded to
-account for any spawning that occurs downstream.
+later for all populations except MIN), the abundance estimate is usually
+based on a mark-recapture estimate of the number of adult fish above the
+weir: fish that are handled at the weir are marked with an opercle
+punch\[es\] before being released upstream to spawn naturally, and then
+carcasses recovered during spawning ground surveys are checked for
+presence or absence of the opercle punch marking (with marked carcasses
+representing the “recaptures”).
 
 The following list summarizes the logic of the weir-based adult return
 to river estimates.
 
-- First, abundance of age 4/5 fish *in the river* (i.e., before any
+- First, abundance of age-4/5 fish *in the river* (i.e., before any
   prespawn mortality) above the weir is estimated, usually based on a
   mark-recapture estimate from fish marked at the weir and recovered as
   carcasses on the spawning grounds.
 
-  - In a few cases - mostly in the UGR population, plus two early years
-    (1997 and 2000) in the Catherine Creek population) - above-weir
-    abundance of age 4/5 fish is estimated based on redd counts. This is
-    either a redd count expansion (as described above), or predicting
-    from a regression of fish above weir as a function of the above-weir
-    redd count, from years with good mark-recapture abundance estimates.
-
 - Then, abundance of age-3 fish (jacks) is estimated based on a variety
-  of methods. If there are enough recoveries of age-3 carcasses (this is
-  rare), then the mark-recapture method is preferred. More commonly,
-  estimates are based on a carcass recovery rate or a weir capture rate
-  (weir efficiency). In general, abundance estimates for the age-3 fish
-  are substantially more problematic and more uncertain than the age-4/5
-  abundance estimates.
-
-  - For estimates based on a *carcass recovery rate* (all years in
-    Lostine, some later years in Catherine Creek and Upper Grande
-    Ronde), the recovery rate may be estimated as (a) observed jack
-    carcass recovery rate (number of marked jack carcasses recovered
-    relative to number of marked jacks released upstream of the
-    weir); (b) half the observed age-4/5 carcass recovery rate (based on
-    the relationship between observed age-3 vs. age-4/5 recovery rates
-    in years with good jack carcass ample sizes); or (c) a static
-    estimate of 0.10 for jack carcass recovery rate.
-
-  - For estimates based on weir efficiency (most early weir years in
-    Catherine Creek and Upper Grande Ronde), weir efficiency is
-    estimated using the age-4/5 population estimate (total number
-    trapped relative to the sum of the above-weir abundance estimate
-    plus the number removed at the weir); then, the total number of
-    jacks trapped is expanded by the estimated weir efficiency (after
-    accounting for jacks that were trapped at the weir and either
-    removed or passed above the weir).
+  of methods. If there are enough recoveries of age-3 carcasses, then
+  the mark-recapture method is preferred. More commonly, estimates are
+  based on a carcass recovery rate or a weir capture rate (weir
+  efficiency).
 
 - The total estimated number of fish above the weir (age-4/5 + age-3) is
   then expanded to account for any spawning downstream of the weir,
   using the ratio of redds counted below the weir to the total number of
   redds counted in a given population and year.
-
-  - The extent of below-weir spawning varies among the populations; the
-    Lostine population tends to have the most below-weir spawning (mean
-    annual proportion of total Lostine redds that are below the weir =
-    0.15) relative to other populations, while the Catherine Creek
-    population usually has the least below-weir spawning (mean annual
-    proportion = 0.02). The UGR population is intermediate (mean annual
-    proportion = 0.05).
 
 - Finally, the total number of adult fish returning to the river also
   includes the fish that were removed (a) in tributary harvest (see
@@ -2243,16 +2176,16 @@ to river estimates.
   or culled to limit the proportion of hatchery-origin fish on the
   spawning grounds (see `adult-indiv-weir`).
 
-$$Abundance = (\frac{AboveWeirAge45 + AboveWeirAge3}{PropReddsUpstream}) + [TribHarvest] + [WeirRemovals]$$
+$$Abundance = (\frac{AboveWeirAge4/5 + AboveWeirAge3}{PropReddsUpstream}) + TribHarvest + WeirRemovals$$
 
 **Uncertainty values**
 
-Quantifying the uncertainty associated with these complex, composite
-abundance estimates is similarly complex.
+Quantifying the uncertainty associated with these composite abundance
+estimates is complex.
 
 For redd-based abundance estimates, uncertainty was estimated using a
 bootstrap simulation routine. Each component of the abundance estimation
-process (counting redds; expanding for unsurveyed space or time;
+process (i.e., counting redds; expanding for unsurveyed space or time;
 expanding by spawners per redd; expanding for prespawn mortality) was
 simulated by drawing from a distribution based on the range of observed
 values, and a total simulated abundance estimate was calculated for each
@@ -2271,13 +2204,15 @@ same method for expanding the CVs of the `juv-abundance` estimates).
 Variance of the tributary harvest values was estimated by generating
 bootstrap estimates from a Poisson distribution. Weir removals represent
 census counts, so these values did not introduce any additional
-uncertainty. Finally, the uncertainty associated with each of these
-components of total abundance was aggregated by adding variances.
+uncertainty. Finally, the uncertainties associated with each of these
+components of total abundance were aggregated by adding variances.
 
 All uncertainty values are reported as a coefficient of variation for
 the point estimate of abundance.
 
 **Years of data:** 32 (return years 1991-2022)
+
+### Fields
 
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2363,40 +2298,40 @@ Wildlife, Salem, OR. URL:
 
 ### Description
 
-This auxiliary data set reports the numbers of adult fish, by origin,
-sex, and age, that were harvested (i.e., removed from the spawning
-population) after they returned to their natal river. “Tributary
-harvest” is distinguished from harvest that occurs while fish are still
-in the ocean or while they are migrating upstream through the mainstem
-Columbia and Snake Rivers. (In the GR-LCM, these other sources of
-harvest are captured in the `harvest-rates-below-BON` and
+**Data access date:** 2023-05-03
+
+This auxiliary data set reports the numbers of adult Chinook salmon, by
+origin, sex, and age, that were harvested in tribal and sport tributary
+fisheries after they returned to their natal river. Tributary harvest is
+distinguished from harvest that occurs while fish are still in the ocean
+or while they are migrating upstream through the mainstem Columbia and
+Snake Rivers. (In the GR-LCM, these other sources of harvest are
+captured in the `harvest-rates-below-BON` and
 `BON-LGR-adult-PIT-detections` data sets, as well as in the ocean
 survival and maturity rates estimated within the model.) Within the
-GR-LCM these tributary harvest counts are treated as known values
-without associated sampling error.
-
-Of the populations and years modeled by the GR-LCM, only the Lostine
-population experiences regular tributary harvest, although even in
-Lostine there have been numerous years with very low or zero tributary
-harvest. For the Catherine Creek population, tributary harvest occurred
-only in 2021, and for the Upper Grande Ronde population tributary
-harvest occurred in a few years (2010 and 2014-2017). There is no
-tributary harvest in the Minam population. None of the populations
-modeled by the LCM had any recorded tributary harvest during the mostly
-low-return years 1986-2000.
-
-This data set reports only positive harvest counts; harvest for any
-populations, years, and/or compositions not included in the data set is
-assumed to be zero.
+GR-LCM tributary harvest counts are treated as known values without
+sampling error.
 
 Tributary harvest comprises both sport (recreational) and tribal
-fisheries. Sport fisheries target only hatchery-origin fish (although
-there may be incidental angling-related mortality of natural-origin
-fish), while tribal fisheries are non-selective by fish origin. Tribal
-nations (Nez Perce Tribe and the Confederated Tribes of the Umatilla
-Indian Reservation) monitor and report their annual tribal fishery
-harvest numbers. Sport fishery harvest numbers are estimated based on
-creel surveys; method details are provided in Bratcher *et al.* (2017).
+fisheries. Sport fisheries target hatchery-origin fish, while tribal
+fisheries are non-selective and allow harvst of both hatchery- and
+natural-origin fish. Nez Perce Tribe and the Confederated Tribes of the
+Umatilla Indian Reservation monitor and report their annual tribal
+fishery harvest numbers. Sport fishery harvest numbers are estimated
+based on creel surveys; method details are provided in Bratcher et
+al. (2017).
+
+Of the populations and years modeled by the GR-LCM, only the LOS
+population experiences semi-regular tributary harvest. Recorded
+tributary harvest occurred only in 2012 for the CAT population (tribal
+and sport fisheries), and only in 2010 and 2014-2017 for the UGR
+population (tribal fisheries only). There is no tributary harvest in the
+MIN population. None of the populations modeled by the GR-LCM had any
+recorded tributary harvest during the low-return years 1986-2000.
+
+This data set reports only positive harvest counts; harvest is assumed
+to be zero for any population, year, or composition not included in the
+data set.
 
 ### Fields
 
@@ -2435,8 +2370,8 @@ adult fish.
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural origin (the fish’s parents spawned naturally); `Hat` =
-hatchery origin (the fish’s parents were spawned in a hatchery).
+`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+hatchery-origin (the fish’s parents were spawned in a hatchery).
 </td>
 </tr>
 <tr>
@@ -2470,17 +2405,16 @@ Number of fish harvested.
 ### Notes and limitations
 
 Estimates of tributary harvest (most often zero) are available for all
-years and populations modeled by the LCM, so there are no missing data.
+years and populations modeled by the GR-LCM, so there are no missing
+data.
 
-Although harvest numbers are treated as known values in the LCM, in
+Although harvest numbers are treated as known values in the GR-LCM, in
 practice there is substantial uncertainty associated with these
 estimates. The sport harvest estimates are based on statistical
-expansions from creel survey data, which may represent a small sample
-size relative to the total harvest. The age compositition of the
-tributary harvest is particularly uncertain, because of the uncertainty
-in assigning ages to individual fish in most cases (see discussion in
-the documentation for the `adult-indiv-weir` data set) as well as the
-uncertainty due to sampling variability.
+expansions from creel surveys, which may represent a small sample size
+relative to the total harvest. The age composition of the tributary
+harvest is particularly uncertain because of the low numbers of adult
+fish that are physically sampled in the creel.
 
 ## Adult: adult-indiv-weir
 
@@ -2513,99 +2447,46 @@ Resources Management, Research Division. Lapwai, ID. URL:
 
 ### Description
 
-This data set provides raw data on individual adult fish captured and
-handled at the adult weirs on Catherine Creek (`CAT` population), the
-Lostine River (`LOS` population), and the Upper Grande Ronde River
-(`UGR` population). There is no adult weir on the Minam River (`MIN`
-population). The Lostine River weir is operated by the Nez Perce Tribe
-(NPT), and the Catherine Creek and Upper Grande Ronde weirs are operated
-by the Confederated Tribes of the Umatilla Indian Reservation (CTUIR).
+**Data access date:** 2023-05-09
 
-In the GR-LCM we used this data set to estimate *composition* of the
-returning adults each year, in terms of age and origin. We also used
-this data set to count the numbers of fish removed at the weir, by age
-and origin; these counts are assumed to be known without error.
+This data set provides raw data on individual adult Chinook salmon
+captured and handled at the weirs on Catherine Creek (CAT population),
+the Lostine River (LOS population), and the Upper Grande Ronde River
+(UGR population). There is no adult weir on the Minam River (MIN
+population). The Lostine River weir is operated by the Nez Perce Tribe
+(NPT). The Catherine Creek and Upper Grande Ronde weirs are operated by
+the Confederated Tribes of the Umatilla Indian Reservation (CTUIR).
+
+In the GR-LCM we used this data set (together with the
+`adult-indiv-carcass` data set) to estimate the annual *composition* of
+adult returns in terms of age and origin. Total age can be used to
+assign adult fish back to their brood year. We also used this data set
+to count the numbers of fish removed at the weir, by age and origin; we
+assumed these counts are known without error.
 
 In general, data collected for each fish handled at the weir include
-length, sex, origin, and age. Most records describe individual fish
-(`[count]` = 1), but there are some cases where a single record is used
-to describe multiple fish (`[count]` \> 1). Sex is determined as best as
-possible from morphological characteristics. Origin is determined based
-on presence or absence of an adipose fin clip and/or a coded wire tag
-(CWT). A variety of different sources of information are used to
-determine or estimate the age of a fish, and the best available
-information source for each fish is used to assign an age to that fish.
-In order of preference, these methods include parental-based tagging
-(PBT; i.e., genetic identification of parents and thus of brood year);
-coded wire tag recovery (CWT; hatchery fish only); PIT tag (for fish
-tagged as juveniles); fin ray or scale reading; or age-length key. Age
-determinations based on PBT, CWT, or PIT tag are essentially known
-without error, while age assignments based on scale reading or
-age-length keys are “best guess” aging. For most weir records the best
-age value has already been identified (in the `[best_age]` field), but
-there were some instances where a fish had no assigned `[best_age]`, but
-did have a value for one of the other age fields; in this situation, for
-the GR-LCM we used one of the other available age values (if any),
-according to the preferred order.
-
-Although in general hatchery origin can be identified from an adipose
-fin clip, plus, often, the presence of a CWT, origin assignment is more
-challenging for the UGR population. Only about 50% of the
-hatchery-origin smolt released into UGR each year have adipose fin clips
-(the rate is near 100% for the other populations). Instead the hatchery
-smolt are theoretically 100% marked with CWT, but in practice these CWT
-are not always present or detectable in returning adults (presumably due
-to tag loss). In recent years, genetic sample collection from all fish
-spawned at the hatchery has enabled definitive origin assignment for
-many of the adult fish collected for broodstock at the weirs. These
-genetic data show that a fairly consistent ~10% of the adult fish
-assigned “Natural” origin when they were collected at the UGR weir are,
-in fact, hatchery origin (based on matching their genetic samples to
-known parents from hatchery spawning; ODFW, unpublished data). This same
-pattern, of a consistent proportion of fish that are actually
-hatchery-origin being assigned “natural” origin at the weir, is not seen
-in the Lostine or Catherine Creek populations, presumably because those
-populations have near-100% adipose clips for hatchery smolt. In order to
-account for this known bias in origin assignment in the UGR weir data,
-for the GR-LCM we applied a simple correction factor: for return years
-2006 and later (corresponding to the time period when the adipose-clip
-rate for hatchery smolt settled at or near 50%), we assumed that 10% of
-the fish assigned “Natural” origin at the UGR weir were actually
-Hatchery origin, and within the GR-LCM the origin composition for each
-2006+ return year in UGR is adjusted accordingly. (We did not apply any
-origin correction to the CAT or LOS populations.)
-
-The adult weirs are intended to operate continuously during the run of
-adult fish each year, but in some cases high water temperatures
-(especially at the Upper Grande Ronde weir) necessitate removing the
-weir before the run is complete. High flows can also damage or disable
-weirs. The overall efficiency of the adult weir varies among populations
-and among years, but weir counts are never assumed to be a census of all
-fish on the spawning grounds above the weir. Additionally, to varying
-degrees among populations, some fish spawn downstream before ever
-arriving at the weir.
+length, sex, origin, and age. Sex is assessed based on morphological
+characteristics. Origin is assessed based on presence or absence of an
+adipose fin clip and/or a coded wire tag (CWT). A variety of different
+methods are used to determine or estimate fish age, and the best
+available information source for each fish is used to assign a total age
+to that fish. In order of preference, these age-assessment methods
+include parental-based tagging (PBT); coded wire tag recovery (CWT;
+hatchery fish only); PIT tag (for fish tagged as juveniles); fin ray or
+scale reading; or age-length key. Age determinations based on PBT, CWT,
+or PIT tag are known without error, while age assignments based on scale
+reading or age-length keys are “best guess” aging.
 
 For the GR-LCM we classified all fish arriving at the weir as either
 *removed* from the population or *passed* upstream (i.e., returned to
-the river) to attempt to spawn naturally. Fish are removed at the weir
-for a variety of reasons, including outplants for additional harvest
-opportunity and limiting the numbers of hatchery-origin fish on the
-spawning grounds, but the primary reason is to collect broodstock for
-spawning at the hatchery. The distinction between fish that are
-*removed* vs. *passed* is more complicated for the Lostine population:
-some adults arriving at the Lostine weir are “outplanted” down to the
-lower Wallowa River (downstream of the Lostine weir) to provide
-additional harvest opportunity. However, in the weir data set provided
-here, these lower Wallowa outplants are classified as *passed* because
-they may (if not havested) return to the Lostine River and spawn there,
-meaning that for the accounting used within the GR-LCM these individuals
-remain within the population of potential spawners. (Fish that are
-removed via the lower Wallowa “tributary” harvest are accounted for in
-the `tributary-harvest` data set.)
+the river) to spawn naturally. Fish are removed at the weir for a
+variety of reasons. The primary reason is broodstock collection, but
+hatchery-origin fish are also removed to limit the number of hatchery
+fish spawning in nature.
 
 Some individual fish are handled at the weir more than once: this occurs
-when, for example, a fish outplanted downstream swims back up to the
-weir, or when a fish passed upstream “falls back” below the weir and
+when, for example, a fish is relocated downstream but swims back up to
+the weir, or when a fish passed upstream “falls back” below the weir and
 then is recaptured. These recaptures can be identified by the presence
 of an opercle mark(s), and all recapture records are indicated in the
 data set with `[recapture] = TRUE`. In the GR-LCM, we excluded all
@@ -2619,7 +2500,7 @@ the counts of fish removed at the weir.
 
 - LOS: 18 years (RY 1997-2022; missing RY 2001-2008)
 
-- MIN: 0 years *(No weir in the Minam population)*
+- MIN: 0 years *(No weir in the MIN population)*
 
 - UGR: 25 years (RY 1998-2022)
 
@@ -2651,8 +2532,8 @@ population
 trapyear
 </td>
 <td style="text-align:left;">
-Calendar year when the fish was trapped, i.e., return year for the adult
-fish.
+Calendar year when the fish was trapped at the weir; equal to the return
+year for the fish.
 </td>
 </tr>
 <tr>
@@ -2661,7 +2542,8 @@ count
 </td>
 <td style="text-align:left;">
 Number of fish described by the record. Most records describe individual
-fish, but there are some instances of more than one fish per record.
+fish, but there are some instances where a single record is used to
+describe multiple fish.
 </td>
 </tr>
 <tr>
@@ -2677,8 +2559,8 @@ sex
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural origin (the fish’s parents spawned naturally); `Hat` =
-hatchery origin (the fish’s parents were spawned in a hatchery).
+`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+hatchery-origin (the fish’s parents were spawned in a hatchery).
 </td>
 </tr>
 <tr>
@@ -2695,10 +2577,8 @@ disposition
 </td>
 <td style="text-align:left;">
 Describes what happened to the fish after it was handled. `Passed` =
-fish was returned to the river and allowed to spawn naturally; usually
-this means passed above the weir, but in some cases fish may be passed
-downstream of the weir. `Removed` = the fish was removed from the
-potential spawning population.
+fish was returned to the river and allowed to spawn naturally; `Removed`
+= the fish was removed from the potential spawning population.
 </td>
 </tr>
 <tr>
@@ -2756,10 +2636,9 @@ Age estimate based on a year- and population-specific age-length key.
 recapture
 </td>
 <td style="text-align:left;">
-`TRUE` = the fish had been previously handled (and marked) at the weir,
-i.e., this is not the first time the fish was captured; `FALSE` = the
-fish had not been previously captured at the weir, i.e., this record
-represents the first capture event for the fish.
+`TRUE` = the fish had been previously handled (and marked) at the weir;
+`FALSE` = the fish had not been previously captured at the weir, i.e.,
+this record represents the first capture event for the fish.
 </td>
 </tr>
 <tr>
@@ -2784,33 +2663,51 @@ Any recorded comments.
 
 ### Notes and limitations
 
+Identifying fish origin based on the presence or absence of visible
+marks (termed “observational origin”) is subject to error.
+Hatchery-origin fish can usually be identified by an adipose fin clip
+and/or the presence of a CWT. However, assigning origin is more
+challenging for the UGR population than for other populations. In most
+Grande Ronde basin populations, nearly 100% of smolts have the adipose
+fin clipped, and CWT rates range from 48-67% of smolts (Feldhaus et
+al. 2022). But in the UGR population, only about 50% of the smolts are
+marked with an adipose fin clip, and instead the goal is to mark all
+smolts with a CWT. In practice a CWT is not always present or detectable
+in returning adults, likely due to tag loss. In recent years, genetic
+sample collection from all fish spawned at the hatchery has enabled
+definitive origin assignment for most of the adult fish collected for
+broodstock. These genetic data show that for the UGR population,
+consistently about 10% of the adult fish assigned “Natural” origin based
+on fin clip and CWT marks are actually hatchery-origin (based on
+matching their genetic samples to known parents from hatchery spawning;
+ODFW, unpublished data). We do not observe a similar pattern of
+unidentified hatchery-origin adults in the LOS or CAT populations,
+presumably because those populations have near-100% adipose clips for
+hatchery smolts. To account for this known bias in origin assignment in
+the UGR weir data, for the GR-LCM we applied a simple correction factor:
+for return years 2006 and later (corresponding to the time period when
+the adipose-clip rate for hatchery smolt settled at near 50%), we
+assumed that 10% of the fish assigned “Natural” origin at the UGR weir
+were actually hatchery-origin. We did not apply any origin correction
+factors to the CAT or LOS populations.
+
+The weirs are intended to operate continuously during the run of adult
+fish each year. However, high water temperatures at the Upper Grande
+Ronde River weir usually necessitate removing the weir before the run is
+complete. High flows can also damage or disable weirs. The overall
+efficiency of the adult weir varies among populations and among years.
+We never assumed that weir counts are a census of all fish on the
+spawning grounds above the weir. Additionally, some fish spawn
+downstream of the weirs.
+
 In the GR-LCM we assumed that fish trapped at the weir provide an
 unbiased sample of the full population of returning adult fish. However,
-the weirs are known to be less efficient at catching age-3 fish than
-they are at catching age-4 and age-5 fish (ODFW, unpublished data),
-meaning that the proportion of age-3 fish in the returning population is
-likely underestimated.
-
-We also assumed that the recorded age and origin values are known
-without error. In practice, however, both are subject to error -
-especially age. Parental-based-tagging, CWT recovery, and some PIT tag
-records provide known age, but all other age assignments are estimates
-based on scale reading or age-length keys. For origin, identifying
-hatchery origin usually relies on presence of an adipose fin clip and/or
-a CWT, and these indicators are not always present in true
-hatchery-origin fish (especially for the UGR population, as described
-above).
-
-Although the weirs all began operating in 1997 or 1998, these initial
-years experienced low trap efficiency and caught very few fish. But all
-traps were running effectively by the early 2000s.
-
-Data collection at the Lostine weir in 2001-2008 is known to be
-problematic, and in the GR-LCM we excluded these years of data from the
-composition estimates (composition for the Lostine population in these
-years was estimated based only on carcass recoveries, as for the Minam
-population). However, we did use these 2001-2008 data to tally fish
-removed at the weir.
+arrival timing at the weirs differs between age-3 vs. age-4/5 adults,
+with the age-3 fish arriving on average about one to two weeks later
+than older fish (Beer 2007; ODFW, unpublished data). Different arrival
+timing may result in different weir efficiency, especially when age-3
+fish are more likely to arrive after the weir has been removed for the
+season.
 
 ## Adult: adult-indiv-carcass
 
@@ -2838,24 +2735,24 @@ Resources Management, Research Division. Lapwai, ID. URL:
 
 ### Description
 
-This data set provides raw data on individual adult fish, collected from
-carcasses recovered during spawning ground surveys. In the GR-LCM, both
-carcass data and weir data are used to estimate the composition (in
-terms of age and origin) of the population of returning adult fish in
-each return year. Through estimated age, returning adult fish can be
-assigned back to their brood year of origin.
+**Data access date:** 2023-05-09
+
+This data set provides raw data on individual adult Chinook salmon
+carcasses recovered during spawning ground surveys. Chinook spawning
+ground surveys in the Grande Ronde Basin are a collaborative effort
+between ODFW, NPT, and CTUIR.
+
+In the GR-LCM we used this data set (together with the
+`adult-indiv-weir` data set) to estimate the annual *composition* of
+adult returns in terms of age and origin. Total age can be used to
+assign adult fish back to their brood year.
 
 This same carcass data set was also used to generate the pre-spawn
 survival estimates (see notes for the `prespawn-survival` data set).
 
-Chinook spawning ground surveys in the Grande Ronde Basin are funded by
-the Lower Snake River Compensation Plan and conducted by co-managers
-CTUIR, NPT, and ODFW.
-
-For populations that have an adult weir (i.e., all except Minam), many
-of the carcasses recovered during spawning ground surveys are fish that
-were previously handled and documented at the weir (before being
-released back to the river to spawn naturally). Fish that were
+For populations that have an adult weir (i.e., all except MIN), many of
+the carcasses recovered during spawning ground surveys are fish that
+were previously handled and documented at the weir. Fish that were
 previously handled at the weir can be identified by an opercle punch
 marking, but there is no way to definitively match individual marked
 carcasses back to their corresponding individual record in the weir
@@ -2864,23 +2761,25 @@ spawning ground surveys are used for the mark-recapture estimation of
 fish abundance above the weir (see notes for the `adult-abundance` data
 set).
 
-For all carcass recoveries, surveyors attempt to collect data on fork
-length; sex; origin (based on presence or absence of an adipose fin clip
-and/or CWT); spawn status (for females); and presence or absence of
+In general, data collected for each carcass recovery include length,
+sex, origin, age, spawn status (for females), and presence/absence of
 opercle punch markings. However, the condition of the carcass determines
-what information can be collected (for example, if the carcass’s tail
-has been eaten by a scavenger then fork length cannot be measured),
-meaning that many carcass records have missing data.
+what information can be collected. For example, it may be impossible to
+collect fork length or to determine sex or origin on carcasses that are
+badly decomposed or that have been scavenged. For this reason, some
+carcass records have missing data.
 
-As in the weir data set, a variety of different sources of information
-are used to determine or estimate the age of a fish, and the best
-available information source for each fish is used to assign an age to
-that fish. In order of preference, these methods include parental-based
-tagging (PBT; i.e., genetic identification of parents and thus of brood
-year); coded wire tag recovery (CWT; hatchery fish only); PIT tag (for
-fish tagged as juveniles); fin ray or scale reading; or age-length key.
-Age determinations based on PBT, CWT, or PIT tag are essentially known
-without error, while age assignments based on scale reading or
+Sex of a carcass is determined by external morphological characteristics
+and confirmed by opening the body cavity and examining the gonads.
+Origin is assessed based on presence or absence of an adipose fin clip
+and/or a coded wire tag (CWT). A variety of different methods are used
+to determine or estimate fish age, and the best available information
+source for each fish is used to assign a total age to that fish. In
+order of preference, these age-assessment methods include parental-based
+tagging (PBT); coded wire tag recovery (CWT; hatchery fish only); PIT
+tag (for fish tagged as juveniles); fin ray or scale reading; or
+age-length key. Age determinations based on PBT, CWT, or PIT tag are
+known without error, while age assignments based on scale reading or
 age-length keys are “best guess” aging.
 
 **Years of data:** 32 (RY 1991 - 2022; no carcasses recovered from the
@@ -2914,8 +2813,8 @@ population
 year
 </td>
 <td style="text-align:left;">
-Calendar year when the carcass was recovered, i.e., return year for the
-adult fish.
+Calendar year when the carcass was recovered; equal to the return year
+for the fish.
 </td>
 </tr>
 <tr>
@@ -2923,9 +2822,7 @@ adult fish.
 sex
 </td>
 <td style="text-align:left;">
-`F` = Female; `M` = Male; `Unk` = Unknown. Sex of carcasses can usually
-be determined with high confidence by cutting open the body cavity, if
-enough of the carcass is still present.
+`F` = Female; `M` = Male; `Unk` = Unknown.
 </td>
 </tr>
 <tr>
@@ -2933,11 +2830,8 @@ enough of the carcass is still present.
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural origin (the fish’s parents spawned naturally); `Hat` =
-hatchery origin (the fish’s parents were spawned in a hatchery). Origin
-is determined based on presence or absence of an adipose fin clip and
-presence or absence of a coded wire tag, but predation and decay of
-carcasses may destroy these indicators.
+`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+hatchery-origin (the fish’s parents were spawned in a hatchery)
 </td>
 </tr>
 <tr>
@@ -2945,8 +2839,7 @@ carcasses may destroy these indicators.
 fork_length
 </td>
 <td style="text-align:left;">
-Fork length (mm), if known. Many carcasses are not measurable (e.g.,
-only the head was found).
+Fork length (mm), if known.
 </td>
 </tr>
 <tr>
@@ -2955,12 +2848,6 @@ age_best
 </td>
 <td style="text-align:left;">
 Best available age estimate (generally age 3, 4, or 5) for the fish.
-Methods of determining age are, in order of preference,
-parental-based-tagging; coded wire tag; PIT tag; scale read; age-length
-key; and simple length bins. In some cases a fish may have a value for
-one of the other age fields but no assigned `[best_age]`, in which case
-the GR-LCM will use one of the other available age values (if any),
-according to the preferred order.
 </td>
 </tr>
 <tr>
@@ -2968,7 +2855,7 @@ according to the preferred order.
 age_cwt
 </td>
 <td style="text-align:left;">
-Age estimate based on a recovered coded wire tag.
+Age determination based on a recovered coded wire tag.
 </td>
 </tr>
 <tr>
@@ -3001,9 +2888,9 @@ prespawn
 </td>
 <td style="text-align:left;">
 For female carcasses, did the fish spawn successfully (`Spawned`), or
-did the fish die before spawning (`PreSpawn`)? Fish are considered
-`Spawned` if there are less than 50% of eggs remaining. This field is
-`NA` when `[Sex]` = `M`or `Unk`.
+did the fish die before spawning (`PreSpawn`)? Females are considered
+`Spawned` if less than 50% of eggs remain in the body cavity. This field
+is `NA` when `[Sex]` = `M` or `Unk`.
 </td>
 </tr>
 </tbody>
@@ -3011,37 +2898,34 @@ did the fish die before spawning (`PreSpawn`)? Fish are considered
 
 ### Notes and limitations
 
-Carcass collection is limited by when spawning ground surveys occurred
-in a given year and population. Sometimes planned surveys have to be
-skipped due to (for example) wildfire or a landowner denying permission
-to access the site. Most spawning reaches are surveyed multiple times
-during the spawning season, and carcasses are more likey to be recovered
-during the late surveys, when a majority of fish have completed
-spawning. If the last survey of a reach is skipped, then this will
-likely result in missing most of the carcass recovery opportunities.
-Later surveys are more likely to encounter carcasses.
+Carcass collection is limited by when spawning ground surveys occur.
+Sometimes planned surveys must be skipped due to (for example) wildfire
+or a landowner denying permission to access the site. Most spawning
+reaches are surveyed multiple times during the spawning season, and
+carcasses are more likely to be recovered during the late surveys, when
+most fish have completed spawning. If the last survey of a reach is
+skipped, then this will likely result in reduced carcass recovery rates.
 
-Some populations have much higher carcass recovery probabilities than
-others. Wilderness streams - i.e., the Minam River, among the GR-LCM
-populations - tend to have very low carcass recovery probabilities,
-presumably due to relatively higher abundances of scavengers. Carcass
-recovery probability is also very low on the Upper Grande Ronde River,
-due to a combination of heavy scavenger pressure and (in most years) low
-numbers of fish (ODFW, unpublished data).
+Carcass recovery rates vary among populations. Wilderness streams -
+i.e., the Minam River, among the GR-LCM populations - tend to have very
+low carcass recovery probabilities, presumably due to relatively higher
+abundances of scavengers. Carcass recovery probability is also very low
+on the Upper Grande Ronde River, due to a combination of heavy scavenger
+pressure, limited surveyor access to spawning reaches, and (in most
+years) low numbers of fish (ODFW, unpublished data).
 
 Carcass recovery probability is biased by fish size and sex. Larger fish
-are more likely to be recovered than smaller fish, and recoveries of
-age-3 (“jacks”) carcasses are especially rare, relative to recoveries of
-age-4 and age-5 carcasses (Murdoch et al. 2010; Zhou 2002; ODFW,
-unpublished data). Additionally, females are more likely to be recovered
-than males, presumably due to behavioral differences: females are likely
-to die at or very near their redd, and those locations are the most
-closely observed by surveyors (Murdoch et al. 2010; ODFW, unpublished
-data).
+(i.e., age-4 and age-5) are more likely to be recovered than smaller
+fish (i.e., age-3) (Murdoch et al. 2010; Zhou 2002; ODFW, unpublished
+data). Additionally, females are more likely to be recovered than males,
+presumably due to behavioral differences: females are likely to die at
+or very near their redd, and those locations are the most closely
+observed by surveyors (Hoffnagle et al. 2008; Murdoch et al. 2010; ODFW,
+unpublished data).
 
 In the GR-LCM, we corrected for biased carcass recovery probabilities
-when using carcass data to estimate sex and age composition of returning
-adult fish.
+when using carcass data to estimate age composition of returning adult
+fish.
 
 ## Adult: prespawn-surv
 
@@ -3051,44 +2935,42 @@ See `adult-indiv-carcass` data set.
 
 ### Description
 
-This auxiliary data set provides estimated rates of prespawn survival
-for each population and return year modeled by the GR-LCM. We fit a
-binomial model predicting prespawn survival in each population and
-return year based on observed spawn status in carcass recoveries, and
-then supplied the estimated prespawn survival rates to the GR-LCM as
-known values. The source data for the prespawn survival model was the
+**Data access date:** see `adult-indiv-carcass` data set
+
+This auxiliary data set provides annually estimated rates of prespawn
+survival for returning adult Chinook salmon. We fit a binomial model
+predicting prespawn survival in each population and return year based on
+observed spawn status in carcass recoveries, and then supplied the
+estimated prespawn survival rates to the GR-LCM as known values. The
+source data for the prespawn survival model was the
 `adult-indiv-carcass` data set.
 
 “Prespawn survival” here describes the probability of survival from the
 time that potential spawning begins to successful spawning.
 
 Rates of prespawn survival are estimated based on observed spawn status
-of carcass recoveries. For all female carcasses recovered, surveyors
-attempt to determine whether the fish spawned successfully (few eggs
-remain) vs. the fish died befored spawning (large number of eggs still
-in the body cavity). The relative numbers of successfully spawned
-vs. unspawned carcasses can be used to roughly estimate the rate of
-prespawn mortality (or, equivalently, prespawn survival) in a given
-population and return year. However, in many years the numbers of
-eligible carcasses recovered are very low - primarily in the UGR and
-Minam populations - which does not allow for robust estimation of an
-overall prespawn survival rate using only carcass recoveries from that
+of female carcass recoveries. Females are considered `Spawned` if less
+than 50% of eggs remain in the body cavity. The relative numbers of
+successfully spawned vs. unspawned female carcasses can be used to
+roughly estimate the rate of prespawn mortality (or, equivalently,
+prespawn survival) in a given population and return year. However, in
+many years - primarily in the UGR and MIN populations - fewer than 20
+female carcasses were recovered, which limits our ability to estimate
+annual prespawn survival rates using only carcass recoveries from that
 year.
 
-Analysis of the existing carcass recovery data indicated that there are
-some consistent differences among populations in prespawn survival
-rates: survival tends to be higher in the MIN and CAT populations, and
-lower in the LOS and, especially, UGR populations. There is also some
-evidence that prespawn survival for a given population varies among
-years, at least in the UGR population. Other studies have found
-increased rates of prespawn mortality associated with higher mean stream
-temperatures during the spawning period (Bowerman et al. 2021), which
-may drive some of the observed variability in prespawn survival rates
-among years.
+We noted some consistent differences among populations in prespawn
+survival rates. Survival tends to be higher in the MIN and CAT
+populations, and lowest in the UGR population. There is also some
+evidence that prespawn survival for a given population varies annually.
+Other studies have found increased rates of prespawn mortality
+associated with higher mean stream temperatures during the spawning
+period (Bowerman et al. 2021), which may drive some of the observed
+variability in prespawn survival rates among years.
 
-For the GR-LCM, we used the carcass recovery data as described above to
-fit population-specific logistic mixed models assuming a time constant
-mean with logit-normal annual random effects.
+For the GR-LCM, we used the carcass recovery data to fit
+population-specific logistic mixed models of prespawn survival rate
+assuming a time constant mean with logit-normal annual random effects.
 
 ### Fields
 
@@ -3109,8 +2991,8 @@ Description
 brood_year
 </td>
 <td style="text-align:left;">
-Here equivalent to \[Return Year\]: the year adults SPAWNED, NOT the
-year they WERE SPAWNED. This nomenclature is used to allow merging with
+Here equivalent to \[Return Year\]: the year adults spawned, not the
+year they were spawned. This nomenclature is used to allow merging with
 other data sets.
 </td>
 </tr>
@@ -3128,7 +3010,7 @@ population
 prespawn_surv
 </td>
 <td style="text-align:left;">
-Probability that an adult female fish survives from the beginning of the
+Probability that an adult fish survives from the beginning of the
 spawning period through successful spawning.
 </td>
 </tr>
@@ -3139,14 +3021,13 @@ spawning period through successful spawning.
 
 The terms “prespawn survival” or “prespawn mortality” can be used to
 describe survival over a range of different time periods in adult
-salmonid life history. At its broadest, the term can refer to
-“non-fishery mortality of adult salmon and steelhead between the time
-the fish enter the Columbia River and the completion of spawning”
-(Johnson et al. 2007). More commonly, it refers to mortality between
-returning to the spawning area (i.e., after completing migration) and
-successful spawning (Bowerman et al. 2018). But, because in this data
-set the spawning ground surveys where carcasses might be recovered
-typically occur only during the spawning period, in practice the
+salmonid life history. Broadly, the term can refer to “non-fishery
+mortality of adult salmon and steelhead between the time the fish enter
+the Columbia River and the completion of spawning” (Johnson et
+al. 2007). More commonly, it refers to mortality between returning to
+the spawning area (i.e., after completing migration) and successful
+spawning (Bowerman et al. 2018). Because this carcass data set is
+limited to data collecting during the spawning period, in practice the
 sampling method captures only mortality during this brief time period
 (about three weeks). Bowerman et al. (2021) describe this distinction as
 the “holding period” (after adults have returned to the spawning area
@@ -3154,25 +3035,22 @@ and completed migration but before the initiation of spawning) vs. the
 “spawning period”.
 
 For the GR-LCM, mortality between Bonneville Dam and Lower Granite Dam
-is captured in the `BON-LGR-adult-PIT-detections` “converstion rate”
-data set; and mortality during the spawning period is captured in the
-pre-spawn survival data set; but adult mortality between Lower Granite
-Dam, arriving on the spawning grounds, and holding until spawning
-begins, is not captured in the data sets used to fit the GR-LCM.
+is captured in the `BON-LGR-adult-PIT-detections` converstion rate data
+set; mortality during the spawning period is captured in the
+`prespawn surv` data set; but adult mortality between Lower Granite Dam
+and the start of the spawning period is not captured in the data sets
+used to fit the GR-LCM.
 
-Low sample sizes of recovered carcasses with known spawn status in many
+Low sample sizes of recovered carcasses with known spawn status in some
 years and populations limit our ability to make strong inferences about
-prespawn mortaltiy rates. This is especially problematic for the Upper
-Grande Ronde population, where carcass recoveries are consistently very
-low (due to a combination of low adult fish numbers and low recovery
-rates), but the available evidence (including some data from
-radio-tracking of returning adults; Crump et al. 2021) suggests that
-prespawn survival rates in this population are both low and highly
-variable among years. So we have only limited information available to
+prespawn mortality rates. This is especially problematic for the UGR
+population, where carcass recoveries are consistently very low. A radio
+tracking study (Crump et al. 2021) of adult Chinook salmon in the UGR
+population suggests that prespawn survival rates are both low and highly
+variable among years. We have limited information available to
 characterize this important source of mortality in the UGR population.
-Carcass recovery rates also tend to be low in the Minam population, but
-observed prespawn survival rates there are consistently high across
-years.
+Carcass recovery rates are also low in the MIN population, but observed
+prespawn survival rates there are consistently high.
 
 ## Adult: fecundity
 
@@ -3189,46 +3067,48 @@ Reservation, Island City, OR. URL:
 
 ### Description
 
-This auxiliary data set provides values for the expected fecundity (eggs
-produced per female) for returning adult fish by age (age-4 vs. age-5),
-population, and year. In the GR-LCM, fecundity is treated as a known
-value.
+**Data access date:** 2023-05-19
 
-Extensive data on fecundity of Chinook in the Grande Ronde Basin are
-available through the records from hatchery spawning, where ~30-80
-female fish from each of the CAT, LOS, and UGR populations are spawned
-in the hatchery each year (beginning in 2001), and the fecundity of each
-female spawned is measured (using an automatic egg counter) and
-recorded. After hatch, egg counts are validated against auto-trailer
-counts of juveniles in each hatchery raceway.
+This auxiliary data set provides values for the expected fecundity (eggs
+produced per female) for returning adult Chinook salmon by age (age-4
+vs. age-5), population, and year. In the GR-LCM, fecundity is treated as
+a known value.
+
+Data for Chinook salmon fecundity in the Grande Ronde Basin are
+available through hatchery spawning records, where ~30-80 female fish
+from each of the CAT, LOS, and UGR populations are spawned annually
+(since 2001) at Lookingglass Fish Hatchery. The fecundity of each female
+is measured (using an automatic egg counter) and recorded. After eggs
+hatch, egg counts are validated against auto-trailer counts of juveniles
+in each hatchery raceway.
 
 For the GR-LCM, we used mean length of returning adult females (by age,
 population, and year) to predict mean fecundity for each year and
-population. Expected fecundity of a given fish is strongly related to
-fish size: larger fish produce more eggs (ODFW, unpublished data).
-Because fish size is related to fish age, age can be used as a simple
-categorical predictor of fecundity. In development of the GR-LCM,
-however, there was some concern that using static age-based estimates
-for fecundity could obscure differences among populations in mean
-size-at-age, or changes in size-at-age over time.
+population. Expected fecundity of a given fish is correlated with fish
+size: larger fish produce more eggs (ODFW, unpublished data). Because
+fish size is related to fish age, age can be used as a simple
+categorical predictor of fecundity. In development of the GR-LCM, there
+was concern that using static age-based estimates for fecundity could
+obscure differences among populations in mean size-at-age, or changes in
+size-at-age over time.
 
-In order to estimate year- and population-specific fecundity values for
-the GR-LCM, we first used all available hatchery spawning records from
-the GR-LCM populations to fit a linear model predicting individual
-fecundity as a function of fork length. Then we used all available weir
-and carcass records to calculate the mean length of returning females in
+To estimate year- and population-specific fecundity values for the
+GR-LCM, we first used all available hatchery spawning records from the
+GR-LCM populations to fit a linear model predicting individual fecundity
+as a function of fork length. Then we used all available weir and
+carcass records to calculate the mean length of returning females in
 each year and population, by age (age-4 and age-5). Finally, we used
 these mean length values in the linear model to predict mean fecundity
 for each age, year, and population. Although it would have been simpler
-to use the spawning data directly to estimate mean fecundity by age in
+to use the spawning data to directly estimate mean fecundity by age in
 each year and population, there were too many missing data points to
-make this approach viable for the GR-LCM: hatchery spawning records do
-not start until 2001, while the model extends back to 1991.
-Additionally, there are no spawning data for Minam population, because
-there is no hatchery supplementation in this population. Calculating
-fecundity based on mean length allowed us to extend the population- and
-year-specific fecundity estimates out to these years and populations for
-which there is no direct spawning data.
+make this approach viable for the GR-LCM: hatchery fecundity records do
+not start until 2001, while the GR-LCM extends back to 1991.
+Additionally, there are no fecundity data for MIN, because there is no
+hatchery supplementation in this population. Calculating fecundity based
+on mean length allowed us to extend the population- and year-specific
+fecundity estimates to years and populations that lack direct fecundity
+estimates.
 
 ### Fields
 
@@ -3301,46 +3181,35 @@ Predicted number of eggs produced per spawning female.
 
 ### Notes and limitations
 
-Age-3 females are rare (almost all fish that return at age-3 are males),
-and this life history pathway is excluded from the GR-LCM. Therefore we
-calculated fecundity estimates for age-4 and age-5 females only.
+Age-3 females are rare, and this life history pathway is excluded from
+the GR-LCM. Almost all fish that return at age-3 are males. Therefore,
+we calculated fecundity estimates for age-4 and age-5 females only.
 
 Calculating mean length of returning adult females by age, year, and
 population was limited by small sample sizes in some years and
 populations. This is especially true for age-5 fish; in the years
-modeled by the GR-LCM age-4 fish are always more common than age-5. In
-order to ensure adequate sample sizes for robust estimation of mean
+modeled by the GR-LCM, age-4 fish were always more common than age-5
+fish. To ensure adequate sample sizes for robust estimation of mean
 length, we pooled some populations and years together for calculating
 means:
 
-- The CAT, UGR, and MIN population length (by age) values were all
-  pooled together, within each return year.
-  - The UGR population usually has very few carcass recoveries, and
-    often very low numbers of returning adults at all, resulting in
-    small sample sizes for length in most years. We pooled UGR fish with
-    CAT fish for estimating mean length, because existing data for CAT
-    and UGR show very similar length-at-age data among the two
-    populations. The two populations (CAT and UGR) are also relatively
-    close to one another geographically.
+- The CAT, UGR, and MIN population length (by age) values were pooled
+  together, within each return year, while mean lengths for the LOS
+  population were estimated separately. LOS fish tend to be larger (for
+  a given age) than fish from the other three populations.
 
-  - The MIN population also has consistently low sample sizes (with no
-    weir in this population, the only length data come from carcass
-    recoveries, which are rare in the Minam). We initially thought to
-    pool the Minam population with the Lostine for the mean length
-    estimation, but examination of the available length data showed that
-    Minam lengths tended to be closer to the CAT and UGR populations
-    than to the LOS population. Therefore, the MIN, UGR, and CAT
-    populations were all pooled together, while LOS lengths were
-    estimated separately. Lostine fish tend to be larger (for a given
-    age) than fish from the other three populations.
 - The years 1991-2000 had consistently low sample sizes across all
   populations, especially for age-5 fish. This was due to a combination
   of no weir data for 1991-1996 (and limited data from the early years
-  of weir operation), plus just very low fish return numbers overall
-  during the 1990s. Therefore years 1991-2000 were pooled together
-  (within each population) for estimating mean length at age.
+  of weir operation), plus low fish return numbers during the 1990s.
+  Therefore years 1991-2000 were pooled together (within each
+  population) for estimating mean length at age.
 
 # References
+
+Beer, WN. 2007. Run timing of adult Chinook passing Bonneville Dam on
+the Columbia River. Columbia Basin Research, Seattle, WA. URL:
+<https://www.cbr.washington.edu/sites/default/files/papers/chinook.run.timing.2007.pdf>
 
 Bliesner, KL, Craft NM, Feldhaus JW, and Ruzycki JR. 2020. A compendium
 of Viable Salmonid Population abundance and productivity field and
@@ -3351,7 +3220,7 @@ the Snake River Spring/Summer-run ESU of Northeast Oregon from 1949 to
 
 Bowerman TE, Roumasset A, Keefer ML, Sharpe CS, and Caudill CC. 2018.
 Prespawn mortality of female Chinook salmon increases with water
-temperature and percent hatchery origin. Transactions of the American
+temperature and percent hatchery-origin. Transactions of the American
 Fisheries Society 147(1): 31-42.
 
 Bowerman TE, Keefer ML, and Caudill CC. 2021. Elevated stream
@@ -3402,6 +3271,11 @@ in the Grande Ronde River subbasin. Annual Report BPA Project
 \#1992-026-04, Oregon Department of Fish and Wildlife, La Grande, OR.
 URL:
 <https://nrimp.dfw.state.or.us/DataClearinghouse/default.aspx?p=202&XMLname=42802.xml>
+
+Hoffnagle, TL, Carmichael RW, Frenyea KA, and Keniry PJ. 2008. Run
+timing, spawn timing, and spawning distribution of hatchery- and
+natural-origin spring Chinook salmon in the Imnaha River, Oregon. North
+American Journal of Fisheries Management 28:148–164.
 
 Johnson DH, Shrier BM, O’Neal JS, Knutzen JA, Augerot X, O’Neil TA, and
 Pearsons TN. 2007. Salmonid field protocols handbook: techniques for
