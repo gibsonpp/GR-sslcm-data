@@ -1,6 +1,7 @@
 Metadata for data sets used in the Grande Ronde Life Cycle Model
 ================
 
+- [Disclaimer](#disclaimer)
 - [Data set summary](#data-set-summary)
 - [Abbreviations](#abbreviations)
 - [Data set metadata](#data-set-metadata)
@@ -19,6 +20,16 @@ Metadata for data sets used in the Grande Ronde Life Cycle Model
   - [Adult: prespawn-surv](#adult-prespawn-surv)
   - [Adult: fecundity](#adult-fecundity)
 - [References](#references)
+
+# Disclaimer
+
+**We are providing the data sets used to fit the GR-LCM to ensure
+transparency, and to assist other users with ensuring reproducibility of
+their modelling approach. The data sets of record from which we
+extracted these data remain subject to updates. Any use of these data
+for analyses other than model reproduction is not approved. Users should
+contact data set owners to obtain the most current data sets of record;
+and use those data for any analysis.**
 
 # Data set summary
 
@@ -628,10 +639,6 @@ RY 1991
 RY 2022
 </td>
 <td style="text-align:left;width: 3in; ">
-Source carcass recovery data used to fit the prespawn survival model has
-numerous years where the number of eligible carcasses for determining
-spawn status is very low (n \<= 5) or zero, primarily in the UGR and MIN
-populations.
 </td>
 </tr>
 <tr>
@@ -660,8 +667,6 @@ RY 1991
 RY 2022
 </td>
 <td style="text-align:left;width: 3in; ">
-Mean fecundity estimated for all populations 1991-2022, based on
-hatchery spawning data from CAT, LOS, and UGR populations 2001-2021.
 </td>
 </tr>
 </tbody>
@@ -792,8 +797,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -810,7 +815,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to `[brood_year] + 2`.
+equivalent to \[brood_year\] + 2.
 </td>
 </tr>
 <tr>
@@ -819,10 +824,10 @@ season
 </td>
 <td style="text-align:left;">
 Indicates the season when fish migrated downstream past the screw trap.
-`fall` fish (also known as ‘early migrants’) move out of their headwater
+Fall fish (also known as ‘early migrants’) move out of their headwater
 spawning locations in the fall and spend the winter downstream of the
-smolt trap; while `spring` fish (‘late migrants’) spend the winter in
-the headwaters and move downstream past the smolt trap in the spring, on
+smolt trap; while spring fish (‘late migrants’) spend the winter in the
+headwaters and move downstream past the smolt trap in the spring, on
 their way out to the mainstem Snake River and the ocean.
 </td>
 </tr>
@@ -834,7 +839,7 @@ abund_est
 Estimated total number of fish that passed the screw trap over the
 course of the season, expanded by the ratio of redds counted upstream of
 the smolt trap to all redds counted in the population
-(`[expansion_factor]` ), to account for any spawning downstream of the
+(\[expansion_factor\] ), to account for any spawning downstream of the
 traps.
 </td>
 </tr>
@@ -1032,8 +1037,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -1050,7 +1055,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to `[brood_year] + 2`.
+equivalent to \[brood_year\] + 2.
 </td>
 </tr>
 <tr>
@@ -1059,10 +1064,9 @@ season
 </td>
 <td style="text-align:left;">
 Indicates both the season when the fish were captured and tagged, and
-the method by which the fish were captured. `summer` and `winter` fish
-are actively captured by snorkel-herding throughout the rearing habitat,
-while `fall` and `spring` fish are passively captured in rotary screw
-traps.
+the method by which the fish were captured. Summer and winter fish are
+actively captured by snorkel-herding throughout the rearing habitat,
+while fall and spring fish are passively captured in rotary screw traps.
 </td>
 </tr>
 <tr>
@@ -1283,11 +1287,11 @@ fish_subset
 </td>
 <td style="text-align:left;">
 Indicates whether the statistics in the record describe all measured
-fish (**`all`**) vs. only the PIT tagged fish (**`PIT`**). With a few
-exceptions, both sets of statistics (i.e., two rows of data) are
-provided for each population/year/season combination. Note that for
-winter season, `PIT` and `all` statistics are always the same, because
-typically there are almost no non-PIT tagged fish during winter.
+fish (all) vs. only the PIT tagged fish (PIT). With a few exceptions,
+both sets of statistics (i.e., two rows of data) are provided for each
+population/year/season combination. Note that for winter season, ‘PIT’
+and ‘all’ statistics are always the same, because typically there are
+almost no non-PIT tagged fish during winter.
 </td>
 </tr>
 <tr>
@@ -1295,8 +1299,8 @@ typically there are almost no non-PIT tagged fish during winter.
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -1313,7 +1317,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to `[brood_year] + 2`.
+equivalent to \[brood_year\] + 2.
 </td>
 </tr>
 <tr>
@@ -1322,10 +1326,9 @@ season
 </td>
 <td style="text-align:left;">
 Indicates both the season when the fish were captured/tagged, and the
-method by which the fish were captured. `summer` and `winter` fish are
+method by which the fish were captured. Summer and winter fish are
 actively captured by snorkel-herding throughout the rearing habitat,
-while `fall` and `spring` fish are passively captured in rotary screw
-traps.
+while fall and spring fish are passively captured in rotary screw traps.
 </td>
 </tr>
 <tr>
@@ -1334,7 +1337,7 @@ n_length
 </td>
 <td style="text-align:left;">
 Number of length values included in the reported statistics. Equivalent
-to `[n_pit] + [n_npt]`.
+to \[n_pit\] + \[n_npt\].
 </td>
 </tr>
 <tr>
@@ -1342,9 +1345,9 @@ to `[n_pit] + [n_npt]`.
 n_pit
 </td>
 <td style="text-align:left;">
-A subset of `[n_length]`: number of PIT-tagged fish included in the
-reported length statistics. When `[fish_subset] = PIT`, `[n_pit]` is
-equal to `[n_length]`.
+A subset of \[n_length\]: number of PIT-tagged fish included in the
+reported length statistics. When \[fish_subset\] = PIT, \[n_pit\] is
+equal to \[n_length\].
 </td>
 </tr>
 <tr>
@@ -1352,9 +1355,8 @@ equal to `[n_length]`.
 n_npt
 </td>
 <td style="text-align:left;">
-A subset of `[n_length]`: number of **not PIT-tagged** fish included in
-the reported length statistics. When `[fish_subset] = PIT`, `[n_npt]` is
-0.
+A subset of \[n_length\]: number of not PIT-tagged fish included in the
+reported length statistics. When \[fish_subset\] = PIT, \[n_npt\] is 0.
 </td>
 </tr>
 <tr>
@@ -1560,8 +1562,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -1579,7 +1581,7 @@ release_year
 <td style="text-align:left;">
 Calendar year when the cohort of fish was released. For standard smolt
 releases, fish are released in the spring and the release year matches
-the migration year (i.e., `[brood_year]` + 2). When fish are released as
+the migration year (i.e., \[brood_year\] + 2). When fish are released as
 parr the calendar year is one year prior to their outmigration year.
 </td>
 </tr>
@@ -1624,7 +1626,7 @@ includes_parr
 </td>
 <td style="text-align:left;">
 Indicates whether the reported \[n_smolt_released\] and \[surv_est\]
-values include any parr releases. This field is usually `FALSE`; most
+values include any parr releases. This field is usually FALSE; most
 hatchery-origin fish are released as smolt.
 </td>
 </tr>
@@ -1769,7 +1771,7 @@ mig_year
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean and,
 thus, the year when the cohort passed downstream through the hydrosystem
-as juveniles; equivalent to `[brood_year] + 2`.
+as juveniles; equivalent to \[brood_year\] + 2.
 </td>
 </tr>
 <tr>
@@ -2114,13 +2116,13 @@ This data set provides estimated numbers of adult Chinook salmon
 This metric is known as “total return-to-river” (RTR), which is distinct
 from the number of *spawners* present in a given year and population.
 The total abundance (RTR) numbers include all adult fish (all ages, both
-hatchery and natural-origin, both female and male); in the GR-LCM, we
-estimate the *composition* of the annual adult return by age and origin
-based on the weir and carcass data sets.
+hatchery and natural-origin, both sexes); in the GR-LCM, we estimate the
+*composition* of the annual adult return by age and origin based on the
+weir and carcass data sets.
 
-Methods for estimating the total RTR are complex and vary by
-population.The field and analysis methods are described fully in
-Bliesner et al. (2020), but some relevant pieces are summarized here.
+Methods for estimating the total RTR are complex and vary by population.
+The field and analysis methods are described fully in Bliesner et
+al. (2020), but some relevant pieces are summarized here.
 
 There are two primary methods for estimating abundance of returning
 adults, depending on whether an adult weir is present. In the three
@@ -2231,8 +2233,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -2265,8 +2267,8 @@ Estimated number of fish in the river above the weir, after removals at
 the weir and after any tributary harvest, but prior to any prespawn
 mortality. Note that some fish may spawn below the weir, without ever
 being handled at the weir; these fish are not counted in the
-`[n_above_weir]` value. For years and populations where no adult weir is
-present, `[n_above_weir]` is equal to `[n_returned]`.
+\[n_above_weir\] value. For years and populations where no adult weir is
+present, \[n_above_weir\] is equal to \[n_returned\].
 </td>
 </tr>
 <tr>
@@ -2274,7 +2276,7 @@ present, `[n_above_weir]` is equal to `[n_returned]`.
 abund_cv
 </td>
 <td style="text-align:left;">
-Estimated uncertainty of the `[n_returned]` values, expressed as a
+Estimated uncertainty of the \[n_returned\] values, expressed as a
 coefficient of variation.
 </td>
 </tr>
@@ -2352,8 +2354,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -2370,7 +2372,7 @@ adult fish.
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+Nat = natural-origin (the fish’s parents spawned naturally); Hat =
 hatchery-origin (the fish’s parents were spawned in a hatchery).
 </td>
 </tr>
@@ -2379,7 +2381,7 @@ hatchery-origin (the fish’s parents were spawned in a hatchery).
 sex
 </td>
 <td style="text-align:left;">
-`F` = Female; `M` = Male.
+F = Female; M = Male.
 </td>
 </tr>
 <tr>
@@ -2523,8 +2525,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -2551,7 +2553,7 @@ describe multiple fish.
 sex
 </td>
 <td style="text-align:left;">
-`F` = Female; `M` = Male; `Unk` = Unknown.
+F = Female; M = Male; Unk = Unknown.
 </td>
 </tr>
 <tr>
@@ -2559,7 +2561,7 @@ sex
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+Nat = natural-origin (the fish’s parents spawned naturally); Hat =
 hatchery-origin (the fish’s parents were spawned in a hatchery).
 </td>
 </tr>
@@ -2576,9 +2578,9 @@ Fork length (mm).
 disposition
 </td>
 <td style="text-align:left;">
-Describes what happened to the fish after it was handled. `Passed` =
-fish was returned to the river and allowed to spawn naturally; `Removed`
-= the fish was removed from the potential spawning population.
+Describes what happened to the fish after it was handled. Passed = fish
+was returned to the river and allowed to spawn naturally; Removed = the
+fish was removed from the potential spawning population.
 </td>
 </tr>
 <tr>
@@ -2586,8 +2588,8 @@ fish was returned to the river and allowed to spawn naturally; `Removed`
 agedesignation
 </td>
 <td style="text-align:left;">
-`Adult` (in this context) = a fish presumed to be age-4 or age-5; `Jack`
-= a fish presumed to be age-3 (based on size); `Unk` = Unknown.
+Adult (in this context) = a fish presumed to be age-4 or age-5; Jack = a
+fish presumed to be age-3 (based on size); Unk = Unknown.
 </td>
 </tr>
 <tr>
@@ -2636,8 +2638,8 @@ Age estimate based on a year- and population-specific age-length key.
 recapture
 </td>
 <td style="text-align:left;">
-`TRUE` = the fish had been previously handled (and marked) at the weir;
-`FALSE` = the fish had not been previously captured at the weir, i.e.,
+TRUE = the fish had been previously handled (and marked) at the weir;
+FALSE = the fish had not been previously captured at the weir, i.e.,
 this record represents the first capture event for the fish.
 </td>
 </tr>
@@ -2804,8 +2806,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -2822,7 +2824,7 @@ for the fish.
 sex
 </td>
 <td style="text-align:left;">
-`F` = Female; `M` = Male; `Unk` = Unknown.
+F = Female; M = Male; Unk = Unknown.
 </td>
 </tr>
 <tr>
@@ -2830,7 +2832,7 @@ sex
 origin
 </td>
 <td style="text-align:left;">
-`Nat` = natural-origin (the fish’s parents spawned naturally); `Hat` =
+Nat = natural-origin (the fish’s parents spawned naturally); Hat =
 hatchery-origin (the fish’s parents were spawned in a hatchery)
 </td>
 </tr>
@@ -2887,10 +2889,10 @@ Age estimate based on simple fork length bins.
 prespawn
 </td>
 <td style="text-align:left;">
-For female carcasses, did the fish spawn successfully (`Spawned`), or
-did the fish die before spawning (`PreSpawn`)? Females are considered
-`Spawned` if less than 50% of eggs remain in the body cavity. This field
-is `NA` when `[Sex]` = `M` or `Unk`.
+For female carcasses, did the fish spawn successfully (Spawned), or did
+the fish die before spawning (PreSpawn)? Females are considered Spawned
+if less than 50% of eggs remain in the body cavity. This field is NA
+when \[Sex\] = M or Unk.
 </td>
 </tr>
 </tbody>
@@ -2991,9 +2993,9 @@ Description
 brood_year
 </td>
 <td style="text-align:left;">
-Here equivalent to \[Return Year\]: the year adults spawned, not the
-year they were spawned. This nomenclature is used to allow merging with
-other data sets.
+Here equivalent to ReturnYear: the year adults spawned, not the year
+they were spawned. This nomenclature is used to allow merging with other
+data sets.
 </td>
 </tr>
 <tr>
@@ -3001,8 +3003,8 @@ other data sets.
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
@@ -3037,7 +3039,7 @@ and completed migration but before the initiation of spawning) vs. the
 For the GR-LCM, mortality between Bonneville Dam and Lower Granite Dam
 is captured in the `BON-LGR-adult-PIT-detections` converstion rate data
 set; mortality during the spawning period is captured in the
-`prespawn surv` data set; but adult mortality between Lower Granite Dam
+`prespawn-surv` data set; but adult mortality between Lower Granite Dam
 and the start of the spawning period is not captured in the data sets
 used to fit the GR-LCM.
 
@@ -3129,8 +3131,8 @@ Description
 population
 </td>
 <td style="text-align:left;">
-`CAT` = Catherine Creek; `LOS` = Lostine River; `MIN` = Minam River;
-`UGR` = Upper Grande Ronde River.
+CAT = Catherine Creek; LOS = Lostine River; MIN = Minam River; UGR =
+Upper Grande Ronde River.
 </td>
 </tr>
 <tr>
