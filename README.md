@@ -25,11 +25,11 @@ Metadata for data sets used in the Grande Ronde Life Cycle Model
 
 **We are providing the data sets used to fit the GR-LCM to ensure
 transparency, and to assist other users with ensuring reproducibility of
-their modelling approach. The data sets of record from which we
-extracted these data remain subject to updates. Any use of these data
-for analyses other than model reproduction is not approved. Users should
-contact data set owners to obtain the most current data sets of record;
-and use those data for any analysis.**
+their modelling approach. Any use of these data for analyses other than
+model reproduction is not approved. The data sets of record from which
+we extracted these data are dynamic and may be updated at any time.
+Users should contact data set owners to obtain the most current data
+sets of record; and use those data for any analysis.**
 
 # Data set summary
 
@@ -815,7 +815,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to \[brood_year\] + 2.
+equivalent to brood_year + 2.
 </td>
 </tr>
 <tr>
@@ -838,9 +838,8 @@ abund_est
 <td style="text-align:left;">
 Estimated total number of fish that passed the screw trap over the
 course of the season, expanded by the ratio of redds counted upstream of
-the smolt trap to all redds counted in the population
-(\[expansion_factor\] ), to account for any spawning downstream of the
-traps.
+the smolt trap to all redds counted in the population (expansion_factor
+), to account for any spawning downstream of the traps.
 </td>
 </tr>
 <tr>
@@ -1055,7 +1054,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to \[brood_year\] + 2.
+equivalent to brood_year + 2.
 </td>
 </tr>
 <tr>
@@ -1317,7 +1316,7 @@ mig_year
 </td>
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean;
-equivalent to \[brood_year\] + 2.
+equivalent to brood_year + 2.
 </td>
 </tr>
 <tr>
@@ -1337,7 +1336,7 @@ n_length
 </td>
 <td style="text-align:left;">
 Number of length values included in the reported statistics. Equivalent
-to \[n_pit\] + \[n_npt\].
+to n_pit + n_npt.
 </td>
 </tr>
 <tr>
@@ -1345,9 +1344,8 @@ to \[n_pit\] + \[n_npt\].
 n_pit
 </td>
 <td style="text-align:left;">
-A subset of \[n_length\]: number of PIT-tagged fish included in the
-reported length statistics. When \[fish_subset\] = PIT, \[n_pit\] is
-equal to \[n_length\].
+A subset of n_length: number of PIT-tagged fish included in the reported
+length statistics. When fish_subset = PIT, n_pit is equal to n_length.
 </td>
 </tr>
 <tr>
@@ -1355,8 +1353,8 @@ equal to \[n_length\].
 n_npt
 </td>
 <td style="text-align:left;">
-A subset of \[n_length\]: number of not PIT-tagged fish included in the
-reported length statistics. When \[fish_subset\] = PIT, \[n_npt\] is 0.
+A subset of n_length: number of not PIT-tagged fish included in the
+reported length statistics. When fish_subset = PIT, n_npt is 0.
 </td>
 </tr>
 <tr>
@@ -1581,7 +1579,7 @@ release_year
 <td style="text-align:left;">
 Calendar year when the cohort of fish was released. For standard smolt
 releases, fish are released in the spring and the release year matches
-the migration year (i.e., \[brood_year\] + 2). When fish are released as
+the migration year (i.e., brood_year + 2). When fish are released as
 parr the calendar year is one year prior to their outmigration year.
 </td>
 </tr>
@@ -1625,8 +1623,8 @@ Standard error for the survival point estimate.
 includes_parr
 </td>
 <td style="text-align:left;">
-Indicates whether the reported \[n_smolt_released\] and \[surv_est\]
-values include any parr releases. This field is usually FALSE; most
+Indicates whether the reported n_smolt_released and surv_est values
+include any parr releases. This field is usually FALSE; most
 hatchery-origin fish are released as smolt.
 </td>
 </tr>
@@ -1771,7 +1769,7 @@ mig_year
 <td style="text-align:left;">
 Calendar year when the cohort of fish migrated out to the ocean and,
 thus, the year when the cohort passed downstream through the hydrosystem
-as juveniles; equivalent to \[brood_year\] + 2.
+as juveniles; equivalent to brood_year + 2.
 </td>
 </tr>
 <tr>
@@ -2267,8 +2265,8 @@ Estimated number of fish in the river above the weir, after removals at
 the weir and after any tributary harvest, but prior to any prespawn
 mortality. Note that some fish may spawn below the weir, without ever
 being handled at the weir; these fish are not counted in the
-\[n_above_weir\] value. For years and populations where no adult weir is
-present, \[n_above_weir\] is equal to \[n_returned\].
+n_above_weir value. For years and populations where no adult weir is
+present, n_above_weir is equal to n_returned.
 </td>
 </tr>
 <tr>
@@ -2276,7 +2274,7 @@ present, \[n_above_weir\] is equal to \[n_returned\].
 abund_cv
 </td>
 <td style="text-align:left;">
-Estimated uncertainty of the \[n_returned\] values, expressed as a
+Estimated uncertainty of the n_returned values, expressed as a
 coefficient of variation.
 </td>
 </tr>
@@ -2892,7 +2890,7 @@ prespawn
 For female carcasses, did the fish spawn successfully (Spawned), or did
 the fish die before spawning (PreSpawn)? Females are considered Spawned
 if less than 50% of eggs remain in the body cavity. This field is NA
-when \[Sex\] = M or Unk.
+when Sex = M or Unk.
 </td>
 </tr>
 </tbody>
@@ -3157,7 +3155,7 @@ Age of fish (age-4 or age-5) for which fecundity is being estimated.
 n_lengths
 </td>
 <td style="text-align:left;">
-Number of length values used to calculate the \[mean_length\] value.
+Number of length values used to calculate the mean_length value.
 </td>
 </tr>
 <tr>
