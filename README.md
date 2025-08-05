@@ -1,5 +1,11 @@
-Metadata for data sets used in the Grande Ronde Life Cycle Model
-================
+
+> This repository stores the data used to fit the model presented in the manuscript *A state-space model to quantify density dependence, demographic heterogeneity, and spatial synchrony in Grande Ronde Basin Chinook salmon populations* by B.A. Staton, P.P. Gibson, M. Liermann, C. Justice, M.J. Kaylor, R. Sharma, and S.M. White, which has been accepted for publication in the journal _Ecological Modelling_.
+
+[![ArticleDOI](https://img.shields.io/badge/Article-10.1016/j.ecolmodel.2025.111289-blue?logo=doi&logoColor=f5f5f5)](https://www.doi.org/10.1016/j.ecolmodel.2025.111289)  
+[![GitHub Code Repo Archive DOI](https://img.shields.io/badge/GitHub%20Code%20Repo%20Archive-PLACEHOLDER-blue?logo=github)]()  
+[![GitHub Data Repo Archive DOI](https://img.shields.io/badge/GitHub%20Data%20Repo%20Archive-PLACEHOLDER-blue?logo=github)]()  
+
+# Metadata for data sets used in the Grande Ronde Life Cycle Model
 
 - [Disclaimer](#disclaimer)
 - [Data set summary](#data-set-summary)
