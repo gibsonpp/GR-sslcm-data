@@ -1,27 +1,13 @@
-Metadata for data sets used in the Grande Ronde Life Cycle Model
-================
 
-- [Disclaimer](#disclaimer)
-- [Data set summary](#data-set-summary)
-- [Abbreviations](#abbreviations)
-- [Data set metadata](#data-set-metadata)
-  - [Juvenile: juv-abundance](#juvenile-juv-abundance)
-  - [Juvenile: juv-survival](#juvenile-juv-survival)
-  - [Juvenile: juv-mean-length](#juvenile-juv-mean-length)
-  - [Juvenile: hatchery-juv-releases](#juvenile-hatchery-juv-releases)
-  - [Juvenile: juv-survival-hydro](#juvenile-juv-survival-hydro)
-  - [Adult: harvest-rates-below-BON](#adult-harvest-rates-below-bon)
-  - [Adult:
-    BON-LGR-adult-PIT-detections](#adult-bon-lgr-adult-pit-detections)
-  - [Adult: adult-abundance](#adult-adult-abundance)
-  - [Adult: tributary-harvest](#adult-tributary-harvest)
-  - [Adult: adult-indiv-weir](#adult-adult-indiv-weir)
-  - [Adult: adult-indiv-carcass](#adult-adult-indiv-carcass)
-  - [Adult: prespawn-surv](#adult-prespawn-surv)
-  - [Adult: fecundity](#adult-fecundity)
-- [References](#references)
+> This repository stores the data used to fit the model presented in the manuscript *A state-space model to quantify density dependence, demographic heterogeneity, and spatial synchrony in Grande Ronde Basin Chinook salmon populations* by B.A. Staton, P.P. Gibson, M. Liermann, C. Justice, M.J. Kaylor, R. Sharma, and S.M. White, which has been accepted for publication in the journal _Ecological Modelling_.
 
-# Disclaimer
+[![ArticleDOI](https://img.shields.io/badge/Article-10.1016/j.ecolmodel.2025.111289-blue?logo=doi&logoColor=f5f5f5)](https://www.doi.org/10.1016/j.ecolmodel.2025.111289)  
+[![GitHub Code Repo Archive DOI](https://img.shields.io/badge/GitHub%20Code%20Repo%20Archive-10.5281/zenodo.16748911-blue?logo=github)](https://www.doi.org/10.5281/zenodo.16748911)  
+[![GitHub Data Repo Archive DOI](https://img.shields.io/badge/GitHub%20Data%20Repo%20Archive-PLACEHOLDER-blue?logo=github)]()  
+
+# Metadata for data sets used in the Grande Ronde Life Cycle Model
+
+## Disclaimer
 
 **We are providing the data sets used to fit the GR-LCM to ensure
 transparency, and to assist other users with ensuring reproducibility of
@@ -31,7 +17,10 @@ we extracted these data are dynamic and may be updated at any time.
 Users should contact data set owners to obtain the most current data
 sets of record; and use those data for any analysis.**
 
-# Data set summary
+**_Click each header below to display more information_**
+
+<details>
+<summary><h1 style="display: inline; margin: 0;" id="data-set-summary">Data set summary</h1></summary>
 
 <table class="table table-striped" style="font-size: 10px; width: auto !important; ">
 <thead>
@@ -672,55 +661,43 @@ RY 2022
 </tbody>
 </table>
 
-# Abbreviations
+</details>
+
+<details>
+<summary><h1 style="display: inline; margin: 0;" id="abbreviations">Abbreviations</h1></summary>
 
 Acronyms and other abbreviations used in this document:
-
 - **BY:** brood year - year when a cohort of fish was spawned
-
 - **BON:** Bonneville Dam (the farthest downstream of the mainstem dams)
-
 - **CAT:** Catherine Creek
-
 - **CSS:** Comparative Survival Study
-
 - **CTUIR:** Confederated Tribes of the Umatilla Indian Reservation
-
 - **CWT:** coded wire tag
-
 - **GR-LCM:** Grande Ronde Life Cycle Model
-
 - **LOS:** Lostine River
-
 - **LGR:** Lower Granite Dam (the farthest upstream of the mainstem dams
   encountered by Grande Ronde fish)
-
 - **MIN:** Minam River
-
 - **MY:** migration year - year when a cohort of fish migrated from
   freshwater out to the ocean; equivalent to brood year + 2.
-
 - **NPT:** Nez Perce Tribe
-
 - **NPT** (alternate meaning): not PIT tagged
-
 - **ODFW:** Oregon Department of Fish and Wildlife
-
 - **PIT:** passive integrated transponder
-
 - **RTR:** return to the river - describes the group of adult fish in a
   given year that return to the mouth of the natal tributary, before any
   losses to tributary harvest, weir removals, or prespawn mortality
-
 - **RY:** return year - year when a group of adult fish return and
   spawn. Because adults return at a variety of ages, the adults in a
   given return year comprise multiple brood years of origin
-
 - **UGR:** Upper Grande Ronde River
+
+</details>
 
 # Data set metadata
 
-## Juvenile: juv-abundance
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="juvenile-juv-abundance">Juvenile: juv-abundance</h2></summary>
 
 ### Citation
 
@@ -769,13 +746,9 @@ appropriate brood year) counted above the screw trap to the total number
 of redds counted in the population for that brood year.
 
 **Years of data:** 29 (BY 1992 - 2020)
-
 - CAT: 28 years (BY 1993-2020)
-
 - LOS: 25 years (BY 1995-2020; missing BY 2002)
-
 - MIN: 22 years (BY 1999-2020)
-
 - UGR: 28 years (BY 1992-2020; missing part of BY 2019)
 
 ### Fields
@@ -917,14 +890,16 @@ fish that would have been caught with 24 hours of continuous sampling.
 Missing data:
 
 - The LOS trap was not operated during migration year 2004 (BY 2002).
-
 - The UGR trap does not have an abundance estimate for fall 2021 (BY
   2020; MY 2022) due to very limited trap operation time, and low fish
   numbers observed during the period of operation. There are also
   several other very uncertain abundance estimates from the UGR trap,
   again due to limited trap operation time and very low catch.
+  
+</details>
 
-## Juvenile: juv-survival
+<details>
+<summary><h2 style="display: inline;" id="juvenile-juv-survival">Juvenile: juv-survival</h2></summary>
 
 ### Citation
 
@@ -945,18 +920,15 @@ the time of tagging to arrival at Lower Granite Dam as smolt during the
 spring outmigration. Groups of juvenile Chinook (hereafter, “tag
 groups”) are captured and tagged at several different locations and time
 periods during their early life history:
-
 - Fish in the **summer** tag group are actively captured (by
   snorkel-herding) throughout the rearing habitat above the screw trap,
   over the course of approximately one week during the summer (late
   July - August). These fish are captured as parr during their
   freshwater rearing summer, approximately nine months before their
   outmigration the following spring.
-
 - Fish in the **fall** tag group (‘early migrants’) are passively
   captured at the rotary screw trap over the course of the fall movement
   period (September - November).
-
 - Fish in the **winter** tag group are actively captured throughout the
   rearing habitat above the screw trap, over the course of approximately
   one week in early winter (usually early December). Because these fish
@@ -965,7 +937,6 @@ periods during their early life history:
   life history. There are no winter survival estimates for the MIN
   population. (The Minam River is almost entirely within a wilderness
   area and access is very difficult during the winter.)
-
 - Fish in the **spring** tag group (‘late migrants’) are passively
   captured at the rotary screw trap over the course of the spring
   movement period (primarily March - April).
@@ -978,43 +949,28 @@ intervals are calculated based on profile likelihood.
 
 These survival estimates use all tagged fish that meet the following
 conditions:
-
 - PIT-tagged during the correct season.
-
 - Not a recapture.
-
 - Target cohort - not known to be precocious or young-of-year.
 
 **Years of data:**
 
 - summer:
-
   - CAT: 30 years (BY 1991-2020)
-
   - LOS: 29 years (BY 1991-2020; no BY 1996)
-
   - MIN: 30 years (BY 1991-2020)
-
   - UGR: 17 years (BY 1991-1993, 2006, and 2008-2020)
 
 - fall and spring:
-
   - CAT: 28 years (BY 1993-2020; no BY 2013 fall)
-
   - LOS: 25 years (BY 1995-2020; no BY 2002)
-
   - MIN: 22 years (BY 1999-2020)
-
   - UGR: 26 years (BY 1992-2020, with numerous missing estimates)
 
 - winter:
-
   - CAT: 28 years (BY 1993-2020)
-
   - LOS: 26 years (BY 1995-2020)
-
   - MIN: 0 years *(no winter PIT-tagging in MIN population)*
-
   - UGR: 22 years (BY 1992-2020, with numerous missing estimates)
 
 ### Fields
@@ -1150,19 +1106,20 @@ stream reaches are over-represented and other reaches are
 under-represented in the tag group.
 
 Missing data:
-
 - There is a gap of nearly 15 years in the UGR summer survival
   estimates: there was no summer PIT tagging in the UGR population for
   brood years 1994-2005, nor in BY 2007.
-
 - Most of the other populations and tag groups have occasional gaps in
   the time series of survival estimates, due to low sample size of tags
   put out or too few downstream detections to calculate a survival
   estimate. Missing estimates are especially common for UGR, where the
   population size is small and it is not uncommon to catch very few fish
   over the course of a season.
+  
+</details>
 
-## Juvenile: juv-mean-length
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="juvenile-juv-mean-length">Juvenile: juv-mean-length</h2></summary>
 
 ### Citation
 
@@ -1228,16 +1185,12 @@ standard error.
 
 These statistics summarize all available recorded length data from fish
 that meet the following conditions:
-
 - Fish was captured above the rotary screw trap (or at it, for fall and
   spring fish); exclude any fish captured below the traps.
-
 - Fish was unmarked at the time of the length measurement; exclude all
   recaptures.
-
 - Fish was not recorded as precocious or fry/young-of-year (i.e., a
   younger cohort than the target age class in a given year).
-
 - For fall and spring seasons (i.e., fish caught at the rotary screw
   traps), fish was caught between Sept 1 and Dec 15 (fall), or between
   Feb 15 and June 30 (spring). These date limits were applied to ensure
@@ -1247,23 +1200,15 @@ that meet the following conditions:
 **Years of data:**
 
 - summer:
-
   - CAT: 30 years (BY 1991-2020)
-
   - LOS: 28 years (BY 1991-2020; no BY 1997 or 1998)
-
   - MIN: 30 years (BY 1991-2020)
-
   - UGR: 17 years (BY 1991-1993, 2006, and 2008-2020)
 
 - spring:
-
   - CAT: 27 years (BY 1993-2020; no BY 1995)
-
   - LOS: 26 years (BY 1995-2020)
-
   - MIN: 22 years (BY 1999-2020)
-
   - UGR: 26 years (BY 1992-2020; no BY 1995, 1999, or 2007)
 
 ### Fields
@@ -1426,7 +1371,6 @@ partly a function of watershed position.
   during the summer, the median date of tagging (`[jday_med]`) is a
   strong predictor of population mean length. See also the discussion
   for the `juv-survival` data set.
-
 - Fish mean size at summer tagging also depends on watershed position
   (upstream reaches vs. downstream reaches), although it explains less
   of the variation in population mean size than does median date of
@@ -1434,7 +1378,6 @@ partly a function of watershed position.
   date fish from the upper watershed tend to be substantially smaller
   than fish from the lower watershed. See also the discussion for the
   `juv-survival` data set.
-
 - For summers prior to 2001, recorded length data from undersize and
   other non-PIT-tagged fish (NPT) was unavailable. But length
   distributions of PIT tagged fish from these years without NPT data
@@ -1455,31 +1398,23 @@ length statistics.
 - **No sampling:** Length data sets are entirely missing because no
   sampling occurred (trap did not operate or there was no snorkeling
   effort).
-
   - fall- LOS MY04
-
   - winter- UGR MY96-97, MY01-03, MY09
-
   - summer- LOS MY98; UGR MY96-07, MY09
-
   - spring - no fully missing data sets, but for LOS MY04 spring the
     trap ran only during the second half of the season (April 19 - June
     18).
-
 - **Non-tag data missing:** There are some population/seasons for which
   the data for non-PIT-tagged (NPT) fish are not available. For the
   following population/season groups, length statistics are reported for
   `[fish_subset]=PIT` but not for `[fish_subset]=all` because we do not
   have adequate data for NPT fish.
-
   - summer - LOS MY99 and MY00. Non-tag data are missing and PIT length
     distributions show truncation effects due (presumably) to undersize
     fish.
-
   - fall and spring - CAT MY97. Trap catch and PIT tag numbers for this
     migration year indicate that there were substantial numbers of
     non-tagged fish, but no non-tag data have been found.
-
 - **Inadequate sample size:** There were several population/season
   samples (primarily trap seasons at UGR), where sampling did occur, but
   the sampling was minimal/ineffective and caught so few fish that the
@@ -1488,12 +1423,13 @@ length statistics.
   mean length: if there were fewer than 50 fish measured in a given
   season then mean length in that season is reported as `NA`, in place
   of reporting a mean based on a very small sample size.
-
   - fall: UGR MY96-97, MY01, MY09, and MYY21
-
   - spring: UGR MY97, MY01, and MY09
+  
+</details>
 
-## Juvenile: hatchery-juv-releases
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="juvenile-hatchery-juv-releases">Juvenile: hatchery-juv-releases</h2></summary>
 
 ### Citation
 
@@ -1681,7 +1617,10 @@ broodstock. Differences in adult return rates between Grande Ronde basin
 captive and conventionally produced smolts have been documented
 (Feldhaus et al. 2022).
 
-## Juvenile: juv-survival-hydro
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="juvenile-juv-survival-hydro">Juvenile: juv-survival-hydro</h2></summary>
 
 ### Citation
 
@@ -1714,7 +1653,6 @@ to experience a common survival rate moving through the hydrosystem.
 **Years of data**
 
 - natural-origin: 27 (MY 1994-2021)
-
 - hatchery-origin: 20 (MY 2002-2021)
 
 ### Source data
@@ -1738,14 +1676,10 @@ Center’s juvenile survival estimates
 accessed 2023-09-11) with the following parameters:
 
 - `SPECIES` = Chinook
-
 - `Rear Type` = Hatchery AND Wild
-
 - `Race Code` = Spring AND Spring_Summer
-
 - `CSS GROUP` = Snake River Wild Spring_Summer Chinook AND Catherine
   Creek Hatchery Spring Chinook
-
 - `Migration Year` = All Migration Years
 
 ### Fields
@@ -1871,7 +1805,10 @@ Additionally, the published estimates for the most recent migration
 years (2020 and 2021) were not yet finalized at the time when this
 `juv-survival-hydro` data set was compiled.
 
-## Adult: harvest-rates-below-BON
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-harvest-rates-below-bon">Adult: harvest-rates-below-BON</h2></summary>
 
 ### Citation
 
@@ -1950,7 +1887,10 @@ Dam.
 </tbody>
 </table>
 
-## Adult: BON-LGR-adult-PIT-detections
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-bon-lgr-adult-pit-detections">Adult: BON-LGR-adult-PIT-detections</h2></summary>
 
 ### Citation
 
@@ -1997,23 +1937,14 @@ Rate](https://www.cbr.washington.edu/dart/query/pitadult_conrate), with
 the following query parameters:
 
 - `Conversion Reach` = Bonneville to Lower Granite
-
 - `Species` = Chinook
-
 - `Run` = Spring
-
 - `Rear Type` = Wild OR Hatchery
-
 - `Release Location` = Grande Ronde River Basin - All
-
 - `Month Range` = January to December
-
 - `Detections Upstream of Upper Project`: Include
-
 - `Chinook Minijacks`: Exclude
-
 - `Release Sites below Upper Project`: Exclude
-
 - `Transported Fish`: Include (in-river and transport)
 
 **Years of data:** 23 (return years 2000-2022)
@@ -2073,7 +2004,10 @@ Granite Dam.
 </tbody>
 </table>
 
-## Adult: adult-abundance
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-adult-abundance">Adult: adult-abundance</h2></summary>
 
 ### Citations
 
@@ -2158,18 +2092,15 @@ to river estimates.
   prespawn mortality) above the weir is estimated, usually based on a
   mark-recapture estimate from fish marked at the weir and recovered as
   carcasses on the spawning grounds.
-
 - Then, abundance of age-3 fish (jacks) is estimated based on a variety
   of methods. If there are enough recoveries of age-3 carcasses, then
   the mark-recapture method is preferred. More commonly, estimates are
   based on a carcass recovery rate or a weir capture rate (weir
   efficiency).
-
 - The total estimated number of fish above the weir (age-4/5 + age-3) is
   then expanded to account for any spawning downstream of the weir,
   using the ratio of redds counted below the weir to the total number of
   redds counted in a given population and year.
-
 - Finally, the total number of adult fish returning to the river also
   includes the fish that were removed (a) in tributary harvest (see
   `tributary-harvest`); and (b) at the weir, either to use as broodstock
@@ -2281,7 +2212,10 @@ coefficient of variation.
 </tbody>
 </table>
 
-## Adult: tributary-harvest
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-tributary-harvest">Adult: tributary-harvest</h2></summary>
 
 ### Citation
 
@@ -2416,7 +2350,10 @@ relative to the total harvest. The age composition of the tributary
 harvest is particularly uncertain because of the low numbers of adult
 fish that are physically sampled in the creel.
 
-## Adult: adult-indiv-weir
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-adult-indiv-weir">Adult: adult-indiv-weir</h2></summary>
 
 ### Citations
 
@@ -2497,11 +2434,8 @@ the counts of fish removed at the weir.
 **Years of data:** 26 (RY 1998 - 2022)
 
 - CAT: 25 years (RY 1998-2022)
-
 - LOS: 18 years (RY 1997-2022; missing RY 2001-2008)
-
 - MIN: 0 years *(No weir in the MIN population)*
-
 - UGR: 25 years (RY 1998-2022)
 
 ### Fields
@@ -2709,7 +2643,10 @@ timing may result in different weir efficiency, especially when age-3
 fish are more likely to arrive after the weir has been removed for the
 season.
 
-## Adult: adult-indiv-carcass
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-adult-indiv-carcass">Adult: adult-indiv-carcass</h2></summary>
 
 ### Citations
 
@@ -2927,7 +2864,10 @@ In the GR-LCM, we corrected for biased carcass recovery probabilities
 when using carcass data to estimate age composition of returning adult
 fish.
 
-## Adult: prespawn-surv
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-prespawn-surv">Adult: prespawn-surv</h2></summary>
 
 ### Citation
 
@@ -3052,7 +2992,10 @@ characterize this important source of mortality in the UGR population.
 Carcass recovery rates are also low in the MIN population, but observed
 prespawn survival rates there are consistently high.
 
-## Adult: fecundity
+</details>
+
+<details>
+<summary><h2 style="display: inline; margin: 0;" id="adult-fecundity">Adult: fecundity</h2></summary>
 
 ### Citation
 
@@ -3192,20 +3135,21 @@ modeled by the GR-LCM, age-4 fish were always more common than age-5
 fish. To ensure adequate sample sizes for robust estimation of mean
 length, we pooled some populations and years together for calculating
 means:
-
 - The CAT, UGR, and MIN population length (by age) values were pooled
   together, within each return year, while mean lengths for the LOS
   population were estimated separately. LOS fish tend to be larger (for
   a given age) than fish from the other three populations.
-
 - The years 1991-2000 had consistently low sample sizes across all
   populations, especially for age-5 fish. This was due to a combination
   of no weir data for 1991-1996 (and limited data from the early years
   of weir operation), plus low fish return numbers during the 1990s.
   Therefore years 1991-2000 were pooled together (within each
   population) for estimating mean length at age.
+  
+</details>
 
-# References
+<details>
+<summary><h1 style="display: inline;" id="references">References</h1></summary>
 
 Beer, WN. 2007. Run timing of adult Chinook passing Bonneville Dam on
 the Columbia River. Columbia Basin Research, Seattle, WA. URL:
@@ -3334,3 +3278,5 @@ Zhou S. 2002. Size‐dependent recovery of Chinook salmon in carcass
 surveys. Transactions of the American Fisheries Society 131(6):
 1194–1202.
 <https://doi.org/10.1577/1548-8659(2002)131>\<1194:SDROCS\>2.0.CO;2
+
+</details>
