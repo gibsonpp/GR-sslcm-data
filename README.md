@@ -7,26 +7,6 @@
 
 # Metadata for data sets used in the Grande Ronde Life Cycle Model
 
-- [Disclaimer](#disclaimer)
-- [Data set summary](#data-set-summary)
-- [Abbreviations](#abbreviations)
-- [Data set metadata](#data-set-metadata)
-  - [Juvenile: juv-abundance](#juvenile-juv-abundance)
-  - [Juvenile: juv-survival](#juvenile-juv-survival)
-  - [Juvenile: juv-mean-length](#juvenile-juv-mean-length)
-  - [Juvenile: hatchery-juv-releases](#juvenile-hatchery-juv-releases)
-  - [Juvenile: juv-survival-hydro](#juvenile-juv-survival-hydro)
-  - [Adult: harvest-rates-below-BON](#adult-harvest-rates-below-bon)
-  - [Adult:
-    BON-LGR-adult-PIT-detections](#adult-bon-lgr-adult-pit-detections)
-  - [Adult: adult-abundance](#adult-adult-abundance)
-  - [Adult: tributary-harvest](#adult-tributary-harvest)
-  - [Adult: adult-indiv-weir](#adult-adult-indiv-weir)
-  - [Adult: adult-indiv-carcass](#adult-adult-indiv-carcass)
-  - [Adult: prespawn-surv](#adult-prespawn-surv)
-  - [Adult: fecundity](#adult-fecundity)
-- [References](#references)
-
 ## Disclaimer
 
 **We are providing the data sets used to fit the GR-LCM to ensure
