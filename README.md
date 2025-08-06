@@ -3,7 +3,7 @@
 
 [![ArticleDOI](https://img.shields.io/badge/Article-10.1016/j.ecolmodel.2025.111289-blue?logo=doi&logoColor=f5f5f5)](https://www.doi.org/10.1016/j.ecolmodel.2025.111289)  
 [![GitHub Code Repo Archive DOI](https://img.shields.io/badge/GitHub%20Code%20Repo%20Archive-10.5281/zenodo.16748911-blue?logo=github)](https://www.doi.org/10.5281/zenodo.16748911)  
-[![GitHub Data Repo Archive DOI](https://img.shields.io/badge/GitHub%20Data%20Repo%20Archive-PLACEHOLDER-blue?logo=github)]()  
+[![GitHub Data Repo Archive DOI](https://img.shields.io/badge/GitHub%20Data%20Repo%20Archive-10.5281/zenodo.16756167-blue?logo=github)](https://www.doi.org/10.5281/zenodo.16756167)  
 
 # Metadata for data sets used in the Grande Ronde Life Cycle Model
 
